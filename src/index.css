@@ -34,8 +34,14 @@ body {
 }
 
 @layer components {
+  /* Wide by default — never trap content in a narrow centered column. */
   .container-page {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-16;
+  }
+
+  /* Extra-wide for hero / nav so content reaches near the screen edges. */
+  .container-wide {
+    @apply mx-auto w-full max-w-[1680px] px-6 sm:px-10 lg:px-14;
   }
 
   .slide {

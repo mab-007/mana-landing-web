@@ -29,7 +29,7 @@ export function Nav() {
         dark ? "border-b border-ink-100 bg-white/90 backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <nav className="container-page flex h-16 items-center justify-between">
+      <nav className="container-wide flex h-16 items-center justify-between">
         <a href="#top" aria-label="MANA home">
           <Logo light={!dark} />
         </a>
