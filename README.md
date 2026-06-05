@@ -47,13 +47,13 @@ src/
   App.tsx          # composes Nav + Hero + slides + Footer
   index.css        # Tailwind layers, shared classes, scroll-snap + reveal
   components/
-    nav.tsx        # fixed, transparent-over-hero -> solid-on-scroll
-    hero.tsx       # photo hero + floating glass transaction cards
+    nav.tsx        # fixed, transparent-over-hero -> frosted cream on scroll
+    hero.tsx       # cream hero: serif headline, app badges, USD-wallet phone
     reveal.tsx     # fade/slide-in-on-scroll wrapper (IntersectionObserver)
     phone.tsx      # reusable CSS phone mock-up
     logo.tsx, icons.tsx
-    slides/        # create-account, ai-banking, security, budget,
-                   # spending, accounts, open-account, join
+    slides/        # how-it-works, remittance, send-money, save,
+                   # card, why-mana, cta  (mirror the live MANA site)
     footer.tsx
 public/
   images/          # hero.jpg, accounts.jpg, budget.jpg, avatars/*  (swap freely)
@@ -62,12 +62,17 @@ public/
 
 ## Behaviour
 
-- **Scroll-snap slides:** on wide + tall screens each section snaps one-per-screen;
-  short laptops / mobile fall back to normal stacked scrolling (see the media
-  query in `index.css`).
-- **Reveal animations:** sections fade/slide in as they enter view.
-- **`?shot` capture mode:** append `?shot` to the URL to flatten the snap layout
-  for full-page screenshots (used during development).
+- **Continuous editorial scroll** (matches the live MANA site) with
+  **reveal-on-scroll** animations as each section enters view.
+- **`?shot` capture mode:** append `?shot` to the URL to force reveal content
+  visible for full-page screenshots (used during development).
+
+## Design system
+
+Mirrors the live MANA site. Palette: **papel** (cream `#FAF6EF`), **gabi**
+(navy `#0A1228`), **tanglaw** (orange `#E85D2C`), success green `#1F8B4D`.
+Fonts: **Fraunces** (serif headlines) + **Manrope** (body). Logo: two-peak
+mountain + "Mana" wordmark.
 
 ## Brand
 

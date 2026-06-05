@@ -108,3 +108,40 @@ export function GooglePlayIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function SendIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M22 2 11 13" />
+      <path d="M22 2 15 22l-4-9-9-4 20-7Z" />
+    </svg>
+  );
+}
+
+export function PercentIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M19 5 5 19" />
+      <circle cx="6.5" cy="6.5" r="2.5" />
+      <circle cx="17.5" cy="17.5" r="2.5" />
+    </svg>
+  );
+}
+
+export function CardIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="2" y="5" width="20" height="14" rx="2.5" />
+      <path d="M2 10h20M6 15h4" />
+    </svg>
+  );
+}
+
+export function DocIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 2h8l4 4v16H6z" />
+      <path d="M14 2v4h4M9 13h6M9 17h6" />
+    </svg>
+  );
+}

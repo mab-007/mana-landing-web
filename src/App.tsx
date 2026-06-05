@@ -1,13 +1,12 @@
 import { Nav } from "./components/nav";
 import { Hero } from "./components/hero";
-import { CreateAccount } from "./components/slides/create-account";
-import { AiBanking } from "./components/slides/ai-banking";
-import { Security } from "./components/slides/security";
-import { Budget } from "./components/slides/budget";
-import { Spending } from "./components/slides/spending";
-import { Accounts } from "./components/slides/accounts";
-import { OpenAccount } from "./components/slides/open-account";
-import { Join } from "./components/slides/join";
+import { HowItWorks } from "./components/slides/how-it-works";
+import { Remittance } from "./components/slides/remittance";
+import { SendMoney } from "./components/slides/send-money";
+import { Save } from "./components/slides/save";
+import { Card } from "./components/slides/card";
+import { WhyMana } from "./components/slides/why-mana";
+import { Cta } from "./components/slides/cta";
 import { Footer } from "./components/footer";
 
 export function App() {
@@ -16,14 +15,13 @@ export function App() {
       <Nav />
       <main>
         <Hero />
-        <CreateAccount />
-        <AiBanking />
-        <Security />
-        <Budget />
-        <Spending />
-        <Accounts />
-        <OpenAccount />
-        <Join />
+        <HowItWorks />
+        <Remittance />
+        <SendMoney />
+        <Save />
+        <Card />
+        <WhyMana />
+        <Cta />
       </main>
       <Footer />
     </>

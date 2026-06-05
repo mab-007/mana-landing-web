@@ -10,24 +10,6 @@ body {
   @apply bg-papel-50 font-sans text-gabi-900 antialiased;
 }
 
-/* ---- Scroll-snap: one slide per screen (large screens only) ----
-   Scoped to tall, wide viewports so short laptops / mobile fall back to
-   normal stacked scrolling and never clip content. */
-@media (min-width: 768px) and (min-height: 720px) {
-  html {
-    scroll-snap-type: y mandatory;
-  }
-  .slide {
-    min-height: 100vh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-  /* footer should not steal a full snap stop */
-  .no-snap {
-    scroll-snap-align: none;
-  }
-}
-
 @layer components {
   /* Wide by default — never trap content in a narrow centered column. */
   .container-page {
@@ -40,7 +22,7 @@ body {
   }
 
   .slide {
-    @apply relative flex w-full flex-col justify-center overflow-hidden py-20;
+    @apply relative w-full overflow-hidden py-20 sm:py-24;
   }
 
   .btn {

@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Logo } from "./logo";
 
 const links = [
-  { href: "#personal", label: "Personal" },
-  { href: "#send", label: "Send" },
+  { href: "#how", label: "How it works" },
   { href: "#save", label: "Save" },
-  { href: "#spend", label: "Spend" },
-  { href: "#company", label: "Company" },
+  { href: "#card", label: "Card" },
+  { href: "#why", label: "Why Mana" },
 ];
 
 export function Nav() {
@@ -48,11 +47,8 @@ export function Nav() {
         </div>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <a href="#join" className="text-sm font-semibold text-gabi-800">
-            Log in
-          </a>
           <a href="#join" className="btn-primary">
-            Open account
+            Get the app
           </a>
         </div>
 
@@ -91,7 +87,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="btn-primary mt-2 w-full"
             >
-              Open account
+              Get the app
             </a>
           </div>
         </div>
