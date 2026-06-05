@@ -15,17 +15,43 @@ body {
   font-family: var(--font-sans);
 }
 
+/* ---- Scroll-snap: one slide per screen (large screens only) ----
+   Scoped to tall, wide viewports so short laptops / mobile fall back to
+   normal stacked scrolling and never clip content. */
+@media (min-width: 768px) and (min-height: 720px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  /* footer should not steal a full snap stop */
+  .no-snap {
+    scroll-snap-align: none;
+  }
+}
+
 @layer components {
   .container-page {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
+  .slide {
+    @apply relative flex w-full flex-col justify-center overflow-hidden py-20;
+  }
+
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2;
   }
 
   .btn-primary {
-    @apply btn bg-brand-600 text-white shadow-soft hover:bg-brand-700 hover:-translate-y-0.5;
+    @apply btn bg-teal-700 text-white shadow-soft hover:bg-teal-800 hover:-translate-y-0.5;
+  }
+
+  .btn-light {
+    @apply btn bg-white text-ink-900 shadow-soft hover:-translate-y-0.5;
   }
 
   .btn-ghost {
@@ -33,6 +59,51 @@ body {
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700;
+    @apply inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-700;
+  }
+
+  .display {
+    @apply font-extrabold uppercase leading-[0.95] tracking-tight;
+  }
+}
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Capture mode (?shot): flatten slides for full-page screenshots ---- */
+html.shot {
+  scroll-snap-type: none !important;
+}
+html.shot .slide {
+  min-height: 0 !important;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+html.shot .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

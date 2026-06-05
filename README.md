@@ -43,21 +43,44 @@ Netlify dashboard). To use a different provider, edit `src/components/waitlist.t
 ```
 index.html         # entry HTML + SEO / OpenGraph meta tags + font links
 src/
-  main.tsx         # React entry
-  App.tsx          # composes the page sections
-  index.css        # Tailwind layers + shared component classes
-  components/       # Nav, Hero, Features, HowItWorks, Rates, FAQ, Waitlist, Footer
-public/            # favicon.svg (add og.png — 1200×630 — for social previews)
-tailwind.config.ts
-vite.config.ts
-netlify.toml
+  main.tsx         # React entry (+ ?shot capture-mode toggle)
+  App.tsx          # composes Nav + Hero + slides + Footer
+  index.css        # Tailwind layers, shared classes, scroll-snap + reveal
+  components/
+    nav.tsx        # fixed, transparent-over-hero -> solid-on-scroll
+    hero.tsx       # photo hero + floating glass transaction cards
+    reveal.tsx     # fade/slide-in-on-scroll wrapper (IntersectionObserver)
+    phone.tsx      # reusable CSS phone mock-up
+    logo.tsx, icons.tsx
+    slides/        # create-account, ai-banking, security, budget,
+                   # spending, accounts, open-account, join
+    footer.tsx
+public/
+  images/          # hero.jpg, accounts.jpg, budget.jpg, avatars/*  (swap freely)
+  favicon.svg
 ```
+
+## Behaviour
+
+- **Scroll-snap slides:** on wide + tall screens each section snaps one-per-screen;
+  short laptops / mobile fall back to normal stacked scrolling (see the media
+  query in `index.css`).
+- **Reveal animations:** sections fade/slide in as they enter view.
+- **`?shot` capture mode:** append `?shot` to the URL to flatten the snap layout
+  for full-page screenshots (used during development).
 
 ## Brand
 
 - **Name:** MANA
 - **Tagline:** The financial home for Filipinos abroad
-- **Palette:** ink blue (`#0B1B3A`), brand blue (`#2563EB`), sun gold (`#FBBF24`)
+- **Palette:** ink navy (`#0B1B3A`), teal accent (Tailwind `teal-700`),
+  sun gold (`#FBBF24`), with coral / pink / emerald section accents (matching the
+  design reference)
+
+## Images
+
+Stock placeholders (Unsplash + pravatar) live in `public/images/`. Replace them
+1:1 with brand photography — keep the same filenames and nothing else changes.
 
 ## To do
 

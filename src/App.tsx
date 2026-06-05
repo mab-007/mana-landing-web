@@ -1,10 +1,13 @@
 import { Nav } from "./components/nav";
 import { Hero } from "./components/hero";
-import { Features } from "./components/features";
-import { HowItWorks } from "./components/how-it-works";
-import { Rates } from "./components/rates";
-import { FAQ } from "./components/faq";
-import { Waitlist } from "./components/waitlist";
+import { CreateAccount } from "./components/slides/create-account";
+import { AiBanking } from "./components/slides/ai-banking";
+import { Security } from "./components/slides/security";
+import { Budget } from "./components/slides/budget";
+import { Spending } from "./components/slides/spending";
+import { Accounts } from "./components/slides/accounts";
+import { OpenAccount } from "./components/slides/open-account";
+import { Join } from "./components/slides/join";
 import { Footer } from "./components/footer";
 
 export function App() {
@@ -13,11 +16,14 @@ export function App() {
       <Nav />
       <main>
         <Hero />
-        <Features />
-        <HowItWorks />
-        <Rates />
-        <FAQ />
-        <Waitlist />
+        <CreateAccount />
+        <AiBanking />
+        <Security />
+        <Budget />
+        <Spending />
+        <Accounts />
+        <OpenAccount />
+        <Join />
       </main>
       <Footer />
     </>
