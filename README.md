@@ -9,7 +9,7 @@ remittance corridor).
 
 ## Tech stack
 
-- [Next.js](https://nextjs.org) (App Router) with **static export** (`output: "export"`)
+- [Vite](https://vite.dev) + [React 19](https://react.dev)
 - [Tailwind CSS](https://tailwindcss.com)
 - TypeScript
 
@@ -17,13 +17,14 @@ remittance corridor).
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
+npm run dev      # http://localhost:5173
 ```
 
 ## Build
 
 ```bash
-npm run build    # outputs a static site to ./out
+npm run build    # type-checks, then outputs a static site to ./dist
+npm run preview  # serve the production build locally
 ```
 
 ## Deploy (Netlify)
@@ -31,23 +32,24 @@ npm run build    # outputs a static site to ./out
 `netlify.toml` is already configured:
 
 - Build command: `npm run build`
-- Publish directory: `out`
+- Publish directory: `dist`
 
 The waitlist form uses **Netlify Forms** — submissions are captured
 automatically once deployed to Netlify (look for the `waitlist` form in your
-Netlify dashboard). To use a different provider, edit `components/waitlist.tsx`.
+Netlify dashboard). To use a different provider, edit `src/components/waitlist.tsx`.
 
 ## Project structure
 
 ```
-app/
-  layout.tsx     # <html>, fonts, SEO metadata / OpenGraph
-  page.tsx       # composes the page sections
-  globals.css    # Tailwind layers + shared component classes
-components/       # Nav, Hero, Features, HowItWorks, Rates, FAQ, Waitlist, Footer
-public/           # favicon.svg (add og.png — 1200×630 — for social previews)
+index.html         # entry HTML + SEO / OpenGraph meta tags + font links
+src/
+  main.tsx         # React entry
+  App.tsx          # composes the page sections
+  index.css        # Tailwind layers + shared component classes
+  components/       # Nav, Hero, Features, HowItWorks, Rates, FAQ, Waitlist, Footer
+public/            # favicon.svg (add og.png — 1200×630 — for social previews)
 tailwind.config.ts
-next.config.mjs
+vite.config.ts
 netlify.toml
 ```
 

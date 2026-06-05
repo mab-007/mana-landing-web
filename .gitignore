@@ -1,35 +1,31 @@
 # dependencies
 /node_modules
-/.pnp
+.pnp
 .pnp.*
 
-# next.js
-/.next/
-/out/
+# build output
+/dist
 /build
 
-# production
-/dist
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
 # env files
 .env
 .env*.local
 
-# typescript
+# typescript / vite cache
 *.tsbuildinfo
-next-env.d.ts
+node_modules/.vite
 
 # editor / OS
+.DS_Store
+*.pem
 .idea
 .vscode/*
 !.vscode/extensions.json
