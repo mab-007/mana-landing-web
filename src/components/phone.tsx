@@ -10,7 +10,7 @@ export function Phone({
 }) {
   return (
     <div
-      className={`relative mx-auto w-[230px] rounded-[2.2rem] border-[6px] border-ink-900 bg-ink-900 shadow-glow ${className}`}
+      className={`relative mx-auto rounded-[2.2rem] border-[6px] border-gabi-900 bg-gabi-900 shadow-glow ${className.includes("w-") ? "" : "w-[230px]"} ${className}`}
     >
       {/* notch */}
       <div className="absolute left-1/2 top-2 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-white/30" />

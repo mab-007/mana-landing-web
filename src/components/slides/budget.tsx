@@ -21,7 +21,7 @@ export function Budget() {
         <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
           {/* pink donut card */}
           <Reveal>
-            <div className="flex h-full flex-col justify-between rounded-3xl bg-pink-100 p-6">
+            <div className="flex h-full flex-col justify-between rounded-3xl bg-papel-100 p-6">
               <p className="font-semibold text-ink-800">
                 Get a detailed breakdown of where your money goes.
               </p>
@@ -30,13 +30,13 @@ export function Budget() {
                   className="grid h-32 w-32 place-items-center rounded-full"
                   style={{
                     background:
-                      "conic-gradient(#0f766e 0 35%, #f59e0b 35% 60%, #ef5b4c 60% 80%, #ec4899 80% 100%)",
+                      "conic-gradient(#0A1228 0 35%, #E85D2C 35% 60%, #1F8B4D 60% 80%, #9B937F 80% 100%)",
                   }}
                 >
-                  <div className="grid h-20 w-20 place-items-center rounded-full bg-pink-100 text-center">
+                  <div className="grid h-20 w-20 place-items-center rounded-full bg-papel-100 text-center">
                     <div>
                       <div className="text-base font-bold text-ink-900">$3,250</div>
-                      <div className="text-[10px] text-ink-500">Total spent</div>
+                      <div className="text-[10px] text-papel-400">Total spent</div>
                     </div>
                   </div>
                 </div>
@@ -60,7 +60,7 @@ export function Budget() {
               </div>
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-full bg-white px-4 py-2.5 text-sm">
                 <span className="flex items-center gap-2 font-semibold text-ink-900">
-                  <span className="grid h-6 w-6 place-items-center rounded-full bg-emerald-100 text-emerald-600">
+                  <span className="grid h-6 w-6 place-items-center rounded-full bg-success-50 text-success-600">
                     ₱
                   </span>
                   Food
@@ -72,19 +72,19 @@ export function Budget() {
 
           {/* green goal card */}
           <Reveal delay={240}>
-            <div className="flex h-full flex-col justify-between rounded-3xl bg-emerald-200 p-6">
+            <div className="flex h-full flex-col justify-between rounded-3xl bg-success-50 p-6">
               <p className="font-semibold text-ink-800">
                 Track your budget to reach your goal.
               </p>
               <div className="mt-6 rounded-2xl bg-white p-4 shadow-soft">
-                <div className="flex items-center justify-between text-xs text-ink-500">
+                <div className="flex items-center justify-between text-xs text-papel-400">
                   <span>Budget this month</span>
-                  <span className="font-semibold text-[#F0584A]">$3,550</span>
+                  <span className="font-semibold text-[#E85D2C]">$3,550</span>
                 </div>
-                <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-ink-100">
-                  <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-teal-500 to-[#F0584A]" />
+                <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-papel-200">
+                  <div className="h-full w-3/4 rounded-full bg-gradient-to-r from-tanglaw-400 to-[#E85D2C]" />
                 </div>
-                <p className="mt-2 text-[11px] text-ink-400">
+                <p className="mt-2 text-[11px] text-papel-400">
                   You&apos;ve spent $2,660 of $3,550 this month.
                 </p>
               </div>

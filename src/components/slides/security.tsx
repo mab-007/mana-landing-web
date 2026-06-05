@@ -37,17 +37,17 @@ export function Security() {
           <Reveal delay={120}>
             <Phone className="border-white/10">
               <div className="bg-white px-4 pb-6 pt-6 text-ink-900">
-                <div className="flex items-center justify-between text-[10px] text-ink-400">
+                <div className="flex items-center justify-between text-[10px] text-papel-400">
                   <span>9:41</span>
                   <span>Get card +</span>
                 </div>
                 <div className="mt-3 text-center">
                   <div className="text-2xl font-bold">$1,255.29</div>
-                  <div className="text-[10px] text-ink-400">Primary card</div>
+                  <div className="text-[10px] text-papel-400">Primary card</div>
                 </div>
                 <div className="mt-4 h-24 rounded-xl bg-gradient-to-tr from-ink-900 to-ink-600" />
                 <div className="mt-4 flex justify-center">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-teal-50 text-teal-700">
+                  <span className="grid h-12 w-12 place-items-center rounded-full bg-tanglaw-50 text-tanglaw-400">
                     <FingerprintIcon className="h-7 w-7" />
                   </span>
                 </div>
@@ -79,7 +79,7 @@ function Feature({
 }) {
   return (
     <div className="max-w-xs">
-      <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-teal-300">
+      <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-tanglaw-200">
         {icon}
       </div>
       <h3 className="mt-4 text-xl font-bold">{title}</h3>

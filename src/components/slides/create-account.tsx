@@ -8,7 +8,7 @@ export function CreateAccount() {
       <div className="container-page">
         <Reveal>
           <span className="eyebrow">Get started</span>
-          <h2 className="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">
+          <h2 className="display mt-4 max-w-2xl text-3xl text-ink-900 sm:text-4xl">
             Hassle-less account creation
           </h2>
         </Reveal>
@@ -16,7 +16,7 @@ export function CreateAccount() {
         <div className="mt-12 grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
           {/* left teal card */}
           <Reveal>
-            <div className="flex h-full min-h-[280px] flex-col justify-between rounded-3xl bg-teal-700 p-8 text-white">
+            <div className="flex h-full min-h-[280px] flex-col justify-between rounded-3xl bg-tanglaw-400 p-8 text-white">
               <div className="grid h-11 w-11 place-items-center rounded-full bg-white/15">
                 <UserIcon className="h-6 w-6" />
               </div>
@@ -27,7 +27,7 @@ export function CreateAccount() {
                 <p className="mt-2 text-sm text-white/75">
                   Just your phone and a valid ID. No branch visits, no paperwork.
                 </p>
-                <span className="btn mt-5 bg-white text-teal-800">Account</span>
+                <span className="btn mt-5 bg-white text-tanglaw-600">Account</span>
               </div>
             </div>
           </Reveal>
@@ -50,7 +50,7 @@ export function CreateAccount() {
                     </div>
                   ))}
                 </div>
-                <button className="mt-4 w-full rounded-lg bg-teal-700 py-2.5 text-sm font-semibold text-white">
+                <button className="mt-4 w-full rounded-lg bg-tanglaw-400 py-2.5 text-sm font-semibold text-white">
                   Continue
                 </button>
                 <div className="mt-4 grid grid-cols-3 gap-2 text-center text-base font-semibold text-ink-700">
@@ -66,11 +66,11 @@ export function CreateAccount() {
 
           {/* right confetti card */}
           <Reveal delay={240}>
-            <div className="flex h-full min-h-[280px] flex-col justify-center rounded-3xl border border-ink-100 bg-ink-50/60 p-8">
-              <div className="relative mb-4 grid h-14 w-14 place-items-center rounded-full bg-emerald-100 text-emerald-600">
+            <div className="flex h-full min-h-[280px] flex-col justify-center rounded-3xl border border-papel-200 bg-papel-100 p-8">
+              <div className="relative mb-4 grid h-14 w-14 place-items-center rounded-full bg-success-50 text-success-600">
                 <CheckIcon className="h-7 w-7" />
-                <span className="absolute -right-1 -top-1 text-sun-500">✦</span>
-                <span className="absolute -bottom-1 left-0 text-teal-500">✦</span>
+                <span className="absolute -right-1 -top-1 text-tanglaw-600">✦</span>
+                <span className="absolute -bottom-1 left-0 text-tanglaw-400">✦</span>
               </div>
               <p className="text-base font-medium leading-relaxed text-ink-700">
                 Different people have different financial needs — our flexible

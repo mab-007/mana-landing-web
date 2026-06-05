@@ -2,10 +2,10 @@ import { Reveal } from "../reveal";
 import { ArrowRightIcon } from "../icons";
 
 const fan = [
-  { rot: -15, x: -320, bg: "bg-pink-200", title: "Pay due bills instantly with one click." },
-  { rot: -8, x: -165, bg: "bg-indigo-200", title: "Track your spending with weekly summaries." },
-  { rot: 8, x: 165, bg: "bg-emerald-200", title: "Smart, AI-powered budgeting." },
-  { rot: 15, x: 320, bg: "bg-orange-200", title: "Quick & secure bank transfer options." },
+  { rot: -15, x: -320, bg: "bg-tanglaw-100", title: "Pay due bills instantly with one click." },
+  { rot: -8, x: -165, bg: "bg-gabi-100", title: "Track your spending with weekly summaries." },
+  { rot: 8, x: 165, bg: "bg-success-50", title: "Smart, AI-powered budgeting." },
+  { rot: 15, x: 320, bg: "bg-tanglaw-100", title: "Quick & secure bank transfer options." },
 ];
 
 export function OpenAccount() {
@@ -40,19 +40,19 @@ export function OpenAccount() {
             ))}
 
             {/* center highlighted card */}
-            <div className="absolute left-1/2 top-0 z-10 h-64 w-48 -translate-x-1/2 rounded-3xl bg-gradient-to-b from-pink-300 to-pink-200 p-5 text-left shadow-glow">
+            <div className="absolute left-1/2 top-0 z-10 h-64 w-48 -translate-x-1/2 rounded-3xl bg-gradient-to-b from-tanglaw-200 to-tanglaw-100 p-5 text-left shadow-glow">
               <p className="text-sm font-bold uppercase tracking-wide text-ink-900">
                 Set your card spending limit easily.
               </p>
               <div className="mt-4 grid place-items-center">
                 <div
                   className="grid h-24 w-24 place-items-center rounded-full"
-                  style={{ background: "conic-gradient(#ef5b4c 0 62%, #ffffff 62% 100%)" }}
+                  style={{ background: "conic-gradient(#E85D2C 0 62%, #F2EBDD 62% 100%)" }}
                 >
                   <div className="grid h-16 w-16 place-items-center rounded-full bg-white text-center">
                     <div>
                       <div className="text-base font-bold text-ink-900">$300</div>
-                      <div className="text-[9px] text-ink-500">of $500</div>
+                      <div className="text-[9px] text-papel-400">of $500</div>
                     </div>
                   </div>
                 </div>

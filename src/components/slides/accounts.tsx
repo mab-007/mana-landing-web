@@ -5,7 +5,7 @@ export function Accounts() {
   return (
     <section id="company" className="slide bg-ink-900 text-white">
       {/* pink top strip */}
-      <div className="absolute inset-x-0 top-0 z-10 h-3 bg-pink-200" />
+      <div className="absolute inset-x-0 top-0 z-10 h-3 bg-tanglaw-100" />
 
       <img
         src="/images/accounts.jpg"
@@ -23,10 +23,10 @@ export function Accounts() {
       />
 
       {/* floating colour blobs */}
-      <Blob className="right-[18%] top-[26%] bg-pink-400" />
-      <Blob className="right-[10%] top-[44%] bg-sun-400" />
-      <Blob className="right-[26%] top-[58%] bg-emerald-400" />
-      <Blob className="right-[14%] top-[68%] bg-[#F0584A]" />
+      <Blob className="right-[18%] top-[26%] bg-tanglaw-200" />
+      <Blob className="right-[10%] top-[44%] bg-tanglaw-400" />
+      <Blob className="right-[26%] top-[58%] bg-success-400" />
+      <Blob className="right-[14%] top-[68%] bg-[#E85D2C]" />
 
       <div className="container-page relative z-10 pt-20">
         <Reveal>

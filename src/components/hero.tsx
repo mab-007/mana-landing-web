@@ -1,193 +1,162 @@
-import { ArrowRightIcon, BoltIcon } from "./icons";
+import type { ReactNode } from "react";
+import { AppleIcon, GooglePlayIcon, ShieldIcon } from "./icons";
+import { Phone } from "./phone";
 
 export function Hero() {
   return (
-    <section id="top" className="slide min-h-[680px] bg-ink-900 py-0 text-white">
-      {/* full-bleed background photo + overlays */}
-      <img
-        src="/images/hero.jpg"
-        alt=""
-        aria-hidden
-        className="absolute inset-0 h-full w-full object-cover object-[60%_center]"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(7,14,26,0.96) 0%, rgba(7,14,26,0.86) 30%, rgba(7,14,26,0.5) 60%, rgba(7,14,26,0.7) 100%)",
-        }}
-      />
-
-      <div className="container-wide relative z-10 grid w-full items-center gap-10 pt-24 lg:grid-cols-[1.05fr_0.95fr] lg:pt-20">
-        {/* left: headline */}
+    <section id="top" className="slide min-h-[640px] bg-papel-50">
+      <div className="container-wide grid items-center gap-12 pt-28 lg:grid-cols-[1.02fr_0.98fr] lg:pt-20">
+        {/* left: copy */}
         <div>
-          <h1 className="display text-5xl text-white sm:text-7xl lg:text-8xl">
-            Redefine
+          <p className="eyebrow">For Filipinos abroad</p>
+
+          <h1 className="display mt-5 text-5xl text-gabi-900 sm:text-6xl lg:text-7xl">
+            Send home free.
             <br />
-            how you send
+            Bank for real.
             <br />
-            <span className="text-teal-300">money home</span>
+            <span className="text-tanglaw-400">Built for OFWs.</span>
           </h1>
 
-          <p className="mt-7 max-w-md text-base leading-relaxed text-white/85 sm:text-lg">
-            For Filipinos who want more from their money — there&apos;s MANA. Hold
-            US dollars, send home in seconds, and spend anywhere. Open an account
-            free, in a tap.
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-gabi-600">
+            One app for the way you support family — send money home with no fee,
+            earn 5% on your dollars, and spend with a card made for two countries.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="#join" className="btn-light px-8 py-3.5 text-base">
-              Open an account
-              <ArrowRightIcon className="h-4 w-4" />
-            </a>
-            <a
-              href="#send"
-              className="btn border border-white/30 px-8 py-3.5 text-base text-white hover:bg-white/10"
-            >
-              See how it works
-            </a>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <StoreBadge
+              icon={<AppleIcon className="h-6 w-6" />}
+              top="Download on the"
+              bottom="App Store"
+            />
+            <StoreBadge
+              icon={<GooglePlayIcon className="h-6 w-6" />}
+              top="Get it on"
+              bottom="Google Play"
+            />
           </div>
+
+          <p className="mt-6 inline-flex items-center gap-2 text-sm text-papel-400">
+            <ShieldIcon className="h-4 w-4 text-gabi-400" />
+            Bank-level security · Funds held with our partner bank, FDIC insured
+          </p>
         </div>
 
-        {/* right: cohesive glass panel */}
-        <div className="hidden justify-self-end lg:block">
-          <div className="w-[380px] rounded-3xl border border-white/15 bg-white/10 p-3 shadow-glow backdrop-blur-md">
-            <PanelRow>
-              <div className="flex items-center gap-3">
-                <AvatarStack />
-                <span className="text-sm font-semibold">4+ saved accounts</span>
-              </div>
-              <ArrowRightIcon className="h-4 w-4 text-white/60" />
-            </PanelRow>
-
-            <PanelRow>
-              <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-tr from-teal-400 to-sun-400 text-ink-900">
-                  <BoltIcon className="h-5 w-5" />
-                </span>
-                <div>
-                  <div className="text-sm font-semibold">MANA AI</div>
-                  <div className="text-xs text-white/60">Your personal finance assistant</div>
-                </div>
-              </div>
-            </PanelRow>
-
-            <PanelRow>
-              <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-[#F0584A] text-white">
-                  <DocIcon className="h-5 w-5" />
-                </span>
-                <div>
-                  <div className="text-sm font-semibold">Bills & Utilities</div>
-                  <div className="text-xs text-white/60">5 due bills</div>
-                </div>
-              </div>
-              <span className="text-sm font-bold text-teal-300">$1,224.00</span>
-            </PanelRow>
-
-            {/* app dock */}
-            <div className="mt-3 flex items-center justify-around rounded-2xl bg-white/5 p-3">
-              {[<SendGlyph />, <CardGlyph />, <WalletGlyph />, <ScanGlyph />].map(
-                (g, i) => (
-                  <span
-                    key={i}
-                    className="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white/90"
-                  >
-                    {g}
-                  </span>
-                ),
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* trust strip pinned bottom-left */}
-      <div className="container-wide absolute inset-x-0 bottom-6 z-10">
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/70">
-          <span className="inline-flex items-center gap-2">
-            <BoltIcon className="h-4 w-4 text-teal-300" /> Money home in minutes
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span className="h-1 w-1 rounded-full bg-white/40" /> Mid-market rates
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span className="h-1 w-1 rounded-full bg-white/40" /> Bank-grade security
-          </span>
+        {/* right: phone wallet mock-up */}
+        <div className="flex justify-center lg:justify-end">
+          <WalletPhone />
         </div>
       </div>
     </section>
   );
 }
 
-function PanelRow({ children }: { children: React.ReactNode }) {
+function StoreBadge({
+  icon,
+  top,
+  bottom,
+}: {
+  icon: ReactNode;
+  top: string;
+  bottom: string;
+}) {
   return (
-    <div className="mb-2 flex items-center justify-between rounded-2xl bg-white/10 px-4 py-3 last:mb-0">
-      {children}
-    </div>
+    <span className="relative inline-flex items-center gap-3 rounded-2xl bg-gabi-900 px-5 py-3 text-white transition-transform hover:-translate-y-0.5">
+      <span className="absolute -top-2 right-3 rounded-full bg-tanglaw-400 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+        Coming soon
+      </span>
+      {icon}
+      <span className="text-left leading-tight">
+        <span className="block text-[10px] text-white/70">{top}</span>
+        <span className="block text-base font-semibold">{bottom}</span>
+      </span>
+    </span>
   );
 }
 
-function AvatarStack() {
+function WalletPhone() {
   return (
-    <div className="flex -space-x-2">
-      {["a11", "a13", "a16"].map((a) => (
-        <img
-          key={a}
-          src={`/images/avatars/${a}.jpg`}
-          alt=""
-          className="h-7 w-7 rounded-full object-cover ring-2 ring-ink-900/40"
-        />
-      ))}
-    </div>
-  );
-}
+    <div className="animate-float">
+      <Phone className="w-[280px]">
+        <div className="bg-white px-4 pb-4 pt-6">
+          {/* status + greeting */}
+          <div className="flex items-center justify-between text-[10px] text-papel-400">
+            <span>9:41</span>
+            <span>•••</span>
+          </div>
+          <div className="mt-1 text-lg font-bold text-gabi-900">Maria</div>
 
-/* small inline glyphs for the dock + rows */
-const s = {
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.7,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  viewBox: "0 0 24 24",
-};
-function DocIcon(p: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...s} {...p}>
-      <path d="M6 2h8l4 4v16H6z" />
-      <path d="M14 2v4h4M9 13h6M9 17h6" />
-    </svg>
-  );
-}
-function SendGlyph(p: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...s} {...p} className="h-5 w-5">
-      <path d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7Z" />
-    </svg>
-  );
-}
-function CardGlyph(p: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...s} {...p} className="h-5 w-5">
-      <rect x="2" y="5" width="20" height="14" rx="2.5" />
-      <path d="M2 10h20" />
-    </svg>
-  );
-}
-function WalletGlyph(p: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...s} {...p} className="h-5 w-5">
-      <path d="M3 7h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" />
-      <path d="M3 7l13-3v3M17 13h.01" />
-    </svg>
-  );
-}
-function ScanGlyph(p: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...s} {...p} className="h-5 w-5">
-      <path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2M4 12h16" />
-    </svg>
+          {/* USD wallet card */}
+          <div className="mt-3 rounded-2xl bg-gabi-900 p-4 text-white">
+            <div className="text-[10px] uppercase tracking-wider text-white/50">
+              USD Wallet
+            </div>
+            <div className="mt-1 text-3xl font-bold">
+              $1,247
+              <span className="text-lg text-white/60">.50</span>
+            </div>
+            <div className="mt-1 text-[10px] text-white/50">
+              ≈ ₱69,520 · 1 USD = ₱55.74
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <button className="rounded-lg bg-tanglaw-400 py-2 text-xs font-semibold">
+                + Add money
+              </button>
+              <button className="rounded-lg bg-white/10 py-2 text-xs font-semibold">
+                Send
+              </button>
+            </div>
+          </div>
+
+          {/* people you send to */}
+          <div className="mt-4">
+            <div className="text-[10px] uppercase tracking-wider text-papel-400">
+              People you send to
+            </div>
+            <div className="mt-2 flex justify-between">
+              {[
+                { i: "LM", n: "Mom", c: "bg-tanglaw-100 text-tanglaw-600" },
+                { i: "JS", n: "Kuya Jay", c: "bg-gabi-100 text-gabi-600" },
+                { i: "RC", n: "Tita Rose", c: "bg-success-50 text-success-600" },
+              ].map((p) => (
+                <div key={p.n} className="flex flex-col items-center gap-1">
+                  <span
+                    className={`grid h-10 w-10 place-items-center rounded-full text-xs font-bold ${p.c}`}
+                  >
+                    {p.i}
+                  </span>
+                  <span className="text-[9px] text-papel-400">{p.n}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* save + card */}
+          <div className="mt-4 grid grid-cols-2 gap-2">
+            <div className="rounded-xl border border-papel-200 p-3">
+              <div className="text-[9px] uppercase tracking-wide text-papel-400">
+                Save · 5%
+              </div>
+              <div className="text-sm font-bold text-gabi-900">$520.00</div>
+            </div>
+            <div className="rounded-xl border border-papel-200 p-3">
+              <div className="text-[9px] uppercase tracking-wide text-papel-400">
+                Card
+              </div>
+              <div className="text-sm font-bold text-gabi-900">$84.20</div>
+            </div>
+          </div>
+
+          {/* bottom nav */}
+          <div className="mt-4 flex justify-between border-t border-papel-100 pt-3 text-[9px] text-papel-400">
+            {["Home", "Send", "Card", "Save", "More"].map((t, i) => (
+              <span key={t} className={i === 0 ? "font-semibold text-tanglaw-400" : ""}>
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </Phone>
+    </div>
   );
 }

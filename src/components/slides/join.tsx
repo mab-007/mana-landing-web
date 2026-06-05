@@ -4,12 +4,12 @@ import { AppleIcon, ArrowRightIcon, CheckIcon, GooglePlayIcon } from "../icons";
 
 /** Floating user avatars with little money chips, scattered around the heading. */
 const avatars = [
-  { img: "a11", pos: "left-[8%] top-[20%]", chip: "paid you · $417", tone: "text-emerald-600" },
+  { img: "a11", pos: "left-[8%] top-[20%]", chip: "paid you · $417", tone: "text-success-600" },
   { img: "a12", pos: "left-[20%] top-[58%]", chip: null, tone: "" },
   { img: "a13", pos: "left-[30%] top-[8%]", chip: null, tone: "" },
-  { img: "a14", pos: "right-[28%] top-[6%]", chip: "sent · $59,478", tone: "text-[#F0584A]" },
+  { img: "a14", pos: "right-[28%] top-[6%]", chip: "sent · $59,478", tone: "text-[#E85D2C]" },
   { img: "a15", pos: "right-[8%] top-[26%]", chip: null, tone: "" },
-  { img: "a16", pos: "right-[10%] top-[60%]", chip: "requested · ₱2,500", tone: "text-teal-600" },
+  { img: "a16", pos: "right-[10%] top-[60%]", chip: "requested · ₱2,500", tone: "text-tanglaw-600" },
   { img: "a17", pos: "left-[14%] top-[80%]", chip: null, tone: "" },
   { img: "a18", pos: "right-[24%] top-[82%]", chip: null, tone: "" },
 ];
@@ -74,7 +74,7 @@ export function Join() {
           </p>
 
           {status === "done" ? (
-            <div className="mx-auto mt-8 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-5 py-3 text-emerald-700">
+            <div className="mx-auto mt-8 inline-flex items-center gap-2 rounded-full bg-success-50 px-5 py-3 text-success-600">
               <CheckIcon className="h-5 w-5" />
               <span className="font-semibold">You&apos;re on the list — salamat!</span>
             </div>
@@ -95,7 +95,7 @@ export function Join() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@email.com"
                 aria-label="Email address"
-                className="w-full rounded-full border border-ink-200 px-5 py-3 text-ink-900 placeholder:text-ink-400 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/30"
+                className="w-full rounded-full border border-ink-200 px-5 py-3 text-ink-900 placeholder:text-papel-400 focus:border-tanglaw-400 focus:outline-none focus:ring-2 focus:ring-tanglaw-400/30"
               />
               <button type="submit" disabled={status === "loading"} className="btn-primary shrink-0 disabled:opacity-70">
                 {status === "loading" ? "Joining…" : "Join the waitlist"}
@@ -104,11 +104,11 @@ export function Join() {
             </form>
           )}
 
-          <div className="mt-6 flex items-center justify-center gap-3 text-ink-400">
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-ink-50 px-3 py-2 text-xs font-medium">
+          <div className="mt-6 flex items-center justify-center gap-3 text-papel-400">
+            <span className="inline-flex items-center gap-1.5 rounded-lg bg-papel-100 px-3 py-2 text-xs font-medium">
               <AppleIcon className="h-4 w-4" /> iOS — coming soon
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-ink-50 px-3 py-2 text-xs font-medium">
+            <span className="inline-flex items-center gap-1.5 rounded-lg bg-papel-100 px-3 py-2 text-xs font-medium">
               <GooglePlayIcon className="h-4 w-4" /> Android — coming soon
             </span>
           </div>

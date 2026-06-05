@@ -2,17 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-white text-ink-900 antialiased;
-  font-family: var(--font-sans);
+  @apply bg-papel-50 font-sans text-gabi-900 antialiased;
 }
 
 /* ---- Scroll-snap: one slide per screen (large screens only) ----
@@ -49,27 +44,33 @@ body {
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-tanglaw-400 focus-visible:ring-offset-2;
   }
 
   .btn-primary {
-    @apply btn bg-teal-700 text-white shadow-soft hover:bg-teal-800 hover:-translate-y-0.5;
+    @apply btn bg-tanglaw-400 text-white shadow-soft hover:bg-tanglaw-600 hover:-translate-y-0.5;
+  }
+
+  .btn-dark {
+    @apply btn bg-gabi-900 text-white shadow-soft hover:bg-gabi-800 hover:-translate-y-0.5;
   }
 
   .btn-light {
-    @apply btn bg-white text-ink-900 shadow-soft hover:-translate-y-0.5;
+    @apply btn bg-white text-gabi-900 shadow-soft hover:-translate-y-0.5;
   }
 
   .btn-ghost {
-    @apply btn border border-ink-200 bg-white text-ink-800 hover:border-ink-300 hover:bg-ink-50;
+    @apply btn border border-papel-200 bg-transparent text-gabi-800 hover:bg-papel-100;
   }
 
+  /* small uppercase orange section label */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-700;
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-tanglaw-400;
   }
 
+  /* elegant serif headline */
   .display {
-    @apply font-extrabold uppercase leading-[0.95] tracking-tight;
+    @apply font-serif font-semibold leading-[1.02] tracking-[-0.01em];
   }
 }
 
