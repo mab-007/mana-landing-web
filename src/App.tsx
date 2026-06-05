@@ -8,6 +8,7 @@ import { Card } from "./components/slides/card";
 import { WhyMana } from "./components/slides/why-mana";
 import { Cta } from "./components/slides/cta";
 import { Footer } from "./components/footer";
+import { VersionSwitch } from "./components/version-switch";
 
 export function App() {
   return (
@@ -24,6 +25,7 @@ export function App() {
         <Cta />
       </main>
       <Footer />
+      <VersionSwitch current="v0" />
     </>
   );
 }
