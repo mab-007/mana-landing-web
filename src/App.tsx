@@ -15,6 +15,9 @@ const ROUTES: Record<string, Route> = {
   "/freelancers": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
   "/freelances": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
   "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
+  "/privacy": { html: privacy, title: "Privacy Policy — Mana" },
+  "/terms": { html: terms, title: "Terms of Service — Mana" },
+  // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Policy — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
 };

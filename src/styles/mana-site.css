@@ -54,7 +54,7 @@ nav.on-dark .nav-links a:hover { color: #fff; }
 .fork-card .ribbon { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
 .fork-card.freelancer .ribbon { background: var(--gabi-900); }
 .fork-card.ofw .ribbon { background: var(--tanglaw-400); }
-@media (max-width: 720px){ .fork { grid-template-columns: 1fr; } .entry h1 { font-size: 42px; } .entry { min-height: 0; } }
+@media (max-width: 720px){ .fork { grid-template-columns: 1fr; } .entry h1 { font-size: 32px !important; max-width: 100% !important; } .entry h1 span { white-space: normal !important; } .entry { min-height: 0; padding: 56px 0 60px; } .entry .lede { font-size: 17px; } }
 
 /* Shared product strip */
 .prodstrip { padding: 4px 0 90px; }
@@ -243,3 +243,15 @@ footer { background: var(--gabi-900); color: rgba(255,255,255,0.7); padding: 64p
   .sec-head h2 { font-size: 32px; }
   .phone-stage { margin-top: 8px; }
 }
+
+/* Mobile: keep the decorative phone glow from overflowing the viewport,
+   and clip any incidental horizontal overflow from absolutely-positioned art. */
+@media (max-width: 480px){
+  .phone-glow { width: 300px !important; height: 300px !important; }
+  .wl-form { flex-direction: column; }
+  .wl-form input, .wl-form button { width: 100%; }
+}
+.ahero, .save, .fxsec, .feat-rows, .remit-show, .cardsec, .entry { overflow-x: clip; }
+/* Let flex/grid children shrink so the waitlist form can't force horizontal overflow. */
+.wl-form input { min-width: 0; }
+.ahero-grid > * { min-width: 0; }
