@@ -1,0 +1,173 @@
+<style>
+  .blog { padding: 92px 0; background: var(--papel-100); }
+  .blog-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:40px; }
+  .blog-head h2 { font-size:38px; line-height:1.1; margin:14px 0 14px; }
+  .blog .fork-q { margin-bottom:20px; }
+  .blog-head p { font-size:17px; line-height:1.55; color:var(--papel-700); max-width:520px; }
+  .blog-all { display:inline-flex; align-items:center; gap:8px; white-space:nowrap; font-weight:600; font-size:15px; color:var(--tanglaw-600); }
+  .blog-all svg { transition:transform .18s; }
+  .blog-all:hover svg { transform:translateX(4px); }
+  .blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .blog-card { background:#fff; border:0.5px solid var(--papel-200); border-radius:18px; overflow:hidden; transition:transform .18s, box-shadow .18s; display:flex; flex-direction:column; }
+  .blog-card:hover { transform:translateY(-4px); box-shadow:0 22px 48px -26px rgba(10,18,40,0.32); }
+  .blog-thumb { height:140px; display:flex; align-items:center; justify-content:center; }
+  .blog-thumb.t1 { background:linear-gradient(150deg,#1F8B4D,#2bb56a); }
+  .blog-thumb.t2 { background:linear-gradient(150deg,var(--gabi-900),#22386e); }
+  .blog-thumb.t3 { background:linear-gradient(150deg,var(--tanglaw-400),var(--tanglaw-600)); }
+  .blog-body { padding:22px; }
+  .blog-tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--tanglaw-600); margin-bottom:10px; }
+  .blog-card h3 { font-family:'Fraunces',serif; font-variation-settings:'SOFT' 70,'opsz' 72; font-weight:500; font-size:20px; line-height:1.2; letter-spacing:-0.01em; color:var(--gabi-900); margin-bottom:8px; }
+  .blog-card p { font-size:14px; line-height:1.55; color:var(--papel-700); }
+  @media (max-width:860px){ .blog-grid { grid-template-columns:1fr; } .blog-head { flex-direction:column; align-items:flex-start; } .blog-head h2 { font-size:30px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'>
+      <svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+      <span class="name" style="font-size:30px;font-weight:600;">Mana</span>
+    </a>
+    <div class="nav-links">
+    </div>
+  </div>
+</nav>
+
+<header class="entry">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:18px;display:none;">Mana</div>
+    <h1 class="fr" style="font-size:54px;"><span style="white-space:nowrap;">The financial app built for</span><br><span class="accent">Filipinos everywhere.</span></h1>
+    <p class="lede">Real US dollar accounts, high yield savings, a visa card that works globally. Welcome to Mana, your financial home.</p>
+
+    <div class="fork-q">Tell us who you are</div>
+    <div class="fork">
+      <a class='fork-card freelancer' href='/freelancers'>
+        <span class="ribbon"></span>
+        <div class="badge"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M2 13h20"/></svg></div>
+        <h3>I'm a freelancer</h3>
+        <p>You're a Filipino earning from clients and companies around the world, paid in dollars.</p>
+        <span class="go">Explore for freelancers <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class='fork-card ofw' href='/ofw'>
+        <span class="ribbon"></span>
+        <div class="badge"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M9.5 11.5 11.5 13.5 15 10"/></svg></div>
+        <h3>I'm working abroad</h3>
+        <p>You're a Filipino living and working overseas, supporting family back home</p>
+        <span class="go">Explore for OFWs <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- BLOG — hidden for now (restore by uncommenting)
+<section class="blog">
+  <div class="wrap">
+    <div class="blog-head">
+      <div>
+        <h2 class="fr" style="font-size:54px;color:var(--tanglaw-400);margin-bottom:14px;">The Mana blog</h2>
+        <p>Practical, no-jargon guides on saving in dollars, sending smarter, and building a financial cushion wherever life takes you.</p>
+      </div>
+      <a class='blog-all' href='/blog'>See all posts <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="fork-q">Featured articles</div>
+    <div class="blog-grid">
+      <a href="#" class="blog-card">
+        <div class="blog-thumb t1"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
+        <div class="blog-body">
+          <span class="blog-tag">Saving</span>
+          <h3>Why holding dollars beats holding pesos</h3>
+          <p>How a USD account protects your earnings from peso swings — and earns 3.5% while it waits.</p>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-thumb t2"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg></div>
+        <div class="blog-body">
+          <span class="blog-tag">Remittance</span>
+          <h3>The hidden cost in every transfer home</h3>
+          <p>Most apps bury a markup in the exchange rate. Here's how to spot it and keep more in the family's pocket.</p>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-thumb t3"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 9h11.5a3.5 3.5 0 0 1 0 7H7a3.5 3.5 0 0 0 0 7H19"/></svg></div>
+        <div class="blog-body">
+          <span class="blog-tag">Wealth</span>
+          <h3>Building a 6-month cushion on a global income</h3>
+          <p>A simple framework for freelancers and OFWs to turn irregular pay into lasting security.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- FAQ -->
+<style>
+  .faq { padding: 92px 0; background: var(--papel-100); }
+  .faq .wrap { max-width: 820px; }
+  .faq-head { text-align:center; margin-bottom:44px; }
+  .faq-head h2 { font-size:44px; line-height:1.1; margin-bottom:14px; }
+  .faq-head p { font-size:17px; line-height:1.55; color:var(--papel-700); max-width:520px; margin:0 auto; }
+  .faq-list { display:flex; flex-direction:column; gap:14px; }
+  .faq-item { background:#fff; border:0.5px solid var(--papel-200); border-radius:16px; overflow:hidden; transition:box-shadow .18s; }
+  .faq-item[open] { box-shadow:0 18px 40px -26px rgba(10,18,40,0.26); }
+  .faq-item summary { list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 24px; font-family:'Fraunces',serif; font-variation-settings:'SOFT' 70,'opsz' 72; font-weight:500; font-size:19px; letter-spacing:-0.01em; color:var(--gabi-900); }
+  .faq-item summary::-webkit-details-marker { display:none; }
+  .faq-item summary .chev { flex-shrink:0; color:var(--tanglaw-400); transition:transform .2s; }
+  .faq-item[open] summary .chev { transform:rotate(45deg); }
+  .faq-item .faq-a { padding:0 24px 22px; font-size:15.5px; line-height:1.6; color:var(--papel-700); max-width:660px; }
+  @media (max-width:760px){ .faq-head h2 { font-size:32px; } .faq-item summary { font-size:17px; padding:18px 20px; } }
+</style>
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="faq-head">
+      <div class="fork-q">Got questions?</div>
+      <h2 class="fr">Frequently asked questions</h2>
+      <p>Everything you need to know about Mana. Can't find an answer? Reach out and we'll help.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>What is a Mana account?<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-a">A Mana account is a real US dollar account built for Filipinos earning or living abroad. From one app you can hold dollars, earn yield on your balance, send money home, and spend with a Mana Visa card.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is Mana a bank?<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-a">No. Mana is a financial technology company, not a bank. Banking services are provided by our partner bank (Member FDIC), and the Mana card is issued by our card partner pursuant to a license.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Who is Mana for?<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-a">Mana is built for global Filipinos — freelancers earning in dollars from clients around the world, and OFWs working abroad and supporting family back home.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How much does it cost?<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-a">Opening an account is free. Sending money home is free at the real mid-market exchange rate — no hidden FX markup, so what you see is what your family receives.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How does the 3.5% savings work?<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-a">Dollars you keep in your Save balance earn 3.5% APY. It's fully liquid with no lock-up and no minimum — withdraw anytime. Save is a yield feature on your USD wallet, not a deposit account, and the rate may change.</div>
+      </details>
+      <details class="faq-item">
+        <summary>When can I sign up?<svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <div class="faq-a">Mana is launching soon. Join the waitlist and we'll let you know the moment it's available on the App Store and Google Play.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#">About us</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:Developer@mymana.xyz">Developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      Mana is a financial technology company, not a bank. Banking services provided by our partner bank, Member FDIC. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, is not a deposit account, and is not FDIC-insured at the Save layer; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.
+      <div class="row2"><span>© 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy-policy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms-of-service" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>

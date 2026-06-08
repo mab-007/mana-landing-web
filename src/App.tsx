@@ -1,31 +1,149 @@
-import { Nav } from "./components/nav";
-import { Hero } from "./components/hero";
-import { HowItWorks } from "./components/slides/how-it-works";
-import { Remittance } from "./components/slides/remittance";
-import { SendMoney } from "./components/slides/send-money";
-import { Save } from "./components/slides/save";
-import { Card } from "./components/slides/card";
-import { WhyMana } from "./components/slides/why-mana";
-import { Cta } from "./components/slides/cta";
-import { Footer } from "./components/footer";
-import { VersionSwitch } from "./components/version-switch";
+import { useEffect, useState } from "react";
+import { submitWaitlist } from "./waitlist";
+
+// Exact replica pages (raw HTML from the reference site).
+import home from "./site/home.html?raw";
+import freelancers from "./site/freelancers.html?raw";
+import ofw from "./site/ofw.html?raw";
+import privacy from "./site/privacy.html?raw";
+import terms from "./site/terms.html?raw";
+
+type Route = { html: string; title: string };
+
+const ROUTES: Record<string, Route> = {
+  "/": { html: home, title: "Mana — Financial services built for Filipinos everywhere" },
+  "/freelancers": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
+  "/freelances": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
+  "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
+  "/privacy-policy": { html: privacy, title: "Privacy Policy — Mana" },
+  "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
+};
+
+function normalize(pathname: string): string {
+  const p = pathname.replace(/\/+$/, "");
+  return p === "" ? "/" : p;
+}
+
+function source(path: string): string {
+  if (path.startsWith("/freelan")) return "freelancers";
+  if (path === "/ofw") return "ofw";
+  return "home";
+}
+
+function scrollToHash(hash: string, smooth = true) {
+  const el = document.getElementById(hash);
+  if (el) el.scrollIntoView(smooth ? { behavior: "smooth" } : undefined);
+}
 
 export function App() {
-  return (
-    <>
-      <Nav />
-      <main>
-        <Hero />
-        <HowItWorks />
-        <Remittance />
-        <SendMoney />
-        <Save />
-        <Card />
-        <WhyMana />
-        <Cta />
-      </main>
-      <Footer />
-      <VersionSwitch current="v0" />
-    </>
-  );
+  const [path, setPath] = useState(() => normalize(location.pathname));
+  const [pendingHash, setPendingHash] = useState<string | null>(null);
+
+  // Keep state in sync with browser navigation (back/forward).
+  useEffect(() => {
+    const onPop = () => setPath(normalize(location.pathname));
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  // After a cross-page navigation that carried a hash, scroll once rendered.
+  useEffect(() => {
+    if (pendingHash) {
+      scrollToHash(pendingHash, false);
+      setPendingHash(null);
+    }
+  }, [path, pendingHash]);
+
+  // On first load with a hash in the URL (e.g. /#faq), scroll to it.
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      setTimeout(() => scrollToHash(id, false), 0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Intercept internal link clicks for SPA navigation + smooth hash scroll.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as HTMLElement)?.closest("a");
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (!href || a.target === "_blank") return;
+
+      // Pure anchor links: smooth-scroll within the current page.
+      if (href.startsWith("#")) {
+        if (href === "#") {
+          e.preventDefault();
+          return;
+        }
+        const el = document.querySelector(href);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+        return;
+      }
+
+      // Internal route links.
+      if (href.startsWith("/")) {
+        const [pathname, hash] = href.split("#");
+        const next = normalize(pathname);
+        if (ROUTES[next]) {
+          e.preventDefault();
+          if (next !== path) {
+            history.pushState(null, "", href);
+            setPath(next);
+            window.scrollTo(0, 0);
+            // Defer scroll until the new page has rendered.
+            setPendingHash(hash || null);
+          } else if (hash) {
+            scrollToHash(hash);
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [path]);
+
+  // Wire up waitlist forms (submits to Google Sheets).
+  useEffect(() => {
+    const onSubmit = (e: SubmitEvent) => {
+      const form = e.target as HTMLElement;
+      if (!form.classList?.contains("wl-form")) return;
+      e.preventDefault();
+      const wrap = form.closest(".wl-wrap");
+      const input = form.querySelector<HTMLInputElement>('input[type="email"]');
+      const email = input?.value?.trim();
+      if (!email) return;
+      void submitWaitlist(email, source(path));
+      wrap?.classList.add("sent");
+      if (input) input.value = "";
+    };
+    document.addEventListener("submit", onSubmit);
+    return () => document.removeEventListener("submit", onSubmit);
+  }, [path]);
+
+  const route = ROUTES[path];
+
+  useEffect(() => {
+    if (route) document.title = route.title;
+  }, [route]);
+
+  if (!route) {
+    return (
+      <div className="wrap" style={{ padding: "120px 24px", textAlign: "center" }}>
+        <h1 className="fr" style={{ fontSize: 54 }}>Page not found</h1>
+        <p className="lede">
+          <a href="/" style={{ color: "var(--tanglaw-600)", fontWeight: 600 }}>Back to home</a>
+        </p>
+      </div>
+    );
+  }
+
+  return <div key={path} dangerouslySetInnerHTML={{ __html: route.html }} />;
 }
