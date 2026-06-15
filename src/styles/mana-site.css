@@ -25,7 +25,7 @@ nav.on-dark .lockup .name { color: #fff; }
 nav.on-dark .nav-links a { color: rgba(255,255,255,0.72); }
 nav.on-dark .nav-links a:hover { color: #fff; }
 .nav-back { display: inline-flex; align-items: center; gap: 7px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Manrope'; font-weight: 600; font-size: 15px; cursor: pointer; border-radius: 12px; border: none; padding: 0 20px; height: 46px; transition: background .15s, transform .1s; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Manrope'; font-weight: 600; font-size: 15px; white-space: nowrap; cursor: pointer; border-radius: 12px; border: none; padding: 0 20px; height: 46px; transition: background .15s, transform .1s; }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--tanglaw-400); color: #fff; }
 .btn-primary:hover { background: var(--tanglaw-600); }
@@ -248,9 +248,17 @@ footer { background: var(--gabi-900); color: rgba(255,255,255,0.7); padding: 64p
    and clip any incidental horizontal overflow from absolutely-positioned art. */
 @media (max-width: 480px){
   .phone-glow { width: 300px !important; height: 300px !important; }
+  /* Stack the waitlist form; the page-injected <style> overrides head CSS for
+     flex/height, so force the input back to full size with !important. */
   .wl-form { flex-direction: column; }
-  .wl-form input, .wl-form button { width: 100%; }
+  .wl-form input, .wl-form button { width: 100% !important; }
+  .wl-form input { flex: 0 0 auto !important; height: 54px !important; }
+  /* Keep the header CTA on one line and sized to fit small screens. */
+  nav .btn { padding: 0 14px; height: 42px; font-size: 14px; }
 }
+/* On very small phones, drop the redundant "Home" link (logo links home) so the
+   header CTA never overflows. */
+@media (max-width: 400px){ nav .nav-back { display: none; } }
 .ahero, .save, .fxsec, .feat-rows, .remit-show, .cardsec, .entry { overflow-x: clip; }
 /* Let flex/grid children shrink so the waitlist form can't force horizontal overflow. */
 .wl-form input { min-width: 0; }
