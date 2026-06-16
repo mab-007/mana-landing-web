@@ -1,0 +1,124 @@
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .mana-cta { padding: 26px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a class='nav-back' href='/blog'><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> All posts</a><a href='/ofw' class='btn btn-primary'>Get early access</a></div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="wrap">
+    <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
+
+    <div class="art-meta">
+      <span class="tag">Guide</span><span class="dot"></span><span class="read">6 min read</span>
+    </div>
+
+    <h1>Money in America: A Starter Guide for New Filipino Nurses</h1>
+    <p class="standfirst">You spent years becoming an excellent nurse. What nobody taught you is how money works in America — and it works differently from home. The US runs on credit, on automatic systems, and on small charges that add up unless you know to avoid them. None of it is hard once someone draws you the map. That's what this is. Each topic gets its own deeper guide later; today is the overview.</p>
+
+    <h2>How you get paid</h2>
+    <p>Most facilities pay every two weeks. The first surprise for almost every kabayan: your take-home is smaller than your salary divided up. What you earn is <strong>gross pay</strong>; what actually lands in your account is <strong>net pay</strong>. In between, the system automatically holds back taxes and contributions — much like SSS, PhilHealth, and Pag-IBIG did back home, just under different names.</p>
+    <p>As a rough benchmark, expect roughly <strong>20–30% of your gross pay</strong> to go to taxes and withholding, depending on your state. That includes about 7.65% for Social Security and Medicare (the US version of your old contributions), plus federal income tax and, in some states, state income tax.</p>
+    <p>When you start, you'll fill out a <strong>W-4 form</strong> that sets how much tax is withheld — fill it out carefully. Working nights or overtime can boost your pay nicely. We break down the full paystub, line by line, in a separate guide.</p>
+
+    <h2>The importance of credit</h2>
+    <p>If you remember one thing, make it this. In America your <strong>credit score</strong> (a number, usually 300–850) is your financial reputation. It quietly decides whether you can rent an apartment, finance a car, get a phone plan, or qualify for the best cards.</p>
+    <p>The twist for new arrivals: you don't have a bad score — you have <strong>none yet</strong>. Your score is built from what companies — credit card issuers, banks, and other lenders — report about you to the credit bureaus each month, so until one of them is reporting your activity, you stay invisible to the system. The fix is to build it on purpose, early:</p>
+    <ul>
+      <li>Apply for a credit card and start spending on it.</li>
+      <li>Pay every bill on time.</li>
+      <li>Keep balances low.</li>
+    </ul>
+    <p>Do this steadily and within a year you'll have a real score that lowers your costs on almost everything. Several guides in this series go deep here.</p>
+
+    <h2>Taxes: pay now, settle later</h2>
+    <p>Tax comes out of each paycheck automatically. After the year ends, you file a return (deadline is usually mid-April) that reconciles what you owe with what was already taken — money back if too much came out, a little owed if too little did. You'll get a W-2 form by the end of January with the totals. First-time filing is very manageable, and we'll walk you through it in a future blog post.&nbsp;</p>
+
+    <h2>Receiving money, sending money home, and your dollar buffer</h2>
+    <p>In your first weeks you'll need simple ways to receive your pay, spend day to day, save, and send <strong>padala</strong> home. Two costs are worth knowing up front:</p>
+    <ul>
+      <li><strong>Sending money home has a hidden cost.</strong> The true price of a remittance is the fee <em>plus</em> the exchange-rate markup — a "zero fee" transfer can still shortchange your family through a worse rate. Always compare how many pesos actually arrive, not the advertised fee.</li>
+      <li><strong>Moving pesos into dollars can quietly cost you, too.</strong> Many new nurses don't realize how much is lost converting cash at airport counters or through poor exchange rates. It's worth holding some of your money in dollars, converted at a fair rate, so you land with a ready dollar buffer instead of exchanging at the worst possible moment.</li>
+    </ul>
+
+    <div class="callout">
+      <div class="k">Quick rule of thumb</div>
+      <p>Whether you're sending pesos home or converting your savings into dollars, judge every transfer by <strong>what actually arrives</strong> — not the headline fee.</p>
+    </div>
+
+    <div class="mana-cta">
+      <span class="glow"></span>
+      <span class="eyebrow">How Mana helps</span>
+      <h3>Get your US financial life started — before you even land</h3>
+      <p style="color:rgba(255,255,255,0.78);font-size:16px;line-height:1.55;margin-bottom:18px;position:relative;">Mana can help you set up the essentials below, so your financial life is ready to go from day one — some of it even before you leave the Philippines:</p>
+      <ul>
+        <li><strong style="color:#fff;">Apply for a card and start building credit early.</strong> Use it for everyday purchases while you're still in the Philippines, so your credit is already building by the time you land.</li>
+        <li><strong style="color:#fff;">Set up direct deposit to your US virtual account ahead of time,</strong> so your pay can land as soon as you start work.</li>
+        <li><strong style="color:#fff;">Be ready to send money home from day one</strong> — your padala set up before you even need it.</li>
+        <li><strong style="color:#fff;">Fund your Mana wallet with a dollar buffer at a fair rate,</strong> so you arrive with dollars ready and skip the worst FX costs.</li>
+      </ul>
+      <a href="/ofw" class="go">Explore Mana for OFWs <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <p class="endnote">You already did the hard part — becoming a nurse and moving across the world. The money system is just one more thing to learn, and now you have the map. Welcome, kabayan.</p>
+
+    <div class="disclaim">This guide is general information, not financial or tax advice. Mana is a financial technology company, not a bank. Banking services and virtual accounts are provided by our partner bank, Member FDIC. The Mana Card is issued by our card partner pursuant to a license from Visa U.S.A. Inc.</div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:Developer@mymana.xyz">Developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      Mana is a financial technology company, not a bank. Banking services provided by our partner bank, Member FDIC. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, is not a deposit account, and is not FDIC-insured at the Save layer; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.
+      <div class="row2"><span>© 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>

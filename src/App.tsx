@@ -7,6 +7,8 @@ import freelancers from "./site/freelancers.html?raw";
 import ofw from "./site/ofw.html?raw";
 import privacy from "./site/privacy.html?raw";
 import terms from "./site/terms.html?raw";
+import blog from "./site/blog.html?raw";
+import blogPostNurses from "./site/blog-post-nurses.html?raw";
 
 type Route = { html: string; title: string };
 
@@ -17,6 +19,8 @@ const ROUTES: Record<string, Route> = {
   "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms": { html: terms, title: "Card Terms — Mana" },
+  "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
+  "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Card Terms — Mana" },
