@@ -25,11 +25,23 @@ nav.on-dark .lockup .name { color: #fff; }
 nav.on-dark .nav-links a { color: rgba(255,255,255,0.72); }
 nav.on-dark .nav-links a:hover { color: #fff; }
 .nav-back { display: inline-flex; align-items: center; gap: 7px; }
+/* Nav "Products" dropdown */
+.nav-dd { position: relative; display: inline-flex; align-items: center; }
+.nav-dd-toggle { display: inline-flex; align-items: center; gap: 5px; background: none; border: none; cursor: pointer; font-family: 'Manrope'; font-size: 15px; font-weight: 500; color: var(--papel-700); padding: 0; transition: color .15s; }
+.nav-dd-toggle svg { transition: transform .18s; }
+.nav-dd:hover .nav-dd-toggle, .nav-dd:focus-within .nav-dd-toggle { color: var(--gabi-900); }
+.nav-dd:hover .nav-dd-toggle svg, .nav-dd:focus-within .nav-dd-toggle svg { transform: rotate(180deg); }
+nav.on-dark .nav-dd-toggle { color: rgba(255,255,255,0.72); }
+.nav-dd .menu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: #fff; border: 0.5px solid var(--papel-200); border-radius: 14px; padding: 8px; min-width: 210px; box-shadow: 0 20px 44px -22px rgba(10,18,40,0.32); display: none; flex-direction: column; gap: 2px; z-index: 60; }
+.nav-dd .menu::before { content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
+.nav-dd:hover .menu, .nav-dd:focus-within .menu { display: flex; }
+.nav-dd .menu a { display: block; padding: 9px 12px; border-radius: 9px; font-size: 14px; font-weight: 500; color: var(--papel-700); }
+.nav-dd .menu a:hover { background: var(--papel-100); color: var(--gabi-900); }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Manrope'; font-weight: 600; font-size: 15px; white-space: nowrap; cursor: pointer; border-radius: 12px; border: none; padding: 0 20px; height: 46px; transition: background .15s, transform .1s; }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--tanglaw-400); color: #fff; }
 .btn-primary:hover { background: var(--tanglaw-600); }
-@media (max-width: 860px){ .nav-links a:not(.btn):not(.nav-back){ display:none; } }
+@media (max-width: 860px){ .nav-links a:not(.btn):not(.nav-back){ display:none; } .nav-dd{ display:none; } }
 
 /* Entry / chooser */
 .entry { padding: 96px 0 76px; text-align: center; position: relative; min-height: calc(100vh - 68px); display: flex; flex-direction: column; justify-content: center; }
