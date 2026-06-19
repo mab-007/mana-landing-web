@@ -9,6 +9,7 @@ import privacy from "./site/privacy.html?raw";
 import terms from "./site/terms.html?raw";
 import blog from "./site/blog.html?raw";
 import blogPostNurses from "./site/blog-post-nurses.html?raw";
+import about from "./site/about.html?raw";
 
 type Route = { html: string; title: string };
 
@@ -19,6 +20,7 @@ const ROUTES: Record<string, Route> = {
   "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms": { html: terms, title: "Card Terms — Mana" },
+  "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders" },
   "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
   "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
   // Back-compat aliases for the old paths.

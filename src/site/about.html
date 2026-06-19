@@ -1,0 +1,124 @@
+<style>
+  .about-hero { padding: 84px 0 64px; text-align: center; position: relative; overflow-x: clip; }
+  .about-hero::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:-1; background: radial-gradient(620px 360px at 50% -6%, rgba(232,93,44,0.10), transparent 62%); }
+  .about-hero h1 { font-size: 52px; line-height: 1.04; margin: 0 auto 22px; max-width: 16ch; }
+  .about-hero h1 .accent { color: var(--tanglaw-400); }
+  .about-hero p.lede { font-size: 19px; line-height: 1.6; color: var(--papel-700); max-width: 660px; margin: 0 auto; }
+  .founders { padding: 20px 0 96px; }
+  .founders .label { text-align:center; font-family:'Fraunces',serif; font-variation-settings:'SOFT' 70,'opsz' 72; font-weight:500; font-size:34px; letter-spacing:-0.02em; color:var(--gabi-900); margin-bottom:34px; }
+  .founder-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:920px; margin:0 auto; }
+  .founder { background:#fff; border:0.5px solid var(--papel-200); border-radius:22px; overflow:hidden; box-shadow:0 18px 44px -30px rgba(10,18,40,0.3); }
+  .founder .photo { width:100%; aspect-ratio:1/1; object-fit:cover; display:block; background:var(--papel-100); }
+  .founder .body { padding:24px 26px 26px; }
+  .founder .nm { font-family:'Fraunces',serif; font-variation-settings:'SOFT' 70,'opsz' 72; font-weight:500; font-size:25px; letter-spacing:-0.01em; color:var(--gabi-900); display:flex; align-items:center; gap:10px; }
+  .founder .nm .li { color:#0a66c2; display:inline-flex; margin-left:auto; align-self:center; position:relative; top:-2px; }
+  .founder .nm .li:hover { opacity:0.75; }
+  .founder .bio { font-size:15px; line-height:1.6; color:var(--papel-700); margin-top:16px; }
+  .founder .bio + .bio { margin-top:12px; }
+  .founder .cred { margin-top:18px; padding-top:16px; border-top:0.5px solid var(--papel-200); font-size:13px; font-weight:600; color:var(--papel-400); letter-spacing:0.01em; }
+  .pedigree { padding:0 0 96px; }
+  .pedigree .head { text-align:center; max-width:640px; margin:0 auto 40px; }
+  .pedigree h2 { font-family:'Fraunces',serif; font-variation-settings:'SOFT' 70,'opsz' 72; font-weight:500; font-size:34px; line-height:1.12; letter-spacing:-0.02em; color:var(--gabi-900); margin-bottom:14px; }
+  .pedigree p { font-size:16px; line-height:1.6; color:var(--papel-700); }
+  .logo-group + .logo-group { margin-top:20px; }
+  .logo-group .gl { text-align:center; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--papel-400); margin-bottom:14px; }
+  .logo-row { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:920px; margin:0 auto; }
+  .logo-tile { background:#fff; border:0.5px solid var(--papel-200); border-radius:16px; height:120px; display:flex; align-items:center; justify-content:center; padding:16px 20px; overflow:hidden; }
+  .logo-tile img { display:block; width:auto; max-width:100%; max-height:96px; object-fit:contain; }
+  .logo-tile img.sq { height:104px; max-height:104px; width:104px; border-radius:12px; object-fit:cover; }
+  @media (max-width:760px){
+    .about-hero h1 { font-size:38px; }
+    .about-hero { padding:52px 0 44px; }
+    .founder-grid { grid-template-columns:1fr; }
+    .logo-row { grid-template-columns:repeat(2,1fr); }
+    .founders .label, .pedigree h2 { font-size:26px; }
+  }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'>
+      <svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+      <span class="name" style="font-size:30px;font-weight:600;">Mana</span>
+    </a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a></div>
+  </div>
+</nav>
+
+<header class="about-hero">
+  <div class="wrap">
+    <h1 class="fr">Built by immigrants.<br><span class="accent">Banking without borders.</span></h1>
+    <p class="lede">As immigrants ourselves, we know the realities of life take you far from home in search of better opportunities — and that the move too often comes with high fees, opaque terms, and a financial life split across two countries. Mana exists to change that, so the money you work so hard for is no longer lost to the gaps in between.</p>
+  </div>
+</header>
+
+<section class="founders">
+  <div class="wrap">
+    <div class="label">Meet the co-founders</div>
+    <div class="founder-grid">
+      <div class="founder">
+        <img class="photo" src="/about/paco.jpg" alt="Paco Litonjua, Co-Founder">
+        <div class="body">
+          <div class="nm">Paco Litonjua<a class="li" href="https://www.linkedin.com/in/paco-litonjua-2b4431153/" target="_blank" rel="noopener" aria-label="Paco on LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.3 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9V9Z"/></svg></a></div>
+          <p class="bio">Paco came to the U.S. from the Philippines over a decade ago. Despite a Stanford degree and a fintech career in San Francisco, he couldn't get approved for a basic credit card.</p>
+          <p class="bio">He'd spent his career building financial products for others, yet building wealth in America as an immigrant was harder than it ever should have been. Mana is the company he wishes had existed the day he landed.</p>
+          <div class="cred">HBS MBA 2027 · Figure Technologies · Stanford B.S.</div>
+        </div>
+      </div>
+      <div class="founder">
+        <img class="photo" src="/about/akshat.jpg" alt="Akshat Parwal, Co-Founder">
+        <div class="body">
+          <div class="nm">Akshat Parwal<a class="li" href="https://www.linkedin.com/in/akshatparwal/" target="_blank" rel="noopener" aria-label="Akshat on LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.3 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9V9Z"/></svg></a></div>
+          <p class="bio">Akshat moved to the U.S. from India and ran straight into the same broken system — a financial identity that reset to zero the moment he crossed a border, no matter what he'd built before.</p>
+          <p class="bio">Having helped set up India's first digital bank, he knew the technology to fix it already existed. At HBS, he and Paco realized millions of immigrants live this story every single day — and decided to build the answer together.</p>
+          <div class="cred">HBS MBA 2027 · slice (India's first digital bank) · L.E.K. Consulting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pedigree">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="fr">A team forged at the world's most respected institutions and companies.</h2>
+      <p>We've studied and built at the places that set the standard in finance and technology — and we're channeling all of it into a fairer financial home for immigrants everywhere.</p>
+    </div>
+    <div class="logo-group">
+      <div class="gl">Where we studied</div>
+      <div class="logo-row">
+        <div class="logo-tile"><img src="/about/harvard.png" alt="Harvard Business School"></div>
+        <div class="logo-tile"><img src="/about/stanford.png" alt="Stanford University"></div>
+        <div class="logo-tile"><img src="/about/iit-bombay.png" alt="IIT Bombay"></div>
+      </div>
+    </div>
+    <div class="logo-group">
+      <div class="gl">Where we built</div>
+      <div class="logo-row">
+        <div class="logo-tile"><img src="/about/figure.png" alt="Figure Technologies"></div>
+        <div class="logo-tile slice"><img class="sq" src="/about/slice.png" alt="slice"></div>
+        <div class="logo-tile"><img src="/about/lek.jpg" alt="L.E.K. Consulting"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:Developer@mymana.xyz">Developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      Mana is a financial technology company, not a bank. Banking services provided by our partner bank, Member FDIC. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, is not a deposit account, and is not FDIC-insured at the Save layer; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.
+      <div class="row2"><span>© 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>
