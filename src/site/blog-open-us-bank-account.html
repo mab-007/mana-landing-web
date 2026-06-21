@@ -1,0 +1,124 @@
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .mana-cta { padding: 26px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a><a href="/ofw" class="btn btn-primary">Get early access</a></div>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="wrap">
+    <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
+
+    <div class="art-meta">
+      <span class="tag">Guide</span><span class="dot"></span><span class="read">5 min read</span>
+    </div>
+
+    <h1>How to Open Your First US Bank Account (Even With No Credit History)</h1>
+    <p class="standfirst">One of the first questions every new arrival asks is, "Will they even let me open an account if I have no credit?" Here's the good news: opening a bank account and having credit are two completely different things. You do not need a credit history to open a checking or savings account in the US. What you need is the right set of documents — and a little know-how about how the system works.</p>
+
+    <h2>Why credit doesn't matter here</h2>
+    <p>A <strong>credit score</strong> is your borrowing reputation — it tells lenders how likely you are to pay back money you've been lent. A <strong>bank account</strong> is the opposite: it holds <em>your own</em> money. Because the bank isn't lending you anything, it doesn't check your credit score to let you open a standard checking or savings account.</p>
+    <p>What banks <em>do</em> check is a separate report called <strong>ChexSystems</strong> — a record of how you've handled past bank accounts (bounced checks, unpaid overdrafts, accounts closed for fraud). As a newcomer you simply have no ChexSystems history, which is perfectly fine. A blank record is not a bad record.</p>
+
+    <h2>What you'll actually need</h2>
+    <p>Requirements vary slightly by bank, but almost every one will ask for some combination of the following. Bring originals where you can:</p>
+    <ul>
+      <li><strong>A government photo ID.</strong> Your passport is the gold standard for new arrivals. Many banks will also want a second ID, such as your visa, a foreign driver's license, or a consular ID.</li>
+      <li><strong>A Social Security Number (SSN) or ITIN.</strong> If you're authorized to work, you'll have an SSN. If you don't qualify for one, many banks accept an <strong>ITIN</strong> (Individual Taxpayer Identification Number) — and some accept a passport with no SSN at all. Ask before you assume you're stuck.</li>
+      <li><strong>Proof of US address.</strong> A lease, a utility bill, or an official letter mailed to where you live. If you've just landed and don't have one yet, ask whether they accept your employer's letter or your school's enrollment document.</li>
+      <li><strong>An opening deposit.</strong> Often as little as $25 — and sometimes $0. Have a way to fund it on day one.</li>
+    </ul>
+
+    <div class="callout">
+      <div class="k">Good to know</div>
+      <p>No SSN yet? You are not locked out. Look specifically for banks and fintechs that advertise <strong>"open an account with a passport"</strong> or <strong>"ITIN accepted."</strong> They exist precisely for people in your situation.</p>
+    </div>
+
+    <h2>The steps, start to finish</h2>
+    <ul>
+      <li><strong>1. Gather your documents</strong> from the list above so you're not turned away for a missing paper.</li>
+      <li><strong>2. Choose where to open.</strong> Compare monthly fees, minimum balances, ATM access, and — importantly — whether they accept newcomers without an SSN.</li>
+      <li><strong>3. Apply.</strong> Online takes minutes; in a branch, a banker walks you through it. Either way you'll confirm your identity and address.</li>
+      <li><strong>4. Fund it</strong> with your opening deposit, then set up your debit card and online banking.</li>
+    </ul>
+    <p>That's it. Most people walk out — or click "submit" — with a working account the same day.</p>
+
+    <h2>An account alone won't build credit</h2>
+    <p>Here's the part newcomers miss: opening a checking account does <strong>not</strong> build your credit score. Your everyday spending and balances aren't reported to the credit bureaus. To actually start building credit, you'll want a tool that <em>does</em> report — most commonly a <strong>secured or starter credit card</strong> used responsibly and paid on time. Think of your bank account as the foundation, and credit as the next floor you build on top of it.</p>
+
+    <div class="mana-cta">
+      <span class="glow"></span>
+      <span class="eyebrow">How Mana helps</span>
+      <h3>Skip the paperwork scramble — start your US financial life before you land</h3>
+      <p style="color:rgba(255,255,255,0.78);font-size:16px;line-height:1.55;margin-bottom:18px;position:relative;">Mana is built for global Filipinos who are tired of being told "no" by a system that doesn't recognize them yet. We help you set up the essentials early:</p>
+      <ul>
+        <li><strong style="color:#fff;">A real US dollar account</strong> you can open as a newcomer — no years of US credit history required.</li>
+        <li><strong style="color:#fff;">Apply for a card and start building credit early,</strong> so by the time you land your reputation is already growing.</li>
+        <li><strong style="color:#fff;">Set up direct deposit ahead of time,</strong> so your first paycheck has somewhere to land from day one.</li>
+        <li><strong style="color:#fff;">Send money home and hold a dollar buffer</strong> at a fair rate — all from one app.</li>
+      </ul>
+      <a href="/ofw" class="go">Explore Mana for OFWs <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <p class="endnote">No credit history isn't a wall — it's just a blank page. Bring the right documents, pick a bank that welcomes newcomers, and you'll have your first US account up and running faster than you'd think. Welcome, kabayan.</p>
+
+    <div class="disclaim">This guide is general information, not financial advice. Requirements differ by institution and may change. Mana is a financial technology company, not a bank. Banking services and virtual accounts are provided by our partner bank, Member FDIC. The Mana Card is issued by our card partner pursuant to a license from Visa U.S.A. Inc.</div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:Developer@mymana.xyz">Developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      Mana is a financial technology company, not a bank. Banking services provided by our partner bank, Member FDIC. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, is not a deposit account, and is not FDIC-insured at the Save layer; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.
+      <div class="row2"><span>© 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>
