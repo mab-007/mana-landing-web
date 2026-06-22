@@ -20,14 +20,14 @@ const ROUTES: Record<string, Route> = {
   "/freelances": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
   "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
-  "/terms": { html: terms, title: "Card Terms — Mana" },
+  "/terms": { html: terms, title: "Terms of Service — Mana" },
   "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders" },
   "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
   "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
   "/blog/open-us-bank-account": { html: blogPostBankAccount, title: "How to Open Your First US Bank Account (Even With No Credit History) — Mana" },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
-  "/terms-of-service": { html: terms, title: "Card Terms — Mana" },
+  "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
 };
 
 function normalize(pathname: string): string {
