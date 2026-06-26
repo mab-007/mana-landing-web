@@ -11,6 +11,7 @@ import blog from "./site/blog.html?raw";
 import blogPostNurses from "./site/blog-post-nurses.html?raw";
 import blogPostBankAccount from "./site/blog-open-us-bank-account.html?raw";
 import about from "./site/about.html?raw";
+import card from "./site/card.html?raw";
 
 type Route = { html: string; title: string };
 
@@ -22,6 +23,7 @@ const ROUTES: Record<string, Route> = {
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms": { html: terms, title: "Terms of Service — Mana" },
   "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders" },
+  "/card": { html: card, title: "The Mana Card — Spend wherever Visa is accepted" },
   "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
   "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
   "/blog/open-us-bank-account": { html: blogPostBankAccount, title: "How to Open Your First US Bank Account (Even With No Credit History) — Mana" },
