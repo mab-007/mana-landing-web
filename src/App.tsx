@@ -123,6 +123,28 @@ export function App() {
     return () => document.removeEventListener("click", onClick);
   }, [path]);
 
+  // Mobile nav: toggle the hamburger menu; close it when a menu link is tapped.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const toggle = target?.closest(".nav-toggle");
+      if (toggle) {
+        const nav = toggle.closest("nav");
+        const open = nav?.classList.toggle("menu-open") ?? false;
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        return;
+      }
+      const link = target?.closest(".mobile-menu a");
+      if (link) {
+        const nav = link.closest("nav");
+        nav?.classList.remove("menu-open");
+        nav?.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
+      }
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   // Wire up waitlist forms (submits to Google Sheets).
   useEffect(() => {
     const onSubmit = (e: SubmitEvent) => {
