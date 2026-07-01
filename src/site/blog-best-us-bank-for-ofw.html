@@ -1,0 +1,285 @@
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .article ol { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ol li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ol li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ol li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .mana-cta { padding: 26px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a><a href='/card'>The Mana Card</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a><a href='/card' class='nav-card'>Card</a><a href="/ofw" class="btn btn-primary">Get early access</a></div>
+  
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu">
+    <a href='/'>Home</a>
+    <a href='/freelancers'>For Freelancers</a>
+    <a href='/ofw'>For OFWs</a>
+    <a href='/card'>The Mana Card</a>
+    <a href='/about'>About</a>
+    <a href='/blog'>Blog</a>
+  </div>
+
+</nav>
+
+<article class="article">
+  <div class="wrap">
+    <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
+
+    <div class="art-meta">
+      <span class="tag">Guide</span><span class="dot"></span><span class="read">6 min read</span>
+    </div>
+
+    <h1>Your Guide to the 6 Best US Banks for OFWs</h1>
+
+    <p class="standfirst">In today’s globalized economy, working as an Overseas Filipino Worker (OFW) is a path chosen by millions to provide a better future for their families. While the primary focus is earning a living, managing and saving those hard-earned US dollars (USD) is equally critical. For OFWs based in or with ties to the United States, finding the <strong>best US bank for OFW</strong> needs is key to secure money storage, easy remittance, and cross-border financial flexibility.</p>
+
+    <p>But navigating the US banking system can be challenging, especially with varying fee structures, minimum balance requirements, and complex international wire processes.</p>
+
+    <p>This guide breaks down the 6 best US banks for OFWs, evaluating their features, costs, and transfer systems. We’ll also introduce a modern fintech solution designed specifically to solve the unique cross-border banking struggles faced by global Filipinos.</p>
+
+    <h2>The Cross-Border Banking Challenges Faced by OFWs</h2>
+
+    <p>Before diving into the list of top banks, it’s important to understand why choosing the right financial institution matters. Many traditional US banks present friction points for non-residents and immigrants:</p>
+
+    <ul>
+      <li><strong>High Outgoing Transfer Fees:</strong> Traditional banks charge hefty international wire fees (often $35 to $50 per transfer) when sending money to the Philippines.</li>
+      <li><strong>Hidden Exchange Rate Markups:</strong> Banks rarely give you the "real" mid-market exchange rate. Instead, they hide a profit markup of 2% to 5% inside the exchange rate they offer, eating into your remittances.</li>
+      <li><strong>Complex Account Opening:</strong> Most traditional US banks require a physical presence, a Social Security Number (SSN), and extensive local address verification, making it difficult for newly arrived or remote OFWs to open an account.</li>
+      <li><strong>Minimum Balance Requirements:</strong> Many traditional checking accounts charge monthly maintenance fees unless you keep thousands of dollars in the account.</li>
+    </ul>
+
+    <p>With these challenges in mind, let’s look at the best traditional and digital US banking options available today.</p>
+
+    <h2>1. Chase Bank (Best for Branch Access and Security)</h2>
+
+    <p>Chase is the largest bank in the United States, offering unmatched stability, a massive branch and ATM network, and a highly-rated mobile app.</p>
+
+    <h3>Key Features for OFWs</h3>
+    <ul>
+      <li><strong>Chase Total Checking:</strong> A reliable everyday account with a $12 monthly fee, waivable with $500+ in monthly direct deposits.</li>
+      <li><strong>Secure Global Wire Transfers:</strong> You can send international wires directly from the Chase mobile app or website.</li>
+      <li><strong>High Security:</strong> Advanced fraud protection and FDIC insurance up to $250,000.</li>
+    </ul>
+
+    <h3>The Catch for OFWs</h3>
+    <p>While Chase is highly secure, it is expensive for sending money home. Outgoing international wire transfers typically cost <strong>$40 to $50</strong> per transaction, plus a significant currency conversion markup when converting USD to Philippine Pesos (PHP). To open an account, you usually need to visit a branch with an SSN or ITIN (Individual Taxpayer Identification Number) and two forms of ID.</p>
+
+    <h2>2. Bank of America (Best for Digital Banking Tools)</h2>
+
+    <p>Bank of America (BofA) is another traditional giant known for its advanced digital banking assistant, Erica, and strong international presence.</p>
+
+    <h3>Key Features for OFWs</h3>
+    <ul>
+      <li><strong>BofA Advantage Banking:</strong> Offers multiple tiers of checking accounts, including low-cost digital-first accounts.</li>
+      <li><strong>Mobile Remittance Tracking:</strong> Clear tracking of incoming and outgoing transfers.</li>
+      <li><strong>Preferred Rewards:</strong> Benefits for customers who maintain higher balances.</li>
+    </ul>
+
+    <h3>The Catch for OFWs</h3>
+    <p>Like Chase, BofA’s outgoing international wire fees are high (around <strong>$45</strong>). While their mobile app is exceptionally user-friendly, the underlying cost of sending USD to a Philippine bank (like BDO, BPI, or Metrobank) is substantial unless you use a third-party app linked to your BofA account. Opening an account also typically requires an in-person visit for non-US citizens.</p>
+
+    <h2>3. Wells Fargo (Best for Customer Support and ATM Reach)</h2>
+
+    <p>Wells Fargo has a strong footprint across the US, particularly in states with high Filipino populations like California, Texas, and Illinois.</p>
+
+    <h3>Key Features for OFWs</h3>
+    <ul>
+      <li><strong>Wells Fargo Everyday Checking:</strong> A simple checking account with a waivable monthly fee.</li>
+      <li><strong>ExpressSend Service:</strong> A dedicated service for sending remittances to specific countries, including the Philippines.</li>
+      <li><strong>Extensive ATM Network:</strong> Over 12,000 ATMs across the US.</li>
+    </ul>
+
+    <h3>The Catch for OFWs</h3>
+    <p>Wells Fargo's ExpressSend is cheaper than standard international wires, but it still carries transaction fees and exchange rate markups. Furthermore, you must link a Wells Fargo checking or savings account to use ExpressSend, and account setup requirements remain strict, requiring proper US residency documentation and identification.</p>
+
+    <h2>4. Citibank (Best for Premium Wealth Management)</h2>
+
+    <p>Citibank has historically been a popular choice for international professionals due to its strong global presence and experience with cross-border wealth management.</p>
+
+    <h3>Key Features for OFWs</h3>
+    <ul>
+      <li><strong>Citibank Global Transfers:</strong> Allows fee-free, instant transfers between Citibank accounts globally (e.g., from Citibank US to Citibank Philippines).</li>
+      <li><strong>Multi-Currency Options:</strong> Access to diverse global banking services.</li>
+      <li><strong>High-Tier Checking:</strong> Best suited for high-net-worth OFWs or remote professionals.</li>
+    </ul>
+
+    <h3>The Catch for OFWs</h3>
+    <p>While fee-free transfers between Citibank accounts sound perfect, Citibank has significantly reduced its consumer banking presence in the Philippines, selling its local consumer business to UnionBank. This means finding a Citibank branch or account holder in the Philippines to receive your funds is no longer highly viable. Additionally, Citi's account tiers have very high minimum balance requirements to waive monthly fees.</p>
+
+    <h2>5. Charles Schwab Bank (Best for International Travel and ATM Fee Rebates)</h2>
+
+    <p>For OFWs who travel frequently between the US and the Philippines, the Charles Schwab High Yield Investor Checking account is a legendary option.</p>
+
+    <h3>Key Features for OFWs</h3>
+    <ul>
+      <li><strong>Unlimited ATM Fee Rebates Worldwide:</strong> You can use any ATM in the US or the Philippines (like BDO or BPI), and Schwab will refund all operator ATM fees at the end of the month.</li>
+      <li><strong>No Foreign Transaction Fees:</strong> Use your Schwab debit card in the Philippines with zero extra transaction fees.</li>
+      <li><strong>No Monthly Fees or Minimums:</strong> Free account setup with no monthly maintenance fees.</li>
+    </ul>
+
+    <h3>The Catch for OFWs</h3>
+    <p>To get the Schwab checking account, you must open a linked Schwab One brokerage account (though you don’t have to use or fund the brokerage account). While it is an incredible tool for <em>spending</em> money in the Philippines, Schwab is not a dedicated remittance tool. Sending direct bank-to-bank transfers to loved ones in the Philippines still involves expensive wire fees or linking third-party apps.</p>
+
+    <h2>6. Capital One 360 (Best Fee-Free Digital Account)</h2>
+
+    <p>Capital One 360 Checking is a digital-first account from a highly stable, household-name bank. It has won numerous awards for its consumer-friendly, low-fee structure.</p>
+
+    <h3>Key Features for OFWs</h3>
+    <ul>
+      <li><strong>Zero Fees:</strong> No monthly fees, no minimum balance requirements, and no foreign transaction fees.</li>
+      <li><strong>High-Yield Savings Integration:</strong> Easily pair your checking account with a Capital One 360 Performance Savings account.</li>
+      <li><strong>User-Friendly App:</strong> High-rated mobile interface for managing daily expenses.</li>
+    </ul>
+
+    <h3>The Catch for OFWs</h3>
+    <p>Capital One 360 does not support outgoing international wire transfers directly from their online banking platform. To send money to the Philippines, you are forced to connect your Capital One account to a third-party remittance service like Wise or Remitly. Opening an account online also requires a valid US SSN, leaving ITIN-only holders out.</p>
+
+    <h2>The Comparison at a Glance</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Bank</th>
+          <th>Monthly Fee</th>
+          <th>International Wire Fee</th>
+          <th>Account Opening Requirements</th>
+          <th>Best For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Chase</strong></td>
+          <td>$12 (waivable)</td>
+          <td>$40 - $50</td>
+          <td>Strict (SSN/ITIN + Branch Visit)</td>
+          <td>Security & ATM Reach</td>
+        </tr>
+        <tr>
+          <td><strong>Bank of America</strong></td>
+          <td>$4.95 - $12 (waivable)</td>
+          <td>$45</td>
+          <td>Strict (SSN/ITIN + Branch Visit)</td>
+          <td>Mobile Banking App</td>
+        </tr>
+        <tr>
+          <td><strong>Wells Fargo</strong></td>
+          <td>$10 (waivable)</td>
+          <td>ExpressSend fees apply</td>
+          <td>Strict (SSN/ITIN + Branch Visit)</td>
+          <td>California/Texas Presence</td>
+        </tr>
+        <tr>
+          <td><strong>Citibank</strong></td>
+          <td>Varies by tier</td>
+          <td>Free (Citi-to-Citi only)</td>
+          <td>Very Strict (High Balance)</td>
+          <td>Wealth Management</td>
+        </tr>
+        <tr>
+          <td><strong>Charles Schwab</strong></td>
+          <td>$0</td>
+          <td>Standard wire fees apply</td>
+          <td>SSN Required (Online)</td>
+          <td>Global ATM Spending</td>
+        </tr>
+        <tr>
+          <td><strong>Capital One 360</strong></td>
+          <td>$0</td>
+          <td>Not supported directly</td>
+          <td>SSN Required (Online)</td>
+          <td>No-Fee Daily Banking</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The Smarter Alternative for Global Filipinos: Mana</h2>
+
+    <p>While traditional banks offer security, they are not optimized for the cross-border reality of Overseas Filipino Workers. High wire fees, hidden exchange markups, and strict residency requirements make them a poor fit for sending money home or building wealth across borders.</p>
+
+    <p>That is why we built <strong>Mana</strong>.</p>
+
+    <p>Mana is a financial technology company engineered specifically for global Filipinos. It offers the security of a US-regulated financial institution combined with the seamless, low-cost features of a modern digital app.</p>
+
+    <h3>Why Mana is the Best Choice for OFWs:</h3>
+
+    <ul>
+      <li><strong>Real US Dollar Accounts:</strong> Get a fully-fledged USD account and a global Mana Visa card. Use your card in the US or in the Philippines with zero foreign transaction fees.</li>
+      <li><strong>Free and Transparent Remittances:</strong> Send money home to the Philippines for free. Unlike traditional banks, Mana uses the <strong>real mid-market exchange rate</strong> with no FX markups. You see exactly what your family receives before you hit send.</li>
+      <li><strong>High-Yield Savings:</strong> Grow your money with Mana’s <strong>3.5% APY yield feature</strong> on your USD wallet, giving your hard-earned dollars a chance to compound.</li>
+      <li><strong>No Monthly Fees or Minimums:</strong> Open an account for free with zero monthly maintenance charges and no minimum balance rules.</li>
+      <li><strong>Built for Filipino Immigrants:</strong> Easy, modern digital sign-up designed to respect and accommodate the specific documentation available to Filipino immigrants and freelancers.</li>
+    </ul>
+
+    <h3>Banking Built Around Your Life</h3>
+
+    <p>Mana is launching soon to revolutionize how global Filipinos bank, save, and send money. Don't let traditional banks eat away your hard-earned money with wire fees and poor exchange rates.</p>
+
+    <div class="mana-cta">
+      <span class="glow"></span>
+      <span class="eyebrow">How Mana helps</span>
+      <h3>Join the Mana waitlist today</h3>
+      <p style="color:rgba(255,255,255,0.78);font-size:16px;line-height:1.55;margin-bottom:18px;position:relative;">Get early access to a real US dollar account, free remittances, and a high-yield USD wallet built just for you.</p>
+      <a href="/ofw" class="go">Join the Mana Waitlist Today <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <p class="endnote">Choosing the right bank can make a massive difference in how much of your hard-earned salary goes where it belongs. Compare your options, choose transparency, and build a stronger financial bridge today.</p>
+
+    <div class="disclaim">Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB, Member FDIC. Funds are FDIC insured up to $250,000 through the partner bank. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed.</div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:developer@mymana.xyz">developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      <p>Mana is a financial technology company, not a bank. Banking services are provided by SSB, Member FDIC. Funds deposited at SSB are eligible for FDIC insurance up to $250,000 per depositor, per insured bank, subject to applicable limitations and FDIC rules. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.</p>
+      <div class="row2"><span>© 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>
