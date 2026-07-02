@@ -12,6 +12,7 @@ import blogPostNurses from "./site/blog-post-nurses.html?raw";
 import blogPostBankAccount from "./site/blog-open-us-bank-account.html?raw";
 import blogPostBestApp from "./site/blog-best-app-send-money-philippines.html?raw";
 import blogPostBestBank from "./site/blog-best-us-bank-for-ofw.html?raw";
+import blogPostFreelancers from "./site/blog-us-bank-account-for-filipino-freelancers.html?raw";
 import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
 
@@ -31,6 +32,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/open-us-bank-account": { html: blogPostBankAccount, title: "How to Open Your First US Bank Account (Even With No Credit History) — Mana" },
   "/blog/best-app-send-money-philippines": { html: blogPostBestApp, title: "The Best App to Send Money to PH for Free (No Hidden Fees) — Mana" },
   "/blog/best-us-bank-for-ofw": { html: blogPostBestBank, title: "Your Guide to the 6 Best US Banks for OFWs — Mana" },
+  "/blog/us-bank-account-for-filipino-freelancers": { html: blogPostFreelancers, title: "US Bank Account for Filipino Freelancers: A Complete Guide — Mana" },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },

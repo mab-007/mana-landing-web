@@ -1,0 +1,290 @@
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 32px 0 12px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .article ol { margin: 0 0 18px; padding: 0 0 0 24px; }
+  .article ol li { font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .article figure { text-align: center; margin: 25px 0; }
+  .article figure img { max-width: 100%; height: auto; border-radius: 8px; }
+  .article figure figcaption { font-size: 13px; color: var(--papel-400); margin-top: 8px; }
+  .article table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 15px; }
+  .article table th { background: var(--papel-100); color: var(--gabi-900); font-weight: 600; text-align: left; padding: 12px 14px; border-bottom: 2px solid var(--papel-200); }
+  .article table td { padding: 12px 14px; border-bottom: 1px solid var(--papel-200); color: var(--papel-700); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .mana-cta { padding: 26px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a><a href='/card'>The Mana Card</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a><a href='/card' class='nav-card'>Card</a><a href="/ofw" class="btn btn-primary">Get early access</a></div>
+  
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu">
+    <a href='/'>Home</a>
+    <a href='/freelancers'>For Freelancers</a>
+    <a href='/ofw'>For OFWs</a>
+    <a href='/card'>The Mana Card</a>
+    <a href='/about'>About</a>
+    <a href='/blog'>Blog</a>
+  </div>
+
+</nav>
+
+<article class="article">
+  <div class="wrap">
+    <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
+
+    <div class="art-meta">
+      <span class="tag">Guide</span><span class="dot"></span><span class="read">15 min read</span>
+    </div>
+
+    <h1>How to Open a US Bank Account and Receive Payments for Filipino Freelancers</h1>
+    <p class="standfirst">Receiving USD as a freelancer in the Philippines usually comes with high costs and slow transfers. Here is the complete guide to getting your own US bank account and keeping more of what you earn.</p>
+
+    <p>Most global contractors currently rely on platforms that take a significant cut of every hard-earned dollar. Understanding why traditional global payment platforms cost Filipino freelancers so much is the first step toward keeping more of your pay. The path begins with looking at the hidden fees that traditional services often charge for basic cross-border transfers.</p>
+
+    <div class="mana-cta">
+      <span class="glow"></span>
+      <span class="eyebrow">Stop losing your earnings to fees</span>
+      <h3>Get your own US routing and account numbers, hold USD, and transfer home for free at the real mid-market rate with Mana.</h3>
+      <a href="/freelancers" class="go">Explore Mana for Freelancers <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <h2>Why Do Traditional Global Payment Platforms Cost Filipino Freelancers So Much?</h2>
+    <p>Traditional payment platforms charge high fees and use unfavourable exchange rates with hidden markups (typically 2% to 5%) to convert US dollars to Philippine pesos. Additionally, transaction and withdrawal fees accumulate rapidly, causing Filipino freelancers to lose up to 8% of their hard-earned pay during cross-border transfers.</p>
+
+    <p>Getting paid from the US should be simple. But for many, getting money in the Philippines is a slow and costly process. Old payment systems often hide high fees behind complex math. These costs can eat into your hard-earned pay before you even see it. Every dollar lost to a fee is money that could have gone to your family or your savings. For a full-time freelancer, these small costs add up to thousands of dollars each year.</p>
+
+    <h3>The hidden price of money swaps</h3>
+    <p>Most freelancers lose money when their pay converts from USD to PHP. Large payment sites often use their own rates for money swaps. These rates are rarely the same as the real mid-market rate. This gap is a hidden fee that many people do not notice at first. Many users lose between 2% and 5% of their total pay to these markups alone. If you earn $2,000, that could be $100 gone just from the rate swap.</p>
+
+    <p>When you add flat transfer fees on top of that, the total cost grows very fast. Some sites also charge a fee just to move money from your account to your local bank. Having a real US bank account for Filipino freelancers would solve this problem. It lets you hold your funds in dollars until you need them. You can then choose to swap your money when the rates are best for you. This helps you avoid losing money to bad timing or high markups.</p>
+
+    <h3>High transfer costs and payment friction</h3>
+    <p>Payment friction is a major barrier for global talent today. These frictions include high fees and slow times to move money from one country to another. For some parts of the world, these costs are very high and hold back growth. Data from the <a href="https://www.library.hbs.edu/working-knowledge/how-fintech-could-bring-africas-digital-talent-to-the-world" rel="nofollow" target="_blank">World Bank shows</a> that transfer costs in sub-Saharan Africa can reach 8.7% to 12.6%. While the Philippines has more tools, many local workers still face big hurdles every month.</p>
+
+    <p>These costs are not just a small bother. They act as a wall that keeps workers from the global market. High fees make it hard to track your true earnings from your work. These costs can make remote work feel like a struggle instead of a win for your career. It can also make it harder for firms to hire the best talent from abroad.</p>
+
+    <h3>The impact on your work growth</h3>
+    <p>Handling pay from other countries is vital for modern workers. When fees are too high, they hurt both the worker and the boss. These added costs can make remote work <a href="https://www.library.hbs.edu/working-knowledge/how-fintech-could-bring-africas-digital-talent-to-the-world" rel="nofollow" target="_blank">hard to afford</a> for many people. Instead of focusing on their skills, freelancers must spend time tracking lost cents. High costs slow down the growth of the online market.</p>
+
+    <p>Finding a way to keep more of your pay is not just about saving a few pesos. It is about making your freelance career last for a long time. You need a system that works for you, not against you. When you have the right tools, you can focus on your craft and grow your income. A fair payment system lets you build a better future without losing a large slice to fees.</p>
+
+    <h2>Can You Open a Traditional US Bank Account from the Philippines?</h2>
+    <p>No, opening a traditional US bank account from the Philippines is extremely difficult. Classic US banks require physical presence, proof of a US residential address (not a PO Box), and a US Tax ID like an SSN or ITIN. While forming a US LLC is a workaround, it is highly complex and expensive.</p>
+
+    <figure>
+      <img src="https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/inline-freelancer-651067.webp" alt="Filipino freelancer receiving US dollar payments on laptop" />
+      <figcaption>Filipino freelancers can now seamlessly manage their US dollar earnings from the comfort of home.</figcaption>
+    </figure>
+
+    <p>Opening a US bank account for Filipino freelancers often feels out of reach. Classic banks in the United States have strict rules that favor people living there. If you live in the Philippines, you may find that the list of needs is long and hard to meet. Most big banks want to see you in person. This often means buying a plane ticket just to talk to a teller.</p>
+
+    <h3>Why a physical address matters</h3>
+    <p>Classic banks often need proof of a US home address. They want to see a bill for power or water or a lease in your name. For someone working from Manila or Cebu, this is often the first big wall. You cannot use a PO Box or a mail service for many accounts because of safety laws. This rule keeps many global pros from getting the tools they need to grow.</p>
+
+    <h3>The challenge of US tax IDs</h3>
+    <p>Next, you will likely need a Social Security Number (SSN) or an Individual Taxpayer Identification Number (ITIN). An SSN is only for those with a legal right to work in the US. While you can apply for an ITIN, the work takes months and needs many forms. Without these IDs, many US banks will not even let you start to sign up.</p>
+
+    <h3>Using a US LLC as a workaround</h3>
+    <p>Some people try to form a US firm, like a Limited Liability Company (LLC), to get a bank account. This lets you apply as a business instead of a person. While this can work, it is very costly. You must pay fees to set up the firm and hire a local agent to handle mail. You also have to file tax forms in the US every year. For a freelancer just starting out, these costs can eat up all your gains.</p>
+
+    <ol>
+      <li>Look for banks that let people who do not live in the US apply for an account.</li>
+      <li>Apply for an ITIN through the IRS, which can take several months to finish.</li>
+      <li>Find a real US home address that meets the bank's strict rules for proof.</li>
+      <li>Fly to the United States for a meeting if the bank does not allow you to sign up online.</li>
+      <li>Show your passport and other legal papers to bank staff to check who you are.</li>
+      <li>Wait for the bank to review your file, which can take weeks if you do not have a US credit history.</li>
+    </ol>
+
+    <p>These barriers create a lot of friction for those who want to work with global firms. As told by experts at <a href="https://www.library.hbs.edu/working-knowledge/how-fintech-could-bring-africas-digital-talent-to-the-world" rel="nofollow" target="_blank">Harvard Business School</a>, slow steps are big hurdles for remote jobs. Some freelancers try to form a US LLC to get around these rules. But setting up a firm can cost hundreds of dollars and adds hard tax work each year. This is why many look for a special US bank account for Filipino freelancers that skips these old barriers.</p>
+
+    <h2>Why Is a Dedicated US Dollar Account a Game Changer for Filipino Freelancers?</h2>
+    <p>A dedicated US dollar account is a game-changer because it provides real US routing and account numbers, allowing you to hold your earnings in USD. This lets you avoid forced currency conversion, earn up to 3.5% APY yield on your savings, and convert funds to PHP only when rates are most favorable.</p>
+
+    <figure>
+      <img src="https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/inline-wallet-701668.webp" alt="Digital wallet showing exchange rate conversion between USD and PHP" />
+      <figcaption>A dedicated digital wallet allows freelancers to hold USD and convert at the mid-market rate with no markups.</figcaption>
+    </figure>
+
+    <p>For most global contractors, getting paid is the best part of the job. But for those in the Philippines, the joy often fades when they see their final pay. Without a US bank account for Filipino freelancers, most workers must use apps that force them to convert their pay right away. This means you lose a part of your hard-earned pay to low rates and high fees every single month.</p>
+
+    <h3>Real US banking details</h3>
+    <p>A dedicated US dollar account gives you a real routing and account number in the United States. This change turns you from a remote worker into a local hire in the eyes of many US clients. You can receive pay through ACH or wire payments just like a US worker. This setup cuts out the middle man and keeps your full earnings in your hands from day one.</p>
+
+    <p>Apps like <a href="https://mymana.xyz/">Mana</a> help you get these US details without the need to fly to a US branch. By having your own account, you gain full control over how and when you move your money. You are no longer at the mercy of one app's rules or their high costs for holding your cash.</p>
+
+    <h3>Avoid forced currency conversion</h3>
+    <p>The biggest benefit of a USD account is the power to choose your rate. When you use an old app, your USD is often changed to PHP the moment it hits your account. If the rate is low that day, you lose money. With a dedicated account, you can hold your pay in dollars and wait for the best time to send money home.</p>
+
+    <p>High fees and slow speeds are big barriers for global jobs and remote work. Research from <a href="https://www.library.hbs.edu/working-knowledge/how-fintech-could-bring-africas-digital-talent-to-the-world" rel="nofollow" target="_blank">Harvard Business School</a> shows that old bank systems can make sending money very costly. In some areas, these costs can top 8.7% of the total value. Holding your funds in a USD wallet lets you bypass these old traps and keep more of what you earn.</p>
+
+    <h3>Grow your wealth in dollars</h3>
+    <p>Holding USD is not just about avoiding fees; it is about building a better future. The US dollar is a stable currency that helps protect your savings from price hikes. When you keep your earnings in a US bank account for Filipino freelancers, you can let your money grow in a safe place. You can also earn a yield on your balance while you wait for a good time to move it.</p>
+
+    <p>Features like the <a href="https://mymana.xyz/freelancers">Mana for freelancers</a> plan let you earn a 3.5% APY yield on your USD balance. This means your money works for you while it sits in your account. You can then use free transfers to send money to the Philippines at the real mid-market rate. This way, your family gets the most out of every dollar you send.</p>
+
+    <h2>How Do PayPal, Wise, and Payoneer Compare for Filipino Freelancers?</h2>
+    <p>Most Filipino freelancers use a few main tools to get paid. PayPal, Wise, and Payoneer are the most common picks. These tools help you get a US bank account for Filipino freelancers who need to hold USD. Each platform has its own set of fees and wait times. Choosing the best one can save you a lot of money over time. You want to keep as much of your hard work as you can.</p>
+
+    <p>Before you sign up, you should look at the total cost. This includes the exchange rate and any fixed fees. Some sites hide their fees in the rate they give you. This makes it hard to see the true cost. A small gap in the rate can add up to a big loss on a large pay. Using a fair platform helps you grow your business and reach your goals.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Platform</th>
+          <th scope="col">Account Type</th>
+          <th scope="col">FX Fees</th>
+          <th scope="col">Hold Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PayPal</td>
+          <td>Digital Wallet</td>
+          <td>3% to 4%</td>
+          <td>1 to 3 days</td>
+        </tr>
+        <tr>
+          <td>Wise</td>
+          <td>Multi-Currency</td>
+          <td>Mid-market rate</td>
+          <td>1 to 2 days</td>
+        </tr>
+        <tr>
+          <td>Payoneer</td>
+          <td>Receiving Account</td>
+          <td>2% markup</td>
+          <td>2 to 5 days</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>PayPal: The Common But Costly Option</h3>
+    <p>PayPal is easy to use. Most clients have it ready to go. But it is often the most costly way to get paid. PayPal takes a big cut through high fees and poor rates. These costs eat into your pay every month. High fees are a huge bar for remote work. The World Bank shows that high costs can <a href="https://www.library.hbs.edu/working-knowledge/how-fintech-could-bring-africas-digital-talent-to-the-world" rel="nofollow" target="_blank">stop people from taking global jobs</a>. If you lose 4% on every pay, you lose one month of pay every two years.</p>
+
+    <p>PayPal also has strict rules. They may hold your money for weeks if you are new. This can be a risk for your cash flow. You need your money to pay for your web costs and other bills. While it is well known, the high price makes it less ideal for full-time work. Many pros move to other tools as they grow.</p>
+
+    <h3>Wise: The Mid-Market Rate Choice</h3>
+    <p>Wise is a top choice for clear fees. It uses the real market rate. This rate is the one you find on Google. You pay a small fee that you can see before you send. Wise lets you <a href="https://wise.com/us/blog/bank-accounts-for-freelancers-overview" rel="nofollow" target="_blank">hold and manage many funds</a> at once. You get local bank details for USD. This makes it easy for US clients to pay you. You do not have to worry about hidden markups or bad rates.</p>
+
+    <p>Wise is also fast. Most transfers take only a day or two. This speed helps you manage your money better. You can pay your bills on time without stress. Wise is built for the global worker who needs to move funds fast.</p>
+
+    <h3>Payoneer: The Business Specialist</h3>
+    <p>Payoneer gives you a way to receive funds in many types. It is made for business use. You can get paid from sites like Upwork or Fiverr. It is cheaper than PayPal but still has some fees. You might pay a fee to move money to your local bank. Payoneer helps those who need a way to get paid right away. It is a good bridge for new workers who need a clear path.</p>
+
+    <p>Payoneer also has a card you can use. This card lets you spend your USD right away. This saves you from having to move money to a local bank first. But watch out for the fees on the card too. It is best to read the fine print.</p>
+
+    <h3>The Impact of High Transfer Fees</h3>
+    <p>Low fees are not just about saving a few bucks. They help you build your future. When you lose money to high fees, you have less to save. You have less to invest in your skills. In some places, <a href="https://www.library.hbs.edu/working-knowledge/how-fintech-could-bring-africas-digital-talent-to-the-world" rel="nofollow" target="_blank">transfer costs can top 10%</a> of the total. This is much higher than the 3% goal set by global groups. Cutting these costs is key to your success.</p>
+
+    <p>Every dollar you save can go toward your life at home. You can pay for school or buy a home. Choosing a tool with low fees is a smart move. It shows you take your work seriously. Look for tools that give you the best value for your hard work. Your pay belongs to you, not the platform.</p>
+
+    <h2>Mana: Your Dedicated US Dollar Account with No Hidden Markups</h2>
+    <p>Mana is a financial tech company built to solve the problems faced by global workers. If you have been looking for a US bank account for Filipino freelancers, you know how hard the process can be. Most big banks ask for a US address or a Social Security number that you just do not have. Mana makes it simple: open a U.S. dollar account from the Philippines using just your Philippine address and a valid ID. It gives you a way to hold and manage your money in the US from the Philippines. This means you no longer have to worry about being shut out of the US financial system just because of where you live. What you need to set up a US account is only your Philippine address and ID.</p>
+
+    <h3>Secure USD banking through expert partners</h3>
+    <p>Mana is a financial tech company, not a bank. To keep your money safe, Mana works with a partner bank called SSB. SSB is a member of the Federal Deposit Insurance Corporation (FDIC). This means your funds are <a href="https://www.fdic.gov/resources/deposit-insurance/faq/" rel="nofollow" target="_blank">FDIC insured</a> up to $250,000 through the partner bank. Through this link, you get a real US dollar account with your own routing and account numbers. This setup lets you get paid by US clients just like a local worker. You can use these details to receive pay from platforms like Upwork, or directly from your clients in the United States.</p>
+
+    <p>Having your own US account details makes the whole process of getting paid much smoother. You do not have to rely on third-party sites that take a large cut of your pay. Instead, your money lands in your account quickly and safely. This level of access was once hard to get, but Mana makes it possible for the global Filipino workforce. You can now manage your income with the same tools that US-based workers use every day.</p>
+
+    <h3>Maximize your earnings with high-yield features</h3>
+    <p>One of the best ways to grow your wealth is to keep your money in US dollars. When you keep your earnings in USD, you do not have to worry about the local peso rate changing every day. Mana offers a high-yield feature that gives you a 3.5% APY rate on your USD wallet balance. This rate is much higher than what most local banks offer. It turns your daily pay into a tool for long-term growth. You can see how this helps you build a strong future while you work for clients abroad. This feature is part of our goal to help you make the most of every dollar you earn.</p>
+
+    <p>Holding your funds in USD also gives you more control over when you change your money. You can wait for a better rate before moving your pay to pesos. This freedom is key for anyone who wants to protect their buying power. By keeping your money in a stable currency, you can plan for big life goals with more trust. Mana is built to give you the tools you need to succeed in a global market.</p>
+
+    <h3>Send money home without the hidden fees</h3>
+    <p>Sending money back to the Philippines should be simple and fair. Many platforms hide their true costs in the exchange rate, but Mana takes a different path. You can send free money transfers home at the real mid-market rate. This means there are no hidden fees that eat into your hard-earned pay. As experts from <a href="https://www.library.hbs.edu/working-knowledge/how-fintech-could-bring-africas-digital-talent-to-the-world" rel="nofollow" target="_blank">Harvard Business School</a> have noted, cutting these payment hurdles can help workers join the global market. By removing these costs, <a href="https://mymana.xyz/freelancers">Mana for freelancers</a> ensures that more of your money stays where it belongs.</p>
+
+    <p>We believe in total openness when it comes to your money. You should always know exactly how much your family will get before you click send. This is why we use the mid-market rate with no markup. It is the same rate you see on Google or news sites. This honest approach helps you keep more of your pay for the things that matter most. We are here to support your mission to provide for your loved ones back home.</p>
+
+    <p>Mana is on a mission to stop hidden costs for Filipinos living abroad. We want to give you the financial home we wish we had. If you are ready to take control of your global pay, you can join the waitlist today. Just enter your email at the <a href="https://mymana.xyz/">Mana homepage</a> to get one launch news note. You will be among the first to use these tools when they launch soon.</p>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Can I open a US bank account as a freelancer in the Philippines?</h3>
+    <p>Yes, you can open a US dollar account through fintech firms that help global freelancers. While traditional US banks often need you to be there in person or have a US tax ID, platforms like <a href="https://mymana.xyz/">Mana</a> provide real US account and routing numbers. This allows you to receive payments directly from American clients as if you were in the United States.</p>
+
+    <h3>Are funds in a US fintech account FDIC insured?</h3>
+    <p>Yes, many fintech companies partner with known banks to protect your money. For example, banking services for Mana are provided by partner bank SSB, which is a member of the FDIC. According to the <a href="https://mymana.xyz/">Mana website</a>, your funds are FDIC insured up to $250,000 through this partnership. This ensures your earnings are safe and secure while you manage your global business.</p>
+
+    <h3>How do I avoid high conversion fees when receiving USD?</h3>
+    <p>You can avoid high fees by using a US dollar account that offers real mid-market exchange rates. Traditional platforms often charge hidden markups that can cost you 2% to 5% of your total income. Using a platform like <a href="https://mymana.xyz/">Mana</a> helps you keep more of your earnings because it uses clear rates without foreign exchange markups. This approach is much cheaper than using traditional bank transfers or standard payment apps.</p>
+
+    <h3>What are the main benefits of using a US dollar account for freelancers?</h3>
+    <p>A US dollar account lets you receive and hold your pay in USD without forced conversion to pesos. This is vital for Filipino freelancers because it avoids the high fees and poor exchange rates found on traditional payment sites. According to <a href="https://wise.com/us/blog/bank-accounts-for-freelancers-overview" rel="nofollow" target="_blank">Wise</a>, having local account details in major currencies makes it easier to get paid by global clients. You can then choose exactly when to send your money home at the best possible rate.</p>
+
+    <h3>Is it legal for Filipino freelancers to hold earnings in US dollars?</h3>
+    <p>Yes, it is legal for Filipinos to hold US dollars in their own accounts. Many freelancers choose to keep their income in USD to protect against local currency swings. This strategy allows you to wait for a better exchange rate before sending money home to the Philippines. Using a platform that provides a real US bank account for Filipino freelancers makes this process simple and safe for everyone involved.</p>
+
+    <div class="mana-cta">
+      <span class="glow"></span>
+      <span class="eyebrow">Ready to take control?</span>
+      <h3>Stop losing your hard-earned money to hidden fees. Join the Mana waitlist today.</h3>
+      <ul>
+        <li><strong style="color:#fff;">Real US routing and account numbers</strong> to receive payments from US clients directly.</li>
+        <li><strong style="color:#fff;">Hold your earnings in USD</strong> and avoid forced conversion at bad rates.</li>
+        <li><strong style="color:#fff;">Earn 3.5% APY yield</strong> on your USD wallet balance.</li>
+        <li><strong style="color:#fff;">Free transfers home</strong> at the real mid-market rate with no hidden fees.</li>
+      </ul>
+      <a href="https://mymana.xyz/" class="go">Join the Mana Waitlist <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <p class="endnote">Mana is launching soon, and spots on our exclusive waitlist are filling up quickly. Do not let traditional payment platforms chip away at your freelance business. If you have any questions or want to learn more about how Mana can transform your freelance business, you can also reach us directly at <a href="tel:+18572700094">(857) 270-0094</a>.</p>
+
+    <div class="disclaim">Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB, Member FDIC. Funds deposited at SSB are eligible for FDIC insurance up to $250,000 per depositor, per insured bank, subject to applicable limitations and FDIC rules. The Mana Card is issued by our card partner pursuant to a license from Visa U.S.A. Inc. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed.</div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:developer@mymana.xyz">developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      <p>Mana is a financial technology company, not a bank. Banking services are provided by SSB, Member FDIC. Funds deposited at SSB are eligible for FDIC insurance up to $250,000 per depositor, per insured bank, subject to applicable limitations and FDIC rules. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.</p>
+      <div class="row2"><span>&copy; 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>
