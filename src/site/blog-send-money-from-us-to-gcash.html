@@ -1,0 +1,287 @@
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; color: var(--gabi-900); margin: 32px 0 10px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .article ol { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ol li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ol li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ol li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .answer-capsule { background: var(--papel-100); border-radius: 16px; padding: 20px 24px; margin: 30px 0; border-left: 3px solid var(--tanglaw-400); }
+  .answer-capsule p { font-size: 17px; line-height: 1.62; margin-bottom: 0; }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .mana-cta { padding: 26px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a><a href='/card'>The Mana Card</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a><a href='/card' class='nav-card'>Card</a><a href="/ofw" class="btn btn-primary">Get early access</a></div>
+  
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu">
+    <a href='/'>Home</a>
+    <a href='/freelancers'>For Freelancers</a>
+    <a href='/ofw'>For OFWs</a>
+    <a href='/card'>The Mana Card</a>
+    <a href='/about'>About</a>
+    <a href='/blog'>Blog</a>
+  </div>
+
+</nav>
+
+<article class="article">
+  <div class="wrap">
+    <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
+
+    <div class="art-meta">
+      <span class="tag">Guide</span><span class="dot"></span><span class="read">9 min read</span>
+    </div>
+
+    <h1>How to Send Money from US to GCash: Zero Fees, Instant Delivery</h1>
+
+    <p class="standfirst">Get your family more pesos when you learn how to send money from US to GCash. Mana delivers ₱11,148 vs ₱10,847 with zero fees and real mid-market rates.</p>
+
+
+<p>Many Filipinos in the US lose too much money to hidden exchange rate markups every single month. These costs quietly chip away at your family's budget. You need a fast, fair way to get funds home.</p>
+
+<div class="answer-capsule">
+<p>To find the best way for how to send money from US to GCash, look for platforms that offer real exchange rates and low fees. GCash is a top mobile wallet in the Philippines that allows users to receive funds from abroad instantly. According to <a href="https://www.remitly.com/us/en/providers-philippines/send-money-to-gcash">Remitly</a>, millions of Filipinos use this app to pay bills and shop without carrying cash. New money apps like Mana now offer cheapest instant transfers using the mid-market rate with no added markups. This means your family gets more pesos for every dollar you send. By using the right digital service, you can skip the high costs and long lines at old centers. These modern apps use systems like InstaPay to move your money in minutes, even on weekends.</p>
+</div>
+
+<p>While sending money home used to be a chore, digital tools have made it simpler. Knowing why GCash is the most popular way to receive money in the Philippines is the first step to saving more on every transfer.</p>
+<h2>How to Send Money from US to GCash: Why GCash Is the Most Popular Way to Receive Money in the Philippines</h2>
+
+<p>GCash is the leading mobile wallet in the Philippines, with more than 94 million users according to <a href="https://www.riamoneytransfer.com/en-us/send-money-to-gcash/">Ria Money Transfer</a>. This app allows people to manage their money on a phone without needing a traditional bank account. It has become a vital tool for families who need a fast way to get funds from loved ones living abroad.</p>
+
+<h3>Daily use for Filipino families</h3>
+<p>Most people in the Philippines use GCash for their everyday needs. They use it to pay monthly bills, buy groceries, and send money to friends or family fast. Because it is so common, <a href="https://www.remitly.com/us/en/providers-philippines/send-money-to-gcash">GCash is used widely</a> for daily payments across the country. This makes it the top choice for receiving money from the United States.</p>
+
+<p>For Overseas Filipino Workers (OFWs), sending money to a mobile wallet is often easier than sending to a bank. Many relatives back home may not live near a bank branch. With GCash, they can get the money on their phone and spend it right away at local shops. You can learn more about how <a href="https://mymana.xyz/ofw">Mana helps OFWs</a> send money home without high fees.</p>
+
+<h3>A safe way to get funds</h3>
+<p>Safety is a big reason why so many people trust this app. It uses two-factor authentication and a four-digit PIN to keep accounts secure. This helps protect the 94 million Filipinos who use the service for their money needs. Families feel safe knowing their money is protected by these modern safety steps.</p>
+
+<p>Many users also take advantage of extra features like GSave. About 9 million people have used this tool to build their savings. This shows that the app is more than just a way to pay for things; it is a full money tool for the Filipino people. Using <a href="https://mymana.xyz/freelancers">Mana for freelancers</a> and workers abroad ensures that more of your hard-earned money reaches these savings accounts.</p>
+<h2>How to Send Money from the US to GCash with Mana</h2>
+<p>Sending money home should be fast and simple for every Filipino abroad. Mana makes it easy for people in the US to send funds to a GCash wallet without hidden costs. By using the <a href="https://mymana.xyz/">Mana app</a>, you avoid the high fees and poor rates that often come with old banks. Your money moves at the real mid-market rate, which means your family gets more pesos for every dollar you send. This way, the money you work hard for does more good back home.</p>
+
+<h3>Set up your Mana account</h3>
+<p>To start, you need to download the Mana app on your phone. Once you have it, you will need to sign up for a new account. Use your Philippine address details like your current street and ID to get started. Mana is a money tech firm that works with banks that are members of the FDIC. This helps keep your money safe while you use the app for your daily needs.</p>
+
+<p>After you set up your account, you must add money to your USD account. You can transfer money via wire or ACH from your U.S. bank account, or simply link your bank account for a faster, seamless transfer. This step is quick and lets you have funds ready to send home whenever you want. You also get a yield feature on your balance, which helps your money grow while it sits in your account. This makes it a smart place to keep your savings as you plan for the future.</p>
+
+<h3>Send funds to your family</h3>
+<p>Once your wallet has funds, you are ready to send money to the Philippines. Mana uses <a href="https://documents1.worldbank.org/curated/en/368161629268352616/pdf/Philippines-Financial-Sector-Assessment-Program-Retail-Payments-Technical-Note.pdf">InstaPay</a>, a system that helps money move in real time. This means your family does not have to wait days to get their funds. The app shows you clearly what they will get in pesos before you hit the send button. There are no hidden costs or markups on the exchange rate.</p>
+
+<ol>
+  <li><strong>Open the Mana app:</strong> Log in and go to the send money section. Select GCash as the choice for where the money will go. You can also send to bank accounts, but GCash is a top choice for many families.</li>
+  <li><strong>Enter details:</strong> Type in the GCash number of the person who will get the money. Check the digits to make sure they are right to avoid any wait. You can save their info to make it even faster next time.</li>
+  <li><strong>Choose the amount:</strong> Enter how much USD you want to send. The app will show you the PHP amount based on the real mid-market rate. You see the total before you commit to the move.</li>
+  <li><strong>Review the transfer:</strong> Look over the details one last time. You will see that Mana has 0.25% flat transfer fees (charge at cost, the lowest in the market) and no FX markup. This view helps you know clearly where your money is going.</li>
+  <li><strong>Confirm and send:</strong> Tap the button to send the money home. Because of the InstaPay system, the funds will arrive in the GCash wallet in just a few seconds. Your family will get an alert right away.</li>
+</ol>
+
+<p>Mana gives you a clear view of your money at every step. You can track the transfer in the app and see when it reaches its goal. This level of clarity is rare in the world of money moves today. It helps you feel sure that your hard-earned money is helping your loved ones. By cutting out the middleman and fees, Mana helps every dollar go much further for those who need it.</p>
+<h2>Mana vs. Traditional Money Transfer Services</h2>
+
+<p>Choosing the right way to send money home matters for your family. It is about how much of your hard work actually reaches them. Many apps add hidden costs through bad exchange rates or high fees. Mana takes a different path by giving you the real mid-market rate with no markups and lowest transfer fees at cost.</p>
+
+<h3>How Mana Compares to Major Apps</h3>
+
+<p>When you look at popular tools, the costs can add up fast. Some apps offer low fees but give you a poor exchange rate. Others give you a good rate for your first trade but hide costs in later transfers. Mana uses <a href="https://documents1.worldbank.org/curated/en/368161629268352616/pdf/Philippines-Financial-Sector-Assessment-Program-Retail-Payments-Technical-Note.pdf">InstaPay</a> to make sure your money arrives in minutes with no extra costs.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Service</th>
+      <th scope="col">Transfer Fee</th>
+      <th scope="col">Exchange Rate</th>
+      <th scope="col">Speed</th>
+      <th scope="col">Received (Sent $200)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mana</td>
+      <td>0.25% flat</td>
+      <td>Real Mid-Market</td>
+      <td>Instant</td>
+      <td>&#8369;11,148</td>
+    </tr>
+    <tr>
+      <td>Wise</td>
+      <td>From 0.51%</td>
+      <td>Real Mid-Market</td>
+      <td>Minutes to days</td>
+      <td>&#8369;11,034</td>
+    </tr>
+    <tr>
+      <td>Remitly</td>
+      <td>Varies</td>
+      <td>Marked-up Rate</td>
+      <td>Minutes to days</td>
+      <td>&#8369;10,847</td>
+    </tr>
+    <tr>
+      <td>Western Union</td>
+      <td>$0 up to &#8369;5K</td>
+      <td>Marked-up Rate</td>
+      <td>Minutes</td>
+      <td>&#8369;10,847</td>
+    </tr>
+    <tr>
+      <td>MoneyGram</td>
+      <td>Varies</td>
+      <td>Marked-up Rate</td>
+      <td>Minutes</td>
+      <td>&#8369;10,847</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>The Cost of Hidden Fees</h3>
+
+<p>Most old services do not use the real exchange rate. Instead, they add a margin to the rate. This means your family gets less money in the end. Even if a tool claims to have zero fees, they may still make money on the rate markup. A $200 transfer can result in a big difference in the total amount your family gets.</p>
+
+<p>Mana is built for <a href="https://mymana.xyz/ofw">global Filipinos</a> who want a fair and clear way to manage their money. By using the real mid-market rate, you see exactly what your family will get before you hit send. This helps you plan better and send more support home without losing value to hidden costs.</p>
+
+<h3>Sending Smarter to GCash</h3>
+
+<p>New tools have changed how we send money home. Digital platforms now offer faster and more accessible <a href="https://thedocs.worldbank.org/en/doc/e522b834eaf0c4f81970f80a8c8ccb6e-0070012024/original/5-BSP-Overview-of-OF-Remittance-Flows-in-the-Philippines.pdf">financial services</a> for workers. With Mana, you can send money from your USD account to any GCash wallet in an instant. This means no more waiting in lines or dealing with complex fees.</p>
+<h2>How Much Will Your Family Actually Receive?</h2>
+
+<p>When you learn <a href="https://mymana.xyz/ofw">how to send money from US to GCash</a>, the exchange rate matters most. Many apps claim to have low fees but hide costs in a bad rate. This markup often ranges from 1% to 3% of your total transfer. These hidden costs mean your family in the Philippines gets less money than you expect.</p>
+
+<h3>The hidden cost of exchange rates</h3>
+
+<p>Most traditional apps use a rate that is worse than the real mid-market rate. This gap is how they make extra profit on every dollar you send. For a $200 transfer, a typical app might deliver about ₱10,847 to a GCash wallet. This happens because they add a markup to the rate and charge a fee of $3 to $8 per trade.</p>
+
+<p>Mana takes a different path by using the real mid-market exchange rate. With no hidden FX markups and 0.25% flat transfer fees, that same $200 sent through Mana delivers ₱11,148 to GCash. This puts ₱301 more into your family's pocket. Using <a href="https://documents1.worldbank.org/curated/en/368161629268352616/pdf/Philippines-Financial-Sector-Assessment-Program-Retail-Payments-Technical-Note.pdf">InstaPay</a> for real-time delivery ensures the funds arrive quickly and safely.</p>
+
+<h3>Yield and growth while you wait</h3>
+
+<p>Your money can also work for you before you hit the send button. Mana offers a 3.5% APY yield feature on your USD wallet balance. This helps your savings grow while you wait for the best time to remit funds. This is a key part of how <a href="https://mymana.xyz/">Mana</a> helps global Filipinos build a better financial future.</p>
+
+<p>Money transfer operators must be cost-effective to help the local economy grow. According to the <a href="https://thedocs.worldbank.org/en/doc/e522b834eaf0c4f81970f80a8c8ccb6e-0070012024/original/5-BSP-Overview-of-OF-Remittance-Flows-in-the-Philippines.pdf">World Bank</a>, timely and accurate remittances boost local consumption. By cutting out hidden fees, you ensure more of your hard work goes directly to your loved ones.</p>
+<h2>Understanding Exchange Rates and Hidden Fees</h2>
+
+<p>Most people look at the upfront fee when they send money to GCash. But the exchange rate often hides a much larger cost. Many banks and apps do not use the real rate you see on Google. Instead, they add a markup to the rate. This hidden fee is how they make extra money from your hard work.</p>
+
+<h3>The real rate vs the retail rate</h3>
+
+<p>The mid-market rate is the real value of the currency. It is the point between what big banks buy and sell for on the global market. When a service gives you a retail rate, it is often worse than the real rate. Most services add a markup of 2% to 4% on average. This means your family gets fewer pesos for every dollar you send.</p>
+
+<p>Mana takes a different path. We give you the <a href="https://mymana.xyz/freelancers">real mid-market exchange rate</a> with zero FX markup. We believe you should know exactly what your money is worth. By using the real rate, we help make sure your family in the Philippines gets the full value of your gift.</p>
+
+<h3>Why hidden fees matter for your family</h3>
+
+<p>Hidden fees can add up fast. A small markup might not look like much on one transfer. But if you send money home each month, you could lose hundreds of dollars a year. These are pesos that could have gone to school fees, food, or savings. Clear pricing helps you plan your budget with ease.</p>
+
+<p>Remittances are a big part of the economy in the Philippines. They help fight poverty and boost local spending, says the <a href="https://thedocs.worldbank.org/en/doc/e522b834eaf0c4f81970f80a8c8ccb6e-0070012024/original/5-BSP-Overview-of-OF-Remittance-Flows-in-the-Philippines.pdf">World Bank</a>. When you avoid hidden fees, more of that support reaches the people you love. We show you the full cost before you click send.</p>
+
+<h3>Fast delivery with InstaPay</h3>
+
+<p>Sending money is not just about the cost. It is also about speed. We use <a href="https://documents1.worldbank.org/curated/en/368161629268352616/pdf/Philippines-Financial-Sector-Assessment-Program-Retail-Payments-Technical-Note.pdf">InstaPay</a> to send your funds to GCash. InstaPay is a payment system in the Philippines that allows for real-time fund transfers. This tech makes it easy to send money from your US account to a GCash wallet in minutes.</p>
+
+<p>This system works all day, every day. It does not matter if it is a holiday or a weekend. Your family can get the funds they need right when they need them. Combining the real exchange rate with fast speed makes for a better way to send money home.</p>
+<h2>Is GCash Available in the US?</h2>
+
+<p>Yes, GCash works for users in the US. The app started in the Philippines but has grown to help Filipinos abroad. If you have a valid Philippine ID, you can use GCash in the US and 15 other countries. This helps you manage your money and pay bills back home from your phone.</p>
+
+<h3>Using GCash Overseas</h3>
+<p>To use GCash in the US, you must sign up for a GCash Overseas account. This tool lets you sign up with a US mobile number. You will need a valid Philippine passport to verify who you are. Once set up, you can use the same wallet features that people use in the Philippines.</p>
+
+<p>For Filipinos in the US, using an app like <a href="https://mymana.xyz/ofw">Mana</a> is often the best way to fund a GCash wallet. You can send money from your Mana account right to a family member's GCash wallet in the Philippines. This way is fast and helps your loved ones get the cash they need in minutes.</p>
+
+<h3>Security and Safety</h3>
+<p>GCash uses many layers of safety to protect your money. Every account needs a check to stop fraud. The app uses two-factor authentication (2FA) by sending a one-time PIN (OTP) to your phone. You also use a 4-digit MPIN to confirm every move you make. These steps make sure only you can get to your funds.</p>
+
+<p>According to <a href="https://www.riamoneytransfer.com/en-us/send-money-to-gcash/">Ria Money Transfer</a>, GCash is safe because it uses these digital locks. With over 94 million users, the app has a strong way to handle daily tasks. Whether you send a small gift or pay a big bill, the system keeps your data and your Pesos safe.</p>
+
+<h3>How to Send Money from US to GCash</h3>
+<p>If you want to know <a href="https://mymana.xyz/">how to send money from US to GCash</a>, the steps are easy with new apps. You do not need a GCash account to send money home. You can just link your US bank to your Mana account. Then, pick GCash as the spot to send money and type in the phone number for your family member.</p>
+
+<p>This flow is much faster than old bank moves. The money goes through <a href="https://documents1.worldbank.org/curated/en/368161629268352616/pdf/Philippines-Financial-Sector-Assessment-Program-Retail-Payments-Technical-Note.pdf">InstaPay</a>, a system that lets funds move in real time in the Philippines. Your family gets the funds right away, and you get peace of mind from a safe, low-fee service.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What is the best way to send money to GCash from the US?</h3>
+<p>The best way is to use a tool that gives you a fair rate and lowest fees. Mana lets you send money from your US account to GCash quickly. You get the real mid-market exchange rate with no extra markup. This means your family in the Philippines gets more cash than with most apps. You can <a href="https://mymana.xyz/">join the Mana waitlist</a> now to start saving on your next transfer.</p>
+<h3>How long does it take to send money to GCash from the US?</h3>
+<p>Most transfers through modern apps like Mana arrive in just a few minutes. This fast speed comes from the <a href="https://documents1.worldbank.org/curated/en/368161629268352616/pdf/Philippines-Financial-Sector-Assessment-Program-Retail-Payments-Technical-Note.pdf">InstaPay network</a>, which works all day and even on weekends. Old bank moves can take days to clear, but new tools make the work much faster. You can send funds to your loved ones right when they need them without a long wait.</p>
+<h3>What information do I need to send money to a GCash wallet?</h3>
+<p>You only need a few details to start your transfer. You will need the full name of the person getting the money and their GCash phone number. Services like <a href="https://www.remitly.com/us/en/providers-philippines/send-money-to-gcash">Remitly</a> also ask for where the person lives to keep the deal safe. Make sure the phone number is right so the funds go to the right place. Once you enter these facts, you can send money home with just a few taps.</p>
+<h3>Do I need a Filipino passport to use GCash overseas?</h3>
+<p>You do not need a passport, but you must have a valid Philippine ID. This can be a driver's license or a PhilID card. According to <a href="https://www.riamoneytransfer.com/en-us/send-money-to-gcash/">Ria</a>, you must prove who you are before you can use the app outside the Philippines. Having a clear photo of your ID ready makes it easy to set up your account and start sending money home.</p>
+<h3>Are there fees for sending money to GCash?</h3>
+<p>Sending money home does not have to be costly. While many old apps charge high fees, new tools like Mana offer a better way. According to <a href="https://www.westernunion.com/us/en/providers/gcash.html">Western Union</a>, you can even find $0 fee offers for small moves to GCash wallets. Using a service with no fees and a fair rate helps you keep more of your hard-earned cash in your own pocket.</p>
+<h2>Ready to Send Money to GCash Without Fees?</h2>
+<p>Every single day you wait to switch your service is another day of losing your hard-earned dollars to high fees and unfair exchange rates. By the time your family in the Philippines finally gets their money, you have already paid far more than you ever should in hidden costs. You can stop this cycle right now and be one of the very first people to use a better and faster way to send funds. Joining the waitlist today ensures you get early access as soon as we launch so you can start saving on every transfer right away. Do not let another remittance go by where you lose money to high markups when a fairer, zero-fee option is just around the corner.</p>
+<p>Ready to send more home? <a href="https://mymana.xyz/">Request access</a> to join the Mana waitlist.</p>
+
+<div class="mana-cta">
+      <span class="glow"></span>
+      <span class="eyebrow">How Mana helps</span>
+      <h3>Send money from the US to GCash at the real exchange rate</h3>
+      <p style="color:rgba(255,255,255,0.78);font-size:16px;line-height:1.55;margin-bottom:18px;position:relative;">Mana is built for global Filipinos. Send money to GCash instantly with no hidden fees or exchange-rate markups. Get the features you actually need:</p>
+      <ul>
+        <li><strong style="color:#fff;">Near-zero fee remittance.</strong> 0.25% flat transfer fee at cost and the real mid-market exchange rate with no FX markup.</li>
+        <li><strong style="color:#fff;">Instant GCash delivery.</strong> Funds arrive in seconds via InstaPay, even on weekends and holidays.</li>
+        <li><strong style="color:#fff;">A real US dollar account.</strong> Hold and grow your USD before sending, with a 3.5% APY yield feature.</li>
+        <li><strong style="color:#fff;">A global Mana Visa card.</strong> Spend anywhere Visa is accepted with no foreign transaction markups.</li>
+      </ul>
+      <a href="/ofw" class="go">Explore Mana for OFWs <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+<div class="disclaim">This guide is general information, not financial or tax advice. Mana is a financial technology company, not a bank. Banking services are provided by our partner bank, Member FDIC. The Mana Card is issued by our card partner pursuant to a license from Visa U.S.A. Inc.</div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:developer@mymana.xyz">developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      <p>Mana is a financial technology company, not a bank. Banking services are provided by SSB, Member FDIC. Funds deposited at SSB are eligible for FDIC insurance up to $250,000 per depositor, per insured bank, subject to applicable limitations and FDIC rules. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.</p>
+      <div class="row2"><span>© 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>
