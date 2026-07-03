@@ -14,6 +14,7 @@ import blogPostBestApp from "./site/blog-best-app-send-money-philippines.html?ra
 import blogPostBestBank from "./site/blog-best-us-bank-for-ofw.html?raw";
 import blogPostFreelancers from "./site/blog-us-bank-account-for-filipino-freelancers.html?raw";
 import blogPostSendMoneyGCash from "./site/blog-send-money-from-us-to-gcash.html?raw";
+import blogPostBestPHPRate from "./site/blog-best-php-exchange-rate.html?raw";
 import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
 
@@ -35,6 +36,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/best-us-bank-for-ofw": { html: blogPostBestBank, title: "Your Guide to the 6 Best US Banks for OFWs — Mana" },
   "/blog/us-bank-account-for-filipino-freelancers": { html: blogPostFreelancers, title: "US Bank Account for Filipino Freelancers: A Complete Guide — Mana" },
   "/blog/send-money-from-us-to-gcash": { html: blogPostSendMoneyGCash, title: "How to Send Money from US to GCash Instantly with Zero Fees — Mana" },
+  "/blog/best-php-exchange-rate": { html: blogPostBestPHPRate, title: "How to Find the Best PHP Exchange Rate Today — Mana" },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
