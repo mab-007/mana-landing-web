@@ -1,0 +1,184 @@
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; color: var(--gabi-900); margin: 32px 0 10px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .article ol { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ol li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ol li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ol li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .answer-capsule { background: var(--papel-100); border-radius: 16px; padding: 20px 24px; margin: 30px 0; border-left: 3px solid var(--tanglaw-400); }
+  .answer-capsule p { font-size: 17px; line-height: 1.62; margin-bottom: 0; }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .mana-cta { padding: 26px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a><a href='/card'>The Mana Card</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a><a href='/card' class='nav-card'>Card</a><a href="/ofw" class="btn btn-primary">Get early access</a></div>
+  
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu">
+    <a href='/'>Home</a>
+    <a href='/freelancers'>For Freelancers</a>
+    <a href='/ofw'>For OFWs</a>
+    <a href='/card'>The Mana Card</a>
+    <a href='/about'>About</a>
+    <a href='/blog'>Blog</a>
+  </div>
+
+</nav>
+
+<article class="article">
+  <div class="wrap">
+    <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
+
+    <div class="art-meta">
+      <span class="tag">Guide</span><span class="dot"></span><span class="read">18 min read</span>
+    </div>
+
+    <h1>How to Get the Best PHP Exchange Rate & Avoid Fees</h1>
+
+    <p class="standfirst">Learn how to get the best PHP exchange rate and avoid hidden fees when sending money home. Simple tips help you keep more of your hard-earned money.</p>
+
+<p>Think of your US dollars like a full cup of coffee. Every time you send money home through a service with a bad exchange rate, it’s like someone is taking a sip before it gets to your family. A little bit here, a little bit there—it adds up. Taking control of your transfers means keeping that cup full. Understanding how to get the best PHP exchange rate gives you the power to choose a service that respects your hard work. It’s a simple skill that makes a huge difference, ensuring your loved ones get the full amount they deserve, every single time.</p>
+<h2>Key Takeaways</h2>
+<p><strong>Know what drives the exchange rate</strong>: The PHP rate changes based on economic health, global events, and market demand. Understanding these factors gives you the context to make smarter decisions about when to send money.</p>
+<p><strong>Uncover the true cost of your transfer</strong>: Don't be fooled by low transfer fees or "zero fee" promises; the real cost is often in the exchange rate markup, so always calculate the final amount your recipient gets to find the best value.</p>
+<p><strong>Use the right tools and timing</strong>: Choose digital platforms that offer transparent, mid-market rates. You can maximize your transfer by sending larger sums less often and setting up rate alerts to send money when the rate is favorable.</p>
+<h2>What Moves the PHP Exchange Rate?</h2>
+<p>Have you ever noticed how the USD to PHP exchange rate seems to change every time you look? It’s not random. The value of a currency is constantly shifting based on a few key factors. Think of it as a price tag that reflects a country's economic health and its relationship with the rest of the world. Understanding what makes the rate move can help you feel more confident about when to send your hard-earned money home. Let’s walk through the three main drivers behind the numbers you see.</p>
+<h3>A Country's Economic Health</h3>
+<p>A country’s economy is a lot like its report card. Strong performance in key areas often leads to a stronger currency. Economists look at specific <a href="https://www.bsp.gov.ph/Inclusive%20Finance/EFLP/EFLP_WF_02a.pdf">economic indicators</a> like GDP (the total value of everything a country produces), inflation (how quickly prices are rising), and interest rates to gauge financial health. When the Philippine economy is growing and stable, it becomes more attractive to foreign investors. This increased demand for the peso can cause its value to rise against the US dollar, meaning your dollars might convert to fewer pesos. On the flip side, economic challenges can weaken the peso.</p>
+<h3>Global Events and Market Moods</h3>
+<p>The world is more connected than ever, and that includes our finances. Major global events, from political elections in the United States to economic policy changes in China, can create ripples that affect the Philippine peso. It all comes down to investor confidence, or "market mood." During times of global uncertainty, investors often seek "safe-haven" currencies, like the US dollar. This flock to safety increases the dollar's value and can weaken other currencies, including the peso. This is why understanding <a href="https://www.westernunion.com/blog/en/best-exchange-rate/">how much one country's money is worth</a> compared to another's is so important for timing your transfers.</p>
+<h3>The Basics of Supply and Demand</h3>
+<p>At its heart, a currency's value is determined by supply and demand, just like any product you’d buy at the store. When demand for the Philippine peso is high, its value increases. This can happen when many OFWs and freelancers send money home at the same time, or when foreign companies invest in the Philippines. Conversely, if the supply of pesos in the market increases too quickly without a corresponding rise in demand, its value can fall. Every time you exchange your dollars for pesos, you are participating in this global market, adding to the demand for pesos.</p>
+<h2>Spotting the Hidden Fees in Money Transfers</h2>
+<p>Sending your hard-earned money back home is a powerful act of love and support. But it can be frustrating when a chunk of that money disappears before it even reaches your family. The advertised exchange rate rarely tells the whole story, as many money transfer services have hidden costs that can quietly eat away at the amount you send. High fees and poor exchange rates can take a toll on your income, so learning to spot these extra charges is key to making sure more of your money makes it home. It’s not just about finding the lowest fee; it’s about understanding the total cost of your transfer. Let’s walk through the common culprits so you can keep more money in your pocket, and in the hands of your loved ones.</p>
+<h3>Common Transfer and Service Fees</h3>
+<p>The most obvious cost is the transfer fee, sometimes called a service fee. This is a flat amount the company charges you just for using their service. While some services are getting more competitive, these fees can still add up, especially if you send money frequently. Think of it as a cover charge for the transaction. It’s the first thing you should look for when comparing services, but it shouldn't be the last. A low transfer fee can sometimes mask other, more significant costs, so it’s important to see it as just one piece of the puzzle.</p>
+<h3>The "Zero Fee" Trap: Understanding Exchange Rate Markups</h3>
+<p>Have you ever seen an ad for "zero-fee" transfers? It sounds like a great deal, but it’s often a clever marketing tactic. Many companies that promise no fees make their money through exchange rate markups. They offer you a less favorable exchange rate than the real, <a href="https://mymana.xyz/blog/what-is-the-mid-market-exchange-rate">mid-market rate</a> (the rate banks use to trade currencies with each other). The difference between their rate and the mid-market rate is a hidden fee they pocket. As some experts note, a service might advertise "zero fees" but provide a weaker exchange rate, which means your recipient gets less money. Always compare the offered rate to the current mid-market rate to see how much you're really paying.</p>
+<h3>The Sneaky Cost of Credit Card Fees</h3>
+<p>Sometimes, the hidden fee doesn't even come from the money transfer service. If you pay for your transfer with a credit card, your card issuer might charge you extra. Many credit card companies treat international money transfers as a cash advance. This means you could be hit with a high upfront fee (typically 3% to 5% of the transaction amount) and a much higher interest rate that starts accruing immediately. To avoid this surprise cost, it's almost always better to <a href="https://www.westernunion.com/us/en/currency-converter/usd-to-php-rate.html">pay for your transfer</a> with a debit card or a direct transfer from your bank account.</p>
+<h3>How to Calculate the Real Cost of Your Transfer</h3>
+<p>The only way to know for sure which service is the best deal is to do the math. Don't just look at the fees or the exchange rate in isolation; you need to calculate the total cost. Before you send money, always compare the final amount your recipient will get. Here’s a simple way to do it: take the amount you’re sending in USD, subtract the transfer fee, and then multiply that by the offered PHP exchange rate. The service that gives your family the highest final amount in pesos is your winner. Look for companies that offer clear pricing and are transparent about how they make money, so you can make an informed choice every time you <a href="https://mymana.xyz/">send money home</a>.</p>
+<h2>Where to Find the Best PHP Exchange Rate</h2>
+<p>Knowing where to look for the best exchange rate can feel like a job in itself. The good news is that you have more options than ever before, and choosing the right one can save you a significant amount of money on every transfer. The key is to understand the pros and cons of each service, from digital apps designed for global workers to the traditional bank on the corner. Your best bet will almost always be a service with a digital-first approach, as they have lower overhead costs and can pass those savings on to you.</p>
+<p>These include specialized financial platforms and online money transfer companies. While traditional banks and physical exchange counters offer convenience, they often come with weaker rates and extra fees that eat into the money you’re sending home. Let’s walk through each option so you can decide which one works best for you and your family. By comparing them directly, you'll gain the confidence to choose a service that puts more of your hard-earned money where it belongs: in your loved one's hands.</p>
+<h3>Mana: Built for Global Filipinos</h3>
+<p>As a global Filipino, you deal with financial challenges that most people don't. That’s why using a service built specifically for you makes a world of difference. Mana was created by immigrants who understand the hurdles of managing money across borders. We provide you with a real US dollar account, so you can receive payments from international clients or employers without forced conversions or high fees.</p>
+<p>When you’re ready to send money home, you can do it for nearly free directly from the app. We give you the real mid-market exchange rate, with no markups or hidden charges. This means more of your hard-earned money makes it to your loved ones. It’s a financial tool designed to support the unique needs of <a href="https://mymana.xyz/for-ofws">OFWs and freelancers</a>, giving you transparency and control over your finances.</p>
+<h3>Online Money Transfer Services</h3>
+<p>Beyond specialized platforms, you’ll find a number of online money transfer services that are a huge step up from traditional methods. Companies like Wise and Remitly have become popular because their digital-first model allows them to offer more competitive rates and lower fees than brick-and-mortar institutions. They make it easy to see the exchange rate and fees upfront before you commit to a transfer.</p>
+<p>To get the best deal, you can use a comparison tool to see how different services stack up in real time. These sites let you compare rates, transfer speeds, and fees side-by-side, helping you find the most cost-effective option for your specific transfer.</p>
+<h3>Traditional Banks</h3>
+<p>Using your local bank to send money to the Philippines might seem like the easiest option, but that convenience often comes at a cost. Banks are known for offering less favorable exchange rates compared to online services. They frequently add a significant markup to the mid-market rate, which is a hidden fee that reduces the final amount your recipient gets.</p>
+<p>While banks provide a sense of security, their transfer fees can also be higher. If you do consider using a bank, make sure to ask for the final receiving amount after all fees and the exchange rate have been applied. Different banks offer different rates, so it’s essential to shop around. However, you’ll likely find that digital services consistently provide better value for your money.</p>
+<h3>Physical Exchange Counters</h3>
+<p>You’ve probably seen them in airports, malls, and tourist areas: physical currency exchange counters. While they are convenient for last-minute cash needs, they are one of the most expensive ways to exchange money. These businesses have high operating costs, like rent and staffing, which they cover by offering some of the worst exchange rates you’ll find.</p>
+<p>Think of these counters as an emergency-only option. If you need a small amount of cash right away and have no other choice, they can help. But for sending your salary or savings home, you should avoid them. Planning your transfers ahead of time with a service like Mana or another online platform will ensure you aren't losing money to poor rates.</p>
+<h2>How to Compare PHP Exchange Rates Like a Pro</h2>
+<p>Okay, let's talk about becoming your own financial expert. Comparing exchange rates isn't some secret skill reserved for bankers; it's something you can master to make sure more of your hard-earned money makes it home. It’s all about knowing what to look for and where to find it. A few minutes of checking can save you a significant amount on every transfer, and that adds up over time. Think of it as giving yourself a raise. By adopting a few simple habits, you can confidently find the best value and avoid services that chip away at your funds with hidden fees and poor rates. Here’s how you can start comparing PHP exchange rates like a pro.</p>
+<h3>Use Real-Time Rate Tracking Tools</h3>
+<p>The foreign exchange market is always moving, which means the rate you saw yesterday might not be the rate you get today. That’s why using a real-time rate tracking tool is a game-changer. These tools show you the current mid-market rate, which is the real exchange rate without any markups. Think of it as your baseline for what a "good" rate looks like. Before you even think about sending money, take a minute to <a href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=USD&To=PHP">check the live rate</a> on a reliable comparison site. This simple step equips you with the knowledge you need to instantly see if a provider is offering you a fair deal or a padded one.</p>
+<h3>Look Beyond the Advertised Rate</h3>
+<p>A flashy advertised rate can be tempting, but it rarely tells the whole story. Many services lure you in with a great-looking rate, only to add high transfer fees on the back end. To truly understand what you're paying, you need to look at the total cost. This means factoring in both the exchange rate and any service fees. Some providers might offer "zero fees" but give you a much weaker exchange rate, which is just another way of charging you. Always ask yourself: after all fees are paid, how many pesos will my family actually receive? A transparent service like <a href="https://mymana.xyz/">Mana</a> will always show you the real mid-market rate and a clear, low fee, so you know exactly where your money is going.</p>
+<h3>Learn to Spot a Bad Deal</h3>
+<p>After a while, you’ll start to develop a sixth sense for spotting a bad deal. The biggest red flag is a lack of transparency. If a provider makes it difficult to find their fees or the exact exchange rate they’re using, it’s best to be cautious. A good service will be upfront about its costs. Always compare rates and fees from a few different companies before committing to a transfer. A bad deal often involves an exchange rate that looks much worse than the mid-market rate you found on a tracking tool, or it comes with surprisingly high "service charges" that eat into your principal amount. Trust your instincts; if a deal feels confusing or too good to be true, it probably is.</p>
+<h3>Compare Rates On-the-Go with Mobile Apps</h3>
+<p>Your life is busy, and you don’t always have time to sit down at a computer to research rates. Luckily, you have a powerful comparison tool right in your pocket: your smartphone. Many money transfer services and financial platforms have mobile apps that let you check current exchange rates and fees in just a few taps. This makes it incredibly easy to compare your options, whether you’re on your lunch break or waiting for the bus. Using a <a href="https://mymana.xyz/for-ofws">financial app built for your needs</a> allows you to monitor rates and choose the perfect moment to send money home, ensuring you get the most value out of every single transfer without disrupting your day.</p>
+<h2>Get the Most Out of Every Transfer</h2>
+<p>Finding a good exchange rate is just one part of the equation. To truly maximize the money that arrives in your family’s hands, it helps to be strategic about how and when you send it. A few simple habits can add up to significant savings over the year, ensuring your hard-earned money works even harder for you. Think of it as playing the long game. By planning your transfers thoughtfully, you can avoid unnecessary fees and capture the best possible rates, making a real difference for your loved ones back home.</p>
+<h3>Time Your Transfers with Rate Alerts</h3>
+<p>Exchange rates are constantly changing, and sending money on a Tuesday versus a Friday can sometimes mean a noticeable difference in the final amount. Instead of guessing, let technology do the work for you. Many modern transfer services allow you to <a href="https://wise.com/us/currency-converter/usd-to-php-rate">set up rate alerts</a> that notify you via email or a push notification when the PHP rate hits a number you’re comfortable with. This simple step takes the guesswork out of timing your transfer. You can wait for a more favorable rate to send your funds, making sure you get more pesos for your dollars without having to check the rates obsessively every day.</p>
+<h3>Send Larger Amounts, Less Often</h3>
+<p>If you find yourself sending small amounts of money home frequently, you might be paying more in fees than you need to. Most services charge a fee for each transaction, whether it’s a fixed amount or a percentage, and these can add up quickly. By planning your budget and sending a larger amount once a month instead of smaller amounts every week, you can significantly cut down on the total fees you pay. This approach requires a bit more planning, but consolidating your transfers is one of the easiest ways to keep more money in your pocket and send a bigger sum home.</p>
+<h3>Use a Multi-Currency Account to Your Advantage</h3>
+<p>For freelancers and OFWs earning in dollars, a multi-currency account is a game-changer. Instead of having your USD earnings automatically converted to pesos at whatever the day's rate is, you can hold your money in a real US dollar account. This gives you the power and flexibility to watch the market. You can receive payments like a local and choose the perfect moment to convert your dollars to pesos when the exchange rate is in your favor. A service like <a href="https://mymana.xyz/for-freelancers">Mana for freelancers</a> provides you with this exact tool, giving you control over your international earnings.</p>
+<h3>Avoid Last-Minute Airport Exchanges</h3>
+<p>We’ve all been there: rushing to the airport and realizing you need to exchange currency. While convenient, airport money changers and kiosks are notorious for offering some of the worst exchange rates you’ll find. They count on travelers being in a hurry and having few other options. These exchanges often come with high, non-transparent fees that are built directly into their poor rates. Always plan to exchange your money before you get to the airport or use your global debit card to withdraw local currency from an ATM upon arrival for a much fairer rate.</p>
+<h3>Choose a Service Built for Global Transfers</h3>
+<p>Ultimately, the best way to protect your money is to use a service that was built with your needs in mind. Traditional banks and older remittance centers often have complex fee structures and less competitive rates. Modern financial platforms designed for global citizens, like <a href="https://mymana.xyz/">Mana</a>, prioritize transparency and value. They offer real, mid-market exchange rates and clear, lowest fees in the market because they understand the challenges of managing finances across borders. Choosing a service that is transparent and fair is the foundation for getting the most out of every single transfer you make.</p>
+<h2>Frequently Asked Questions</h2>
+<p><strong>Is a "zero-fee" transfer actually free?</strong></p>
+<p>It almost never is. When a service advertises zero fees, they usually make their profit by giving you a less favorable exchange rate. They take the real, mid-market rate, add a markup for themselves, and then offer you that weaker rate. The difference is a hidden cost you pay. The best way to check is to compare their offered rate against the live mid-market rate you can find online.</p>
+<p><strong>Why is the exchange rate my bank gives me different from the one I see on Google?</strong></p>
+<p>The rate you see on Google or other financial sites is typically the mid-market rate. This is the wholesale rate that banks use to trade currencies with each other. When you, as a customer, send money through a bank or most transfer services, they offer you a retail rate, which includes a markup. This markup is their profit margin, so the rate you get is almost always weaker than the mid-market rate.</p>
+<p><strong>What's the best way to know if I'm getting a good deal on my transfer?</strong></p>
+<p>The only way to be certain is to calculate the final amount your recipient will receive in pesos. Don't focus on just the transfer fee or just the exchange rate. Instead, take the total dollar amount you are sending, subtract any fees, and then multiply that by the exchange rate offered. The service that results in the highest peso amount for your family is the best deal for that specific transaction.</p>
+<p><strong>I get paid in US dollars. How can I avoid losing money when converting to pesos?</strong></p>
+<p>Holding your earnings in a real US dollar account gives you the most control. Instead of being forced to convert your funds immediately at a potentially bad rate, you can keep them as dollars. This allows you to monitor the market and choose to exchange your money for pesos only when the rate is favorable. Using a financial tool designed for this purpose lets you be strategic instead of reactive.</p>
+<p><strong>Besides finding a good rate, what else can I do to save money?</strong></p>
+<p>One of the most effective strategies is to send larger amounts of money less frequently. Since most services charge a fee per transaction, sending money once a month instead of four times a month can cut your fee-related costs significantly. You can also set up rate alerts with certain apps to notify you when the exchange rate hits a target you're happy with, taking the guesswork out of timing your transfers.</p>
+
+    <div class="mana-cta">
+      <span class="glow"></span>
+      <span class="eyebrow">How Mana helps</span>
+      <h3>Get the best PHP exchange rate when you send money home</h3>
+      <p style="color:rgba(255,255,255,0.78);font-size:16px;line-height:1.55;margin-bottom:18px;position:relative;">Mana is built for global Filipinos. Stop losing money to hidden exchange rate markups and start getting the real mid-market rate. Here's what you get:</p>
+      <ul>
+        <li><strong style="color:#fff;">Near-zero fee remittance.</strong> 0.25% flat transfer fee at cost and the real mid-market exchange rate with no FX markup.</li>
+        <li><strong style="color:#fff;">Real mid-market exchange rate.</strong> No hidden markups — the rate you see on Google is the rate you get.</li>
+        <li><strong style="color:#fff;">A real US dollar account.</strong> Hold and grow your USD before sending, with a 3.5% APY yield feature.</li>
+        <li><strong style="color:#fff;">A global Mana Visa card.</strong> Spend anywhere Visa is accepted with no foreign transaction markups.</li>
+      </ul>
+      <a href="/ofw" class="go">Join the Mana waitlist <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <div class="disclaim">This guide is general information, not financial or tax advice. Mana is a financial technology company, not a bank. Banking services are provided by our partner bank, Member FDIC. The Mana Card is issued by our card partner pursuant to a license from Visa U.S.A. Inc.</div>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:developer@mymana.xyz">developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      <p>Mana is a financial technology company, not a bank. Banking services are provided by SSB, Member FDIC. Funds deposited at SSB are eligible for FDIC insurance up to $250,000 per depositor, per insured bank, subject to applicable limitations and FDIC rules. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.</p>
+      <div class="row2"><span>© 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>
+
