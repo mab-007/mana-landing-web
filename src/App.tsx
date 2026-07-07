@@ -16,6 +16,8 @@ import blogPostFreelancers from "./site/blog-us-bank-account-for-filipino-freela
 import blogPostSendMoneyGCash from "./site/blog-send-money-from-us-to-gcash.html?raw";
 import blogPostBestPHPRate from "./site/blog-best-php-exchange-rate.html?raw";
 import blogPostCheapestWay from "./site/cheapest-way-to-send-money-to-philippines.html?raw";
+import blogPostCheapestWaysBespoke from "./site/cheapest-way-to-send-money-to-philippines.html?raw";
+import blogPostBestWay2026 from "./site/best-way-to-send-money-to-philippines-2026.html?raw";
 import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
 
@@ -39,6 +41,8 @@ const ROUTES: Record<string, Route> = {
   "/blog/send-money-from-us-to-gcash": { html: blogPostSendMoneyGCash, title: "How to Send Money from US to GCash Instantly with Zero Fees — Mana" },
   "/blog/best-php-exchange-rate": { html: blogPostBestPHPRate, title: "How to Find the Best PHP Exchange Rate Today — Mana" },
   "/blog/cheapest-way-to-send-money-to-philippines": { html: blogPostCheapestWay, title: "Cheapest Way to Send Money to Philippines: Complete Guide — Mana" },
+  "/blog/cheapest-way-send-money-philippines": { html: blogPostCheapestWaysBespoke, title: "5 Cheapest Ways to Send Money to Philippines from USA — Mana" },
+  "/blog/best-way-to-send-money-to-philippines-2026": { html: blogPostBestWay2026, title: "Best Way to Send Money to Philippines 2026: Top 6 Services Ranked — Mana" },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
