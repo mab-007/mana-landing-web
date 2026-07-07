@@ -181,6 +181,53 @@ export function App() {
     if (route) document.title = route.title;
   }, [route]);
 
+  // Inject JSON-LD schema programmatically (script tags are stripped by
+  // dangerouslySetInnerHTML). Each route change cleans up previous schema.
+  useEffect(() => {
+    const existing = document.getElementById("seo-schema");
+    if (existing) existing.remove();
+    if (path === "/card") {
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Mana Visa Card",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "A virtual Visa card for Filipinos abroad that works wherever Visa is accepted. Add to Apple Pay or Google Pay for instant spending. Features include cashback on eligible purchases, no foreign transaction fees, ATM withdrawals, and family cards with spending limits. No monthly membership fee.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "No monthly membership fee. Cashback on eligible purchases. Other fees may apply. Card issued by our card partner pursuant to a license from Visa U.S.A. Inc.",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://mymana.xyz/card/"
+        },
+        "featureList": [
+          "Accepted wherever Visa is accepted globally",
+          "Add to Apple Pay or Google Pay",
+          "Cashback on eligible purchases",
+          "No foreign transaction fees",
+          "ATM withdrawals at Visa-accepting ATMs",
+          "Family cards with customizable spending limits",
+          "Real-time transaction visibility",
+          "No monthly membership fee"
+        ],
+        "browserRequirements": "Requires iOS or Android device",
+        "softwareVersion": "1.0",
+        "provider": {
+          "@type": "Organization",
+          "name": "Mana",
+          "url": "https://mymana.xyz/"
+        }
+      };
+      const script = document.createElement("script");
+      script.id = "seo-schema";
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    }
+  }, [path]);
+
   if (!route) {
     return (
       <div className="wrap" style={{ padding: "120px 24px", textAlign: "center" }}>
