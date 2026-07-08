@@ -37,6 +37,9 @@ nav.on-dark .nav-dd-toggle { color: rgba(255,255,255,0.72); }
 .nav-dd:hover .menu, .nav-dd:focus-within .menu { display: flex; }
 .nav-dd .menu a { display: block; padding: 9px 12px; border-radius: 9px; font-size: 14px; font-weight: 500; color: var(--papel-700); }
 .nav-dd .menu a:hover { background: var(--papel-100); color: var(--gabi-900); }
+/* Dropdown popover is always white — keep its links dark even when the nav is on-dark */
+nav.on-dark .nav-dd .menu a { color: var(--papel-700); }
+nav.on-dark .nav-dd .menu a:hover { color: var(--gabi-900); }
 /* Prominent standalone "Card" nav link */
 .nav-links a.nav-card { color: var(--tanglaw-600); font-weight: 600; }
 .nav-links a.nav-card:hover { color: var(--tanglaw-400); }
