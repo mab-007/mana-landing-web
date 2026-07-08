@@ -18,6 +18,7 @@ import blogPostBestPHPRate from "./site/blog-best-php-exchange-rate.html?raw";
 import blogPostCheapestWay from "./site/cheapest-way-to-send-money-to-philippines.html?raw";
 import blogPostCheapestWaysBespoke from "./site/cheapest-way-to-send-money-to-philippines.html?raw";
 import blogPostBestWay2026 from "./site/best-way-to-send-money-to-philippines-2026.html?raw";
+import blogPostItinVsSsn from "./site/blog-itin-vs-ssn.html?raw";
 import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
 
@@ -43,6 +44,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/cheapest-way-to-send-money-to-philippines": { html: blogPostCheapestWay, title: "Cheapest Way to Send Money to Philippines: Complete Guide — Mana" },
   "/blog/cheapest-way-send-money-philippines": { html: blogPostCheapestWaysBespoke, title: "5 Cheapest Ways to Send Money to Philippines from USA — Mana" },
   "/blog/best-way-to-send-money-to-philippines-2026": { html: blogPostBestWay2026, title: "Best Way to Send Money to Philippines 2026: Top 6 Services Ranked — Mana" },
+  "/blog/itin-vs-ssn-filipino-immigrants-guide": { html: blogPostItinVsSsn, title: "ITIN vs SSN: A Complete Guide for Filipino Immigrants — Mana" },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
