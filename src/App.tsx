@@ -26,7 +26,7 @@ import card from "./site/card.html?raw";
 type Route = { html: string; title: string };
 
 const ROUTES: Record<string, Route> = {
-  "/": { html: home, title: "Mana — Financial services built for Filipinos everywhere" },
+  "/": { html: home, title: "Mana for OFWs: Free Remittances and USD Banking Abroad" },
   "/freelancers": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
   "/freelances": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
   "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
