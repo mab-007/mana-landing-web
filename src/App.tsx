@@ -23,13 +23,17 @@ import blogPostItinBankAccount from "./site/blog-itin-bank-account-opening-guide
 import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
 
-type Route = { html: string; title: string };
+type Route = { html: string; title: string; description?: string };
 
 const ROUTES: Record<string, Route> = {
   "/": { html: home, title: "Mana for OFWs: Free Remittances and USD Banking Abroad" },
   "/freelancers": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
   "/freelances": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
-  "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
+  "/ofw": {
+    html: ofw,
+    title: "OFW Banking & Free Remittances | Send Money Home with Mana",
+    description: "Send money home free, save USD at 3.5% APY, and spend globally with a Visa card — all in one app built for OFWs and Filipinos abroad. Join the Mana waitlist today."
+  },
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms": { html: terms, title: "Terms of Service — Mana" },
   "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders" },
@@ -186,7 +190,34 @@ export function App() {
   const route = ROUTES[path];
 
   useEffect(() => {
-    if (route) document.title = route.title;
+    if (route) {
+      document.title = route.title;
+
+      // Update meta description
+      let md = document.querySelector('meta[name="description"]');
+      if (!md) {
+        md = document.createElement('meta');
+        md.setAttribute('name', 'description');
+        document.head.appendChild(md);
+      }
+      md.setAttribute('content', route.description || "Mana is a financial app built for OFWs and global Filipinos. Free remittances, 3.5% APY USD savings, and a global Visa card. Join the waitlist.");
+
+      // Update OG title
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', route.title);
+
+      // Update OG description
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', route.description || "");
+
+      // Update Twitter title
+      const twTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twTitle) twTitle.setAttribute('content', route.title);
+
+      // Update Twitter description
+      const twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (twDesc) twDesc.setAttribute('content', route.description || "");
+    }
   }, [route]);
 
   // Inject JSON-LD schema programmatically (script tags are stripped by
