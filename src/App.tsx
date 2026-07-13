@@ -28,8 +28,8 @@ type Route = { html: string; title: string; description?: string };
 
 const ROUTES: Record<string, Route> = {
   "/": { html: home, title: "Mana for OFWs: Free Remittances and USD Banking Abroad" },
-  "/freelancers": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
-  "/freelances": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
+  "/freelancers": { html: freelancers, title: "Mana for Filipino Freelancers — USD Banking & Free Remittance", description: "A US bank account for Filipino freelancers. Get paid in USD, convert at mid-market rates, earn 3.5% APY. No SSN needed. Join the Mana waitlist." },
+  "/freelances": { html: freelancers, title: "Mana for Filipino Freelancers — USD Banking & Free Remittance", description: "A US bank account for Filipino freelancers. Get paid in USD, convert at mid-market rates, earn 3.5% APY. No SSN needed. Join the Mana waitlist." },
   "/ofw": {
     html: ofw,
     title: "OFW Banking & Free Remittances | Send Money Home with Mana",
