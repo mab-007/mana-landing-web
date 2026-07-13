@@ -22,6 +22,7 @@ import blogPostItinVsSsn from "./site/blog-itin-vs-ssn.html?raw";
 import blogPostItinBankAccount from "./site/blog-itin-bank-account-opening-guide.html?raw";
 import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
+import blogPostUSBankAccountForFilipinos from "./site/us-bank-account-for-filipinos-complete-guide.html?raw";
 
 type Route = { html: string; title: string; description?: string };
 
@@ -51,6 +52,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/best-way-to-send-money-to-philippines-2026": { html: blogPostBestWay2026, title: "Best Way to Send Money to Philippines 2026: Top 6 Services Ranked — Mana" },
   "/blog/itin-vs-ssn-filipino-immigrants-guide": { html: blogPostItinVsSsn, title: "ITIN vs SSN: A Complete Guide for Filipino Immigrants — Mana" },
   "/blog/itin-bank-account-opening-guide": { html: blogPostItinBankAccount, title: "ITIN Bank Account Opening: A Complete US Banking Guide — Mana" },
+  "/blog/us-bank-account-for-filipinos-complete-guide": { html: blogPostUSBankAccountForFilipinos, title: "US Bank Account for Filipinos: A Complete Guide for OFWs — Mana", description: "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today." },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
@@ -258,6 +260,40 @@ export function App() {
           "name": "Mana",
           "url": "https://mymana.xyz/"
         }
+      };
+      const script = document.createElement("script");
+      script.id = "seo-schema";
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    }
+
+    // Inject Article/BlogPosting schema for blog posts
+    const blogRoutes = [
+      "/blog/us-bank-account-for-filipinos-complete-guide",
+    ];
+    if (blogRoutes.includes(path)) {
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "US Bank Account for Filipinos: A Complete Guide for OFWs",
+        "description": "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today.",
+        "author": {
+          "@type": "Person",
+          "name": "Paco Litonjua"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mana",
+          "url": "https://mymana.xyz/"
+        },
+        "datePublished": "2026-07-13",
+        "dateModified": "2026-07-13",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://mymana.xyz/blog/us-bank-account-for-filipinos-complete-guide"
+        },
+        "image": "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-a-complete-guide-for-ofws-345456.webp"
       };
       const script = document.createElement("script");
       script.id = "seo-schema";
