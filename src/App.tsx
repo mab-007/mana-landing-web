@@ -18,20 +18,28 @@ import blogPostBestPHPRate from "./site/blog-best-php-exchange-rate.html?raw";
 import blogPostCheapestWay from "./site/cheapest-way-to-send-money-to-philippines.html?raw";
 import blogPostCheapestWaysBespoke from "./site/cheapest-way-to-send-money-to-philippines.html?raw";
 import blogPostBestWay2026 from "./site/best-way-to-send-money-to-philippines-2026.html?raw";
+import blogPostItinVsSsn from "./site/blog-itin-vs-ssn.html?raw";
+import blogPostItinBankAccount from "./site/blog-itin-bank-account-opening-guide.html?raw";
 import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
+import blogPostUSBankAccountForFilipinos from "./site/us-bank-account-for-filipinos-complete-guide.html?raw";
+import blogPostMidMarketRate from "./site/mid-market-exchange-rate-explained.html?raw";
 
-type Route = { html: string; title: string };
+type Route = { html: string; title: string; description?: string };
 
 const ROUTES: Record<string, Route> = {
-  "/": { html: home, title: "Mana — Financial services built for Filipinos everywhere" },
-  "/freelancers": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
-  "/freelances": { html: freelancers, title: "Mana for Freelancers — Get paid in real dollars" },
-  "/ofw": { html: ofw, title: "Mana for OFWs — The financial home for Filipinos abroad" },
+  "/": { html: home, title: "Mana for OFWs: Free Remittances and USD Banking Abroad" },
+  "/freelancers": { html: freelancers, title: "Mana for Filipino Freelancers — USD Banking & Remittance", description: "A US bank account for Filipino freelancers. Get paid in USD, convert at mid-market rates, earn 3.5% APY. No SSN needed. Join the Mana waitlist." },
+  "/freelances": { html: freelancers, title: "Mana for Filipino Freelancers — USD Banking & Remittance", description: "A US bank account for Filipino freelancers. Get paid in USD, convert at mid-market rates, earn 3.5% APY. No SSN needed. Join the Mana waitlist." },
+  "/ofw": {
+    html: ofw,
+    title: "OFW Banking & Free Remittances | Send Money Home with Mana",
+    description: "Send money home free, save USD at 3.5% APY, and spend globally with a Visa card — all in one app built for OFWs and Filipinos abroad. Join the Mana waitlist today."
+  },
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms": { html: terms, title: "Terms of Service — Mana" },
   "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders" },
-  "/card": { html: card, title: "The Mana Card — Spend wherever Visa is accepted" },
+  "/card": { html: card, title: "Mana Visa Card for OFWs | Spend Globally", description: "The Mana Visa Card for OFWs — accepted globally with no hidden fees and full account integration. Manage your money and spend in one app. Join the waitlist." },
   "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
   "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
   "/blog/open-us-bank-account": { html: blogPostBankAccount, title: "How to Open Your First US Bank Account (Even With No Credit History) — Mana" },
@@ -43,6 +51,10 @@ const ROUTES: Record<string, Route> = {
   "/blog/cheapest-way-to-send-money-to-philippines": { html: blogPostCheapestWay, title: "Cheapest Way to Send Money to Philippines: Complete Guide — Mana" },
   "/blog/cheapest-way-send-money-philippines": { html: blogPostCheapestWaysBespoke, title: "5 Cheapest Ways to Send Money to Philippines from USA — Mana" },
   "/blog/best-way-to-send-money-to-philippines-2026": { html: blogPostBestWay2026, title: "Best Way to Send Money to Philippines 2026: Top 6 Services Ranked — Mana" },
+  "/blog/itin-vs-ssn-filipino-immigrants-guide": { html: blogPostItinVsSsn, title: "ITIN vs SSN: A Complete Guide for Filipino Immigrants — Mana" },
+  "/blog/itin-bank-account-opening-guide": { html: blogPostItinBankAccount, title: "ITIN Bank Account Opening: A Complete US Banking Guide — Mana" },
+  "/blog/us-bank-account-for-filipinos-complete-guide": { html: blogPostUSBankAccountForFilipinos, title: "US Bank Account for Filipinos: A Complete Guide for OFWs — Mana", description: "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today." },
+  "/blog/mid-market-exchange-rate-explained": { html: blogPostMidMarketRate, title: "Mid-Market Exchange Rate Explained: A Guide for OFWs — Mana", description: "Get the mid-market exchange rate explained in simple terms. Learn how hidden FX markups cost OFW families $500M+ annually and how to send every dollar home." },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
@@ -182,7 +194,34 @@ export function App() {
   const route = ROUTES[path];
 
   useEffect(() => {
-    if (route) document.title = route.title;
+    if (route) {
+      document.title = route.title;
+
+      // Update meta description
+      let md = document.querySelector('meta[name="description"]');
+      if (!md) {
+        md = document.createElement('meta');
+        md.setAttribute('name', 'description');
+        document.head.appendChild(md);
+      }
+      md.setAttribute('content', route.description || "Mana is a financial app built for OFWs and global Filipinos. Free remittances, 3.5% APY USD savings, and a global Visa card. Join the waitlist.");
+
+      // Update OG title
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', route.title);
+
+      // Update OG description
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', route.description || "");
+
+      // Update Twitter title
+      const twTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twTitle) twTitle.setAttribute('content', route.title);
+
+      // Update Twitter description
+      const twDesc = document.querySelector('meta[name="twitter:description"]');
+      if (twDesc) twDesc.setAttribute('content', route.description || "");
+    }
   }, [route]);
 
   // Inject JSON-LD schema programmatically (script tags are stripped by
@@ -223,6 +262,40 @@ export function App() {
           "name": "Mana",
           "url": "https://mymana.xyz/"
         }
+      };
+      const script = document.createElement("script");
+      script.id = "seo-schema";
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    }
+
+    // Inject Article/BlogPosting schema for blog posts
+    const blogRoutes = [
+      "/blog/us-bank-account-for-filipinos-complete-guide",
+    ];
+    if (blogRoutes.includes(path)) {
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "US Bank Account for Filipinos: A Complete Guide for OFWs",
+        "description": "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today.",
+        "author": {
+          "@type": "Person",
+          "name": "Paco Litonjua"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mana",
+          "url": "https://mymana.xyz/"
+        },
+        "datePublished": "2026-07-13",
+        "dateModified": "2026-07-13",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://mymana.xyz/blog/us-bank-account-for-filipinos-complete-guide"
+        },
+        "image": "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-a-complete-guide-for-ofws-345456.webp"
       };
       const script = document.createElement("script");
       script.id = "seo-schema";
