@@ -39,7 +39,7 @@ const ROUTES: Record<string, Route> = {
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms": { html: terms, title: "Terms of Service — Mana" },
   "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders" },
-  "/card": { html: card, title: "The Mana Card — Spend wherever Visa is accepted" },
+  "/card": { html: card, title: "Mana Visa Card for OFWs | Spend Globally", description: "The Mana Visa Card for OFWs — accepted globally with no hidden fees and full account integration. Manage your money and spend in one app. Join the waitlist." },
   "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
   "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
   "/blog/open-us-bank-account": { html: blogPostBankAccount, title: "How to Open Your First US Bank Account (Even With No Credit History) — Mana" },
