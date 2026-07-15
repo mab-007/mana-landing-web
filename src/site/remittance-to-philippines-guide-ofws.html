@@ -1,0 +1,334 @@
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 22px; line-height: 1.25; letter-spacing: -0.005em; color: var(--gabi-900); margin: 32px 0 12px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .article ol { margin: 0 0 18px; padding: 0 0 0 24px; }
+  .article ol li { font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ol li strong { color: var(--gabi-900); font-weight: 600; }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  .article table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px; }
+  .article th { background: var(--papel-100); text-align: left; padding: 12px 16px; font-weight: 600; color: var(--gabi-900); border-bottom: 2px solid var(--papel-200); }
+  .article td { padding: 12px 16px; border-bottom: 1px solid var(--papel-200); color: var(--papel-700); }
+  .article tr:hover td { background: var(--papel-50); }
+  .answer-capsule { background: var(--papel-100); border-left: 3px solid var(--tanglaw-400); border-radius: 8px; padding: 16px 20px; margin: 24px 0; }
+  .answer-capsule p { font-size: 16px; margin-bottom: 0; color: var(--papel-800); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .article h3 { font-size: 20px; } .mana-cta { padding: 26px; } .article table { display: block; overflow-x: auto; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a><a href='/card'>The Mana Card</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a><a href='/card' class='nav-card'>Card</a><a href="/ofw" class="btn btn-primary">Get early access</a></div>
+  
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu">
+    <a href='/'>Home</a>
+    <a href='/freelancers'>For Freelancers</a>
+    <a href='/ofw'>For OFWs</a>
+    <a href='/card'>The Mana Card</a>
+    <a href='/about'>About</a>
+    <a href='/blog'>Blog</a>
+  </div>
+</nav>
+
+<article class="article">
+  <div class="wrap">
+    <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
+
+    <div class="art-meta">
+      <span class="tag">Guide</span><span class="dot"></span><span class="read">16 min read</span>
+    </div>
+
+    <h1>Remittance to Philippines: The Complete Guide for OFWs</h1>
+
+    <p class="standfirst">Filipino families lose up to one billion dollars every year to hidden remittance fees. Choosing the right way to send money ensures your family gets every peso they deserve.</p>
+
+
+<p><strong>Ready to send more to your family and less to fees? <a href="https://mymana.xyz/ofw">Join Mana today</a> for early access to near-zero fee remittance with real mid-market exchange rates.</strong></p>
+
+<div class="answer-capsule"><p>A safe and low-cost <strong>remittance to Philippines</strong> transfer is about picking the right method, knowing the real rates, and stopping hidden costs. The Philippine remittance market reached a record $35.63 billion in 2025, accounting for 7.3-8.1% of the country's GDP. But many families still lose money to exchange rate markups that providers hide instead of showing as clear fees. These hidden costs take an estimated $500 million to $1 billion away from Filipino homes every year. You should always compare exchange rates and check for fast delivery through networks like InstaPay to ensure your family gets the money right away. Knowing these details can help you save hundreds of dollars each year on your transfers.</p></div>
+
+<p>Learning how to spot these hidden costs is the first step toward better financial health for your family. This guide covers what remittance means, how different transfer methods work, the true cost of sending money, and how to choose the best service for your situation.</p>
+
+<h2>What Is Remittance to Philippines and Why It Matters</h2>
+
+<div class="answer-capsule"><p>Remittance to Philippines is the money sent by Overseas Filipino Workers back to their families at home. With a record $35.63 billion flowing in during 2025 -- representing 7.3% to 8.1% of the country's GDP -- these transfers are the financial backbone for millions of Filipino households. Understanding how remittance works helps OFWs choose the most cost-effective way to support their loved ones.</p></div>
+
+<p>Remittance is money sent by Overseas Filipino Workers (OFWs) back to their families in the Philippines. It is more than a simple wire transfer. For millions of Filipinos, these funds are a lifeline that supports daily needs, education, healthcare, and the local economy. In 2025, the <a href="https://www.bsp.gov.ph" rel="nofollow" target="_blank">Philippine remittance market</a> reached a record $35.63 billion, showing how vital these flows remain.</p>
+
+<h3>A pillar of the local economy</h3>
+
+<p>Remittance is a main driver of the nation's wealth. These funds now make up between 7.3% and 8.1% of the total Gross Domestic Product of the Philippines. This steady flow of cash helps the country stay stable. With over 2.19 million OFWs working around the world, the impact of their hard work is felt in every city and province across the islands.</p>
+
+<p>The scale of this support is huge. In 2025, the number of Filipinos working abroad grew by nearly 18%. As more people seek better pay to help their loved ones, finding a <a href="https://mymana.xyz/blog/best-way-to-send-money-to-philippines-2026">detailed remittance comparison</a> is a top priority for families who want to keep more of their cash.</p>
+
+<h3>The vital role of the US</h3>
+
+<p>While Filipinos work in many countries, the US is the largest source of these funds. Data from 2025 shows that workers in the US sent home $14.15 billion. This accounts for 39.7% of all money sent back to the country. Because so much money comes from America, finding a fair rate is key to making sure families get the full value of every dollar.</p>
+
+<p>These billions of dollars do more than just pay for food. They fund school for siblings, pay for medical care for parents, and help families start small shops. For the many OFWs who spend years away from home, these transfers are a way to provide a better life for those they love.</p>
+
+<figure><img src="https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/inline-1-706700.webp" alt="Filipino overseas worker using smartphone to send money to family in the Philippines, flat vector illustration" loading="lazy" width="800" height="450"><figcaption>Digital apps make sending remittance to Philippines faster and cheaper than traditional bank wires.</figcaption></figure>
+
+<h2>How Does Remittance to Philippines Work? Transfer Methods Explained</h2>
+
+<div class="answer-capsule"><p>You can send remittance to Philippines through digital apps, bank wire transfers, or in-person cash outlets. Digital apps are the fastest and most affordable option, delivering money to GCash or Maya wallets in seconds using the InstaPay network. Bank wires are reliable but slow and expensive, while cash outlets cost the most due to high exchange rate markups. The best method depends on your priorities for speed, cost, and how your family prefers to receive funds.</p></div>
+
+<p>You have many ways to send money home today. Most people pick a way based on speed, cost, or how their family gets the funds. In the Philippines, new tools like GCash have changed how millions of people handle cash. These new apps make <a href="https://mymana.xyz/blog/cheapest-way-to-send-money-to-philippines">remittance to Philippines</a> faster than ever before.</p>
+
+<h3>Mobile wallets and digital apps</h3>
+
+<p>Digital apps are now the top choice for many workers abroad. These apps often give you a better deal than old banks. They use the real market rate and charge near-zero fees. You can use these apps to <a href="https://mymana.xyz/blog/send-money-from-us-to-gcash">send money from US to GCash</a> or Maya in a few taps. With over 90 million GCash users in the country, this is a very easy way for your family to get funds.</p>
+
+<p>The InstaPay network helps make these moves fast. When you send money to a mobile wallet, it usually shows up in seconds. Some apps also let you send money to a local bank account. This is helpful for paying bills or saving money in a home bank. You get the speed of a text with the safety of a bank.</p>
+
+<h3>Bank wire transfers</h3>
+
+<p>Banks are a safe way to send large sums. They move funds between countries using the SWIFT network. However, bank wires can be slow and costly. Most banks charge a fee between $25 and $45 for each wire. They also add a big markup to the exchange rate. This hidden cost takes more money away from your family.</p>
+
+<p>A bank transfer can take three to five days to complete. This is much slower than a digital app. You might also have to visit a bank branch to initiate the transfer. If your family needs money right away for an emergency, a bank wire might not be the best pick. High fees and slow speeds make this less helpful for small, quick sends.</p>
+
+<h3>Choosing the method that fits your family</h3>
+
+<p>The best choice depends on what you need most. If you want the lowest cost and fastest speed, a digital app is the winner. Upcoming services like Mana will offer <a href="https://mymana.xyz/ofw">near-zero fee remittance</a> and use real market rates. This will help your family in the Philippines get more of the money you send by skipping the high fees of banks.</p>
+
+<ul>
+<li><strong>Digital apps:</strong> Best for speed and cost. Funds arrive in seconds through InstaPay. Ideal for regular monthly transfers under $1,000.</li>
+<li><strong>Bank wires:</strong> Best for large sums over $5,000. Accept higher costs for the security of an established institution.</li>
+<li><strong>Online services like Wise:</strong> Good for mid-size transfers with transparent mid-market rates. Delivery takes 1-2 days.</li>
+</ul>
+
+<p>Always check the total cost before you send. This includes the fee you see and the hidden rate markup. Getting the <a href="https://mymana.xyz/blog/best-php-exchange-rate">best PHP exchange rate</a> is the key to sending more home.</p>
+
+<h2>Comparing Remittance to Philippines Services: Fees, Speed, and Value</h2>
+
+<div class="answer-capsule"><p>Not all remittance to Philippines services charge the same. Banks can cost $80 to $130 to send $1,000 when you factor in both upfront fees and exchange rate markups. Digital-first services like Wise charge $5 to $8 for the same amount. The biggest cost driver is the exchange rate markup, which accounts for 60-65% of total fees for traditional providers.</p></div>
+
+<p>Sending money home is a big part of life for many Filipinos abroad. You work hard to help your family, so you need to get the best value. Choosing the right way to send a <a href="https://mymana.xyz/blog/best-way-to-send-money-to-philippines-2026">remittance to Philippines</a> can save you hundreds of dollars each year. Many people only look at the base fee, but that is only half the story. To find the true cost, you must look at the exchange rate too. Every dollar saved on fees is a dollar that goes toward your family's needs.</p>
+
+<h3>Breaking down the total cost of your transfer</h3>
+
+<p>When you send money, most apps charge an upfront fee. This is the price you see on the screen. However, many apps also hide a second cost in the exchange rate. This is called a markup. They give you a lower rate than the real market price and keep the rest. This hidden cost can be much higher than the fee itself. If you do not check the rate, you might pay much more than you think.</p>
+
+<p>The <a href="https://www.bsp.gov.ph" rel="nofollow" target="_blank">Bangko Sentral ng Pilipinas</a> tracks these flows. It notes how vital they are for the country. That is why choosing a fair company is so important. High fees and bad rates act like a tax on your hard work. By using apps that offer the real rate, you make sure more pesos land in your family's bank account or phone wallet.</p>
+
+<h3>Comparing the top remittance providers</h3>
+
+<p>It helps to see how the main choices stack up against each other. We compared the costs and speed for sending $1,000 from the US to the Philippines. This helps you see where your money goes and how fast it will get there. Big banks are often the slowest and most expensive way. Newer services focus on lower costs and faster sending times.</p>
+
+<table><thead><tr><th scope="col">Service</th><th scope="col">Transfer Fee</th><th scope="col">FX Markup</th><th scope="col">Total Cost ($1,000)</th><th scope="col">Sending Speed</th><th scope="col">Best Use Case</th></tr></thead><tbody><tr><td>Mana (coming soon)</td><td>0.25% flat fee at cost</td><td>0%</td><td>$2.50</td><td>Instant once live</td><td>Best overall value</td></tr><tr><td>Wise</td><td>$5 to $8</td><td>0%</td><td>$5 to $8</td><td>1 to 2 days</td><td>Large transfers</td></tr><tr><td>Remitly</td><td>$0 to $4</td><td>1% to 2%</td><td>$14 to $24</td><td>1 to 2 days</td><td>Promotional rate users</td></tr><tr><td>Big Banks</td><td>$25 to $45</td><td>3% to 5%</td><td>$80 to $130</td><td>3 to 5 days</td><td>High security needs</td></tr></tbody></table>
+
+<h3>Why the exchange rate matters most</h3>
+
+<p>The table shows that the exchange rate is where you often lose the most money. Big banks often have high markups. While a bank might seem safe, it can cost you $80 to $130 to send $1,000. That is a huge amount that could have paid for essential bills. Many of these providers count on people not knowing the real market rate. They show low fees while hiding the real cost in the bad rate.</p>
+
+<p>Services like Wise use the real market rate to give you more pesos. Mana, when it launches, will go further by offering a 0.25% flat transfer fee with no exchange rate markup. You can check our <a href="https://mymana.xyz/blog/best-way-to-send-money-to-philippines-2026">remittance guide</a> for a deeper look at each provider. Choosing a service with a real rate is the best way to respect your hard work abroad.</p>
+
+<h2>What Are the Hidden Costs of Remittance to Philippines?</h2>
+
+<div class="answer-capsule"><p>Most remittance to Philippines costs are hidden in the exchange rate markup, not the upfront fee. Research shows that 60-65% of total remittance costs come from these hidden markups, costing Filipino families between $500 million and $1 billion each year. A service advertising a low or zero fee may actually be more expensive if it uses a poor exchange rate.</p></div>
+
+<p>Most Filipino families think they know the cost of sending money home. You likely check the upfront fee before you hit send. If a service says it has a very low cost, it looks like a good deal. However, these flat fees are often a trap that hides the true cost of your <a href="https://mymana.xyz/blog/cheapest-way-to-send-money-to-philippines">cheapest way to send money to the Philippines</a>.</p>
+
+<h3>The trap of the exchange rate markup</h3>
+
+<p>The biggest cost for OFWs is not the fee you see. It is the exchange rate markup. Most companies give you a worse rate than the real one used by big banks. This is called the mid-market rate. By giving you a lower rate, the company keeps a small part of every dollar you send. Research shows that 60-65% of total remittance costs are hidden in these rates, not the upfront fees. This is why many services that appear inexpensive are actually more costly than they look.</p>
+
+<p>This gap between the real rate and the rate you get adds up to a massive sum. Between $500 million and $1 billion is taken from Filipino families every year through these hidden costs. The <a href="https://www.worldbank.org/en/topic/financialmarketintegrity/brief/remittance-prices-worldwide-database" rel="nofollow" target="_blank">World Bank</a> tracks these costs to help people find better ways to send money. Even though 72% of people say they understand how fees work, only 18% actually do. Most people choose a service based only on the fee they see in the ad.</p>
+
+<h3>How a zero fee transfer costs you money</h3>
+
+<p>Let us look at how this works in real life. Imagine you want to send $200 home to your family. You find a service that charges no upfront fee. However, this service uses an exchange rate that is 2% worse than the real mid-market rate. That 2% markup means you lose about $4 on that one transfer. You never see this $4 cost, but your family gets fewer pesos because of it.</p>
+
+<p>For many OFWs, every peso counts for school, food, or healthcare. Small transfers of under $200 make up about 40% of all remittances to the Philippines according to the central bank. If you send money often, those $4 hidden fees can cost you hundreds of dollars over a year. Choosing a future service like Mana can help you avoid this trap. Mana aims to use the real mid-market rate with no markup, so your family will get the full value of your hard work once it launches.</p>
+
+<h3>Why mid-market rates matter for your family</h3>
+
+<p>The mid-market rate is the only fair way to trade money. It is the middle point between what buyers pay and what sellers receive. Big banks and large companies use this rate every day. However, most remittance apps change the rate to make more profit. About 45% of people do not even know what a mid-market rate is. This lack of knowledge makes it easy for companies to hide their true prices.</p>
+
+<ul>
+<li><strong>Always compare:</strong> Check the offered rate against the mid-market rate on Google Finance before sending.</li>
+<li><strong>Look beyond the fee:</strong> A low upfront fee with a bad rate costs more than a modest fee with a fair rate.</li>
+<li><strong>Ask about markup:</strong> If a provider cannot tell you their exchange rate margin, choose another service.</li>
+</ul>
+
+<figure><img src="https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/inline-2-732102.webp" alt="US dollars and Philippine peso comparison showing exchange rate markup, flat vector illustration" loading="lazy" width="800" height="450"><figcaption>Exchange rate markups account for the majority of hidden costs in remittance to Philippines transfers.</figcaption></figure>
+
+<h2>How to Choose the Best Remittance to Philippines Service for Your Needs</h2>
+
+<div class="answer-capsule"><p>Choosing the best remittance to Philippines service starts with understanding your sending habits. OFWs in the US send an average of around $2,200 per year. Monthly support needs a service with low, predictable costs, while occasional transfers prioritize speed. Always compare the total cost -- upfront fee plus exchange rate markup -- and check how your family prefers to receive money. Whether through bank deposit, GCash, or Maya.</p></div>
+
+<p>Choosing a way to send money home is a big decision for any OFW. Most people look at the upfront fee first. However, you need to check more than just the price to find the best value. This guide will help you pick the right service for your family.</p>
+
+<h3>Find your sending pattern</h3>
+
+<p>Do you send a set amount for bills every month? Or do you send extra money when a family member needs it? OFWs in the US send an average of around $2,200 to the Philippines each year. About 45% of these transfers fall between $200 and $1,000.</p>
+
+<p>Monthly support needs a service with low, steady costs. Occasional gifts might need a service that works fast. If you often send under $200, look for apps that do not charge high fees for small transfers. Some services work best as the <a href="https://mymana.xyz/blog/cheapest-way-to-send-money-to-philippines">cheapest way to send money to the Philippines</a> when the amount is small.</p>
+
+<h3>Check how your family receives the money</h3>
+
+<p>Your family must be able to access the cash easily. The InstaPay network now allows for fast transfers to many local banks. Digital wallets are also very popular. There are now 90 million GCash users in the Philippines who expect fast funds.</p>
+
+<p>Ask your family if they prefer a bank deposit or a digital wallet like GCash or Maya. Digital transfers are growing by 15-20% each year because they are easier to use. Modern tools like the <a href="https://mymana.xyz/ofw">Mana card</a> aim to make this even smoother for everyone once available.</p>
+
+<h3>Compare the total cost</h3>
+
+<p>The total cost is the fee plus the exchange rate markup. Many services show a low fee but hide costs in the rate. This hidden markup accounts for 60-65% of the total cost for many providers. You can check the real mid-market rate on <a href="https://www.google.com/finance/quote/USD-PHP" rel="nofollow" target="_blank">Google Finance</a> to see the gap.</p>
+
+<p>Total costs can vary a lot. A bank might charge $80 to $130 to send $1,000 when you add up all the fees and markups. Services like Wise use the mid-market rate but charge a small fee. Mana, once launched, will offer near-zero fee remittance with no markup on the rate.</p>
+
+<ol>
+<li><strong>Identify your frequency.</strong> Decide if you will send on a fixed schedule or only as needed to find the best fee structure.</li>
+<li><strong>Verify the receiving method.</strong> Confirm whether your family prefers a bank account, a digital wallet like GCash or Maya.</li>
+<li><strong>Compare the true exchange rate.</strong> Compare the service rate to the mid-market rate to uncover any hidden cost.</li>
+<li><strong>Check the delivery speed.</strong> Use InstaPay for urgent needs or choose slower, cheaper options if the money is not needed immediately.</li>
+<li><strong>Review additional features.</strong> Look for added value like a <a href="https://mymana.xyz/ofw">US dollar account</a> or savings features that help you manage your finances while sending funds home.</li>
+</ol>
+
+<h2>Understanding Exchange Rates for Remittance to Philippines</h2>
+
+<div class="answer-capsule"><p>Exchange rates determine how many pesos your family receives for every dollar you send. The mid-market rate is the real rate with no markup added. Sending $500 at the mid-market rate of 56.00 PHP gives your family 28,000 PHP. A 2% markup drops that to 27,440 PHP, and a 4% markup brings it to 26,880 PHP. Even a small markup costs your family hundreds of pesos each transfer.</p></div>
+
+<p>When you send money home, the exchange rate is often more important than the transfer fee. Most people look at the upfront cost to send money. However, a large part of what you pay is hidden in the rate. Learning how rates work helps you make sure your family gets the most pesos possible.</p>
+
+<h3>What is the mid-market rate?</h3>
+
+<p>The mid-market rate is the real exchange rate. It is the center point between the buy and sell prices on the global market. This is the rate you see when you check <a href="https://www.google.com/finance" rel="nofollow" target="_blank">Google Finance</a>. It is the fairest rate because it has no extra fees added to it.</p>
+
+<p>Many banks and transfer services do not use this rate. Instead, they give you a retail rate. This rate is the mid-market rate plus a small markup. Even a small markup can take a lot of money away from your family over time.</p>
+
+<h3>How hidden markups affect your transfer</h3>
+
+<p>Hidden costs are a big problem in <a href="https://mymana.xyz/blog/best-php-exchange-rate">remittance to Philippines</a>. Research from the <a href="https://www.bsp.gov.ph/" rel="nofollow" target="_blank">Bangko Sentral ng Pilipinas</a> shows that 72% of people think they understand fees, but only 18% actually do. About 45% of users do not know what a mid-market rate is. This lets services hide costs in the exchange rate.</p>
+
+<p>Banks often add a 3% to 5% markup on top of their wire fees. A service might claim to have low fees, but they make up for it with a poor rate. This is why you should always compare the offered rate to the real rate before sending your money.</p>
+
+<h3>The math of a $500 transfer</h3>
+
+<p>Let us look at how rates change the amount of pesos your family gets. If you send $500 when the real rate is 56.00 PHP, your family should get 28,000 PHP. If a service adds a 2% markup, the rate drops to 54.88 PHP. Your family now gets 27,440 PHP. You just lost 560 PHP.</p>
+
+<p>At a 4% markup, the rate becomes 53.76 PHP. Your family gets only 26,880 PHP. That is 1,120 PHP less than the real value. By <a href="https://mymana.xyz/blog/best-php-exchange-rate">getting the best PHP exchange rate</a>, you keep that money for your loved ones. Always check the total pesos delivered, not just the fee.</p>
+
+<h2>Frequently Asked Questions</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Which bank has the lowest transfer fee to the Philippines?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text">
+            <p>Most big banks charge high fees for wire transfers. You may pay $25 to $45 just for the upfront fee. They also add a hidden cost by giving you a poor exchange rate. Big banks can cost $80 to $130 to send $1,000. Mana, when it launches, will offer near-zero fee transfers with the real mid-market exchange rate.</p>
+          </div>
+        </div>
+      </div>
+
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">How much money can I remit to the Philippines?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text">
+            <p>Most apps let you send as much as you need, but limits apply based on your ID. New users can often send about $3,000 per day. If you need to send more, you must provide additional documentation like a proof of address. The Philippine government also tracks large transfers to keep the system safe. Always check the daily and monthly limits in your app before starting a transfer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Can Zelle transfer to the Philippines?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text">
+            <p>No, Zelle does not work for global transfers. It only moves money between bank accounts within the United States. To send money to the Philippines, you must use a service built for global payments. Mana, when it launches, will connect your US funds to bank accounts or GCash wallets in the Philippines.</p>
+          </div>
+        </div>
+      </div>
+
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">How long does it take to send money to the Philippines?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text">
+            <p>The time depends on the method you choose. Bank transfers can take three to five business days. Digital apps are much faster. Many apps can deliver funds in minutes using fast networks. Digital services aim to send money almost instantly, helping your family get the pesos they need right away instead of waiting for days.</p>
+          </div>
+        </div>
+      </div>
+
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">How do exchange rates affect how much my family receives?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text">
+            <p>Exchange rates directly determine how many pesos your family gets. A 2% markup on the exchange rate for a $500 transfer costs your family 560 PHP. Always compare the offered rate to the mid-market rate on Google Finance before sending. Choosing a service that uses the real mid-market rate with no markup ensures your family receives the full value of your hard work.</p>
+          </div>
+        </div>
+      </div>
+</div>
+
+<h2>Ready to send more to your family and less to fees?</h2>
+
+<p>Every time you send money home through expensive channels, you lose part of your pay to hidden costs. Small fees and bad rates add up to hundreds of dollars each year that your family needs. You do not have to wait to start keeping more of your cash by planning for a better way.</p>
+
+<p><strong><a href="https://mymana.xyz/ofw">Join Mana today</a></strong> for early access to near-zero fee remittance with real mid-market exchange rates. When you join now, you will be among the first to send more pesos to your family for every dollar you earn. Start your path to fair rates and low fees. You can take control of your money and your family's future with the right partner.</p>
+
+    <div class="mana-cta">
+      <div class="glow"></div>
+      <span class="eyebrow">Send Every Dollar Home at the Real Exchange Rate</span>
+      <h3>Keep More Pesos in Your Family's Pocket with Mana</h3>
+      <ul>
+        <li>Real mid-market exchange rates with zero FX markup — no hidden costs</li>
+        <li>Near-zero flat fee at cost — just 0.25% per transfer</li>
+        <li>Instant transfers to GCash, Maya, and major Philippine banks via InstaPay</li>
+        <li>Real USD accounts with 3.5% APY yield feature on your savings</li>
+      </ul>
+      <a href="https://mymana.xyz/ofw" class="go" target="_blank" rel="nofollow">Join the Mana Waitlist <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+
+    <p class="disclaim">Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB, Member FDIC. Funds are FDIC insured up to $250,000 through the partner bank. Save is a yield feature on the USD wallet, not a deposit account; the 3.5% APY rate may change.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="lockup">
+          <svg height="42" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="#fff"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg>
+          <span class="name" style="font-size:40px;">Mana</span>
+        </div>
+        <p>Mana is a financial technology company and not a bank.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href='/freelancers'>For freelancers</a><a href='/ofw'>For OFWs</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about">About us</a><a href="/blog">Blog</a><a href="/#faq">FAQs</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="/terms#us">Card Terms — U.S. Consumer</a><a href="/terms#intl">Card Terms — International Business</a><a href="/terms#va">Virtual Account Terms</a><a href="/terms#rewards">Card &amp; Rewards Terms</a><a href="/privacy">Privacy Policy</a></div><div class="foot-col"><h4>Contact</h4><a href="mailto:developer@mymana.xyz">developer@mymana.xyz</a><a href="tel:+18572700094">+1 (857) 270-0094</a></div>
+    </div>
+    <div class="foot-legal">
+      <p>Mana is a financial technology company, not a bank. Banking services are provided by SSB, Member FDIC. Funds deposited at SSB are eligible for FDIC insurance up to $250,000 per depositor, per insured bank, subject to applicable limitations and FDIC rules. The Mana card is issued by our card partner pursuant to a license. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.</p>
+      <div class="row2"><span>&copy; 2026 Mana, Inc. All rights reserved.</span><span style="display:flex;gap:20px;"><a href="/privacy" style="color:rgba(255,255,255,0.6)">Privacy</a><a href="/terms" style="color:rgba(255,255,255,0.6)">Terms</a></span></div>
+    </div>
+  </div>
+</footer>

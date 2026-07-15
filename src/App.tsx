@@ -24,6 +24,7 @@ import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
 import blogPostUSBankAccountForFilipinos from "./site/us-bank-account-for-filipinos-complete-guide.html?raw";
 import blogPostMidMarketRate from "./site/mid-market-exchange-rate-explained.html?raw";
+import blogPostRemittanceGuide from "./site/remittance-to-philippines-guide-ofws.html?raw";
 
 type Route = { html: string; title: string; description?: string };
 
@@ -55,6 +56,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/itin-bank-account-opening-guide": { html: blogPostItinBankAccount, title: "ITIN Bank Account Opening: A Complete US Banking Guide — Mana" },
   "/blog/us-bank-account-for-filipinos-complete-guide": { html: blogPostUSBankAccountForFilipinos, title: "US Bank Account for Filipinos: A Complete Guide for OFWs — Mana", description: "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today." },
   "/blog/mid-market-exchange-rate-explained": { html: blogPostMidMarketRate, title: "Mid-Market Exchange Rate Explained: A Guide for OFWs — Mana", description: "Get the mid-market exchange rate explained in simple terms. Learn how hidden FX markups cost OFW families $500M+ annually and how to send every dollar home." },
+  "/blog/remittance-to-philippines-guide-ofws": { html: blogPostRemittanceGuide, title: "Remittance to Philippines: Complete OFW Guide (2026) — Mana", description: "Schedule a smarter way to send money home. Compare remittance to Philippines fees, exchange rates, and speed. See how OFWs keep more of their hard-earned cash." },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
@@ -271,11 +273,8 @@ export function App() {
     }
 
     // Inject Article/BlogPosting schema for blog posts
-    const blogRoutes = [
-      "/blog/us-bank-account-for-filipinos-complete-guide",
-    ];
-    if (blogRoutes.includes(path)) {
-      const schema = {
+    const blogSchemas: Record<string, object> = {
+      "/blog/us-bank-account-for-filipinos-complete-guide": {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "US Bank Account for Filipinos: A Complete Guide for OFWs",
@@ -296,7 +295,32 @@ export function App() {
           "@id": "https://mymana.xyz/blog/us-bank-account-for-filipinos-complete-guide"
         },
         "image": "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-a-complete-guide-for-ofws-345456.webp"
-      };
+      },
+      "/blog/remittance-to-philippines-guide-ofws": {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Remittance to Philippines: Complete OFW Guide (2026)",
+        "description": "Schedule a smarter way to send money home. Compare remittance to Philippines fees, exchange rates, and speed. See how OFWs keep more of their hard-earned cash.",
+        "author": {
+          "@type": "Person",
+          "name": "Paco Litonjua"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Mana",
+          "url": "https://mymana.xyz/"
+        },
+        "datePublished": "2026-07-15",
+        "dateModified": "2026-07-15",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://mymana.xyz/blog/remittance-to-philippines-guide-ofws"
+        },
+        "image": "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/remittance-to-philippines-the-complete-guide-for-ofws-279256.webp"
+      },
+    };
+    const schema = blogSchemas[path];
+    if (schema) {
       const script = document.createElement("script");
       script.id = "seo-schema";
       script.type = "application/ld+json";
