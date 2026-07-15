@@ -39,7 +39,7 @@ const ROUTES: Record<string, Route> = {
   },
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms": { html: terms, title: "Terms of Service — Mana" },
-  "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders" },
+  "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders", description: "Built by immigrants for OFWs. Meet Mana founders Paco Litonjua and Akshat Parwal. Near-zero fee remittance, 3.5% APY, Visa card. Join the waitlist." },
   "/card": { html: card, title: "Mana Visa Card for OFWs | Spend Globally", description: "The Mana Visa Card for OFWs — accepted globally with no hidden fees and full account integration. Manage your money and spend in one app. Join the waitlist." },
   "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
   "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
