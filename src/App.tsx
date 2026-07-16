@@ -41,7 +41,11 @@ const ROUTES: Record<string, Route> = {
   "/terms": { html: terms, title: "Terms of Service — Mana" },
   "/about": { html: about, title: "About Mana — Built by immigrants, banking without borders", description: "Built by immigrants for OFWs. Meet Mana founders Paco Litonjua and Akshat Parwal. Near-zero fee remittance, 3.5% APY, Visa card. Join the waitlist." },
   "/card": { html: card, title: "Mana Visa Card for OFWs | Spend Globally", description: "The Mana Visa Card for OFWs — accepted globally with no hidden fees and full account integration. Manage your money and spend in one app. Join the waitlist." },
-  "/blog": { html: blog, title: "The Mana blog — Tips to grow your wealth" },
+  "/blog": {
+    html: blog,
+    title: "The Mana Blog: OFW Finance Tips & Filipino Money Guide",
+    description: "OFW finance tips and Filipino money guides on remittances, exchange rates, US bank accounts, ITINs, freelancer finance, and saving in dollars."
+  },
   "/blog/money-in-america-nurses": { html: blogPostNurses, title: "Money in America: A Starter Guide for New Filipino Nurses — Mana" },
   "/blog/open-us-bank-account": { html: blogPostBankAccount, title: "How to Open Your First US Bank Account (Even With No Credit History) — Mana" },
   "/blog/best-app-send-money-philippines": { html: blogPostBestApp, title: "The Best App to Send Money to PH for Free (No Hidden Fees) — Mana" },
