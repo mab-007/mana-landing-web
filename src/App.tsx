@@ -212,6 +212,15 @@ export function App() {
       }
       md.setAttribute('content', route.description || "Mana is a financial app built for OFWs and global Filipinos. Free remittances, 3.5% APY USD savings, and a global Visa card. Join the waitlist.");
 
+      // Update canonical link
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', `https://mymana.xyz${path}`);
+
       // Update OG title
       const ogTitle = document.querySelector('meta[property="og:title"]');
       if (ogTitle) ogTitle.setAttribute('content', route.title);
