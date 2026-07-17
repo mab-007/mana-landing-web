@@ -248,10 +248,10 @@ nav.menu-open .mobile-menu { display: flex; }
 .download .dl-note { margin-top: 18px; font-size: 14px; color: rgba(255,255,255,0.8); }
 @media (max-width:760px){ .download h2 { font-size: 32px; } }
 
-/* App Store download badge — the iOS app is live (id6778910227) */
-.store-badge { display: inline-flex; align-items: center; gap: 9px; margin-top: 16px; background: var(--gabi-900); color: #fff; padding: 11px 18px; border-radius: 12px; font-size: 14px; font-weight: 600; line-height: 1; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
-.store-badge:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(10,18,40,0.28); }
-.store-badge svg { flex: 0 0 auto; }
+/* App Store download badge — official badge art, the iOS app is live (id6778910227) */
+.store-badge { display: inline-block; margin-top: 16px; text-decoration: none; transition: transform .15s ease, opacity .15s ease; }
+.store-badge:hover { transform: translateY(-1px); opacity: .9; }
+.store-badge img { height: 48px; width: auto; display: block; }
 
 /* Footer */
 footer { background: var(--gabi-900); color: rgba(255,255,255,0.7); padding: 64px 0 40px; }
