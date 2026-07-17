@@ -28,12 +28,12 @@ import blogPostMidMarketRate from "./site/mid-market-exchange-rate-explained.htm
 type Route = { html: string; title: string; description?: string };
 
 const ROUTES: Record<string, Route> = {
-  "/": { html: home, title: "Mana for OFWs: Free Remittances and USD Banking Abroad" },
+  "/": { html: home, title: "Mana for OFWs: Cheapest Remittances and USD Banking Abroad" },
   "/freelancers": { html: freelancers, title: "Mana for Filipino Freelancers — USD Banking & Remittance", description: "A US bank account for Filipino freelancers. Get paid in USD, convert at mid-market rates, earn 3.5% APY. No SSN needed. Join the Mana waitlist." },
   "/freelances": { html: freelancers, title: "Mana for Filipino Freelancers — USD Banking & Remittance", description: "A US bank account for Filipino freelancers. Get paid in USD, convert at mid-market rates, earn 3.5% APY. No SSN needed. Join the Mana waitlist." },
   "/ofw": {
     html: ofw,
-    title: "OFW Banking & Free Remittances | Send Money Home with Mana",
+    title: "OFW Banking & Cheapest Remittances | Send Money Home with Mana",
     description: "Send money home free, save USD at 3.5% APY, and spend globally with a Visa card — all in one app built for OFWs and Filipinos abroad. Join the Mana waitlist today."
   },
   "/privacy": { html: privacy, title: "Privacy Notice — Mana" },
@@ -204,7 +204,7 @@ export function App() {
         md.setAttribute('name', 'description');
         document.head.appendChild(md);
       }
-      md.setAttribute('content', route.description || "Mana is a financial app built for OFWs and global Filipinos. Free remittances, 3.5% APY USD savings, and a global Visa card. Join the waitlist.");
+      md.setAttribute('content', route.description || "Mana is a financial app built for OFWs and global Filipinos. Cheapest remittances, 3.5% APY USD savings, and a global Visa card. Join the waitlist.");
 
       // Update OG title
       const ogTitle = document.querySelector('meta[property="og:title"]');
