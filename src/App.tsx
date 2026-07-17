@@ -24,6 +24,7 @@ import about from "./site/about.html?raw";
 import card from "./site/card.html?raw";
 import blogPostUSBankAccountForFilipinos from "./site/us-bank-account-for-filipinos-complete-guide.html?raw";
 import blogPostMidMarketRate from "./site/mid-market-exchange-rate-explained.html?raw";
+import blogPostSendMoneyPH from "./site/send-money-to-the-philippines-complete-ofw-guide.html?raw";
 
 type Route = { html: string; title: string; description?: string };
 
@@ -55,6 +56,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/itin-bank-account-opening-guide": { html: blogPostItinBankAccount, title: "ITIN Bank Account Opening: A Complete US Banking Guide — Mana" },
   "/blog/us-bank-account-for-filipinos-complete-guide": { html: blogPostUSBankAccountForFilipinos, title: "US Bank Account for Filipinos: A Complete Guide for OFWs — Mana", description: "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today." },
   "/blog/mid-market-exchange-rate-explained": { html: blogPostMidMarketRate, title: "Mid-Market Exchange Rate Explained: A Guide for OFWs — Mana", description: "Get the mid-market exchange rate explained in simple terms. Learn how hidden FX markups cost OFW families $500M+ annually and how to send every dollar home." },
+  "/blog/send-money-to-the-philippines-complete-ofw-guide": { html: blogPostSendMoneyPH, title: "Send Money to the Philippines: The Complete OFW Guide for 2026 — Mana", description: "Learn how to send money to the Philippines without overpaying. Compare remittance services, hidden FX costs, and find the cheapest way to send money home." },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
@@ -271,15 +273,27 @@ export function App() {
     }
 
     // Inject Article/BlogPosting schema for blog posts
-    const blogRoutes = [
-      "/blog/us-bank-account-for-filipinos-complete-guide",
-    ];
-    if (blogRoutes.includes(path)) {
+    const blogRoutes: Record<string, { headline: string; description: string; datePublished: string; image: string }> = {
+      "/blog/us-bank-account-for-filipinos-complete-guide": {
+        headline: "US Bank Account for Filipinos: A Complete Guide for OFWs",
+        description: "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today.",
+        datePublished: "2026-07-13",
+        image: "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-a-complete-guide-for-ofws-345456.webp"
+      },
+      "/blog/send-money-to-the-philippines-complete-ofw-guide": {
+        headline: "Send Money to the Philippines: The Complete OFW Guide for 2026",
+        description: "Learn how to send money to the Philippines without overpaying. Compare remittance services, hidden FX costs, and find the cheapest way to send money home.",
+        datePublished: "2026-07-17",
+        image: "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/send-money-to-the-philippines-the-complete-ofw-guide-for-2026-840355.webp"
+      }
+    };
+    if (blogRoutes[path]) {
+      const info = blogRoutes[path];
       const schema = {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "US Bank Account for Filipinos: A Complete Guide for OFWs",
-        "description": "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today.",
+        "headline": info.headline,
+        "description": info.description,
         "author": {
           "@type": "Person",
           "name": "Paco Litonjua"
@@ -289,13 +303,13 @@ export function App() {
           "name": "Mana",
           "url": "https://mymana.xyz/"
         },
-        "datePublished": "2026-07-13",
-        "dateModified": "2026-07-13",
+        "datePublished": info.datePublished,
+        "dateModified": info.datePublished,
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://mymana.xyz/blog/us-bank-account-for-filipinos-complete-guide"
+          "@id": `https://mymana.xyz${path}`
         },
-        "image": "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-a-complete-guide-for-ofws-345456.webp"
+        "image": info.image
       };
       const script = document.createElement("script");
       script.id = "seo-schema";
