@@ -276,20 +276,20 @@ const ROUTES = [
   },
   {
     path: "/blog/us-bank-account-for-filipinos-complete-guide",
-    title: "US Bank Account for Filipinos: A Complete Guide for OFWs — Mana",
+    title: "US Bank Account for Filipinos: Complete How-To Guide — Mana",
     description:
-      "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today.",
+      "Get a US bank account for Filipinos without an SSN or US address. Compare the best options for OFWs including ChexSystems-free accounts. Sign up for Mana today.",
     canonical: "https://mymana.xyz/blog/us-bank-account-for-filipinos-complete-guide",
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
-      headline: "US Bank Account for Filipinos: A Complete Guide for OFWs",
+      headline: "US Bank Account for Filipinos: Complete Eligibility Guide for OFWs",
       author: { "@type": "Person", name: "Paco Litonjua" },
       publisher: { "@type": "Organization", name: "Mana", url: "https://mymana.xyz/" },
-      datePublished: "2026-07-13",
+      datePublished: "2026-07-20",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://mymana.xyz/blog/us-bank-account-for-filipinos-complete-guide" },
       image:
-        "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-a-complete-guide-for-ofws-345456.webp",
+        "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-complete-eligibility-guide-for-ofws-606206.webp",
     },
   },
   {
