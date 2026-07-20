@@ -54,7 +54,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/best-way-to-send-money-to-philippines-2026": { html: blogPostBestWay2026, title: "Best Way to Send Money to Philippines 2026: Top 6 Services Ranked — Mana" },
   "/blog/itin-vs-ssn-filipino-immigrants-guide": { html: blogPostItinVsSsn, title: "ITIN vs SSN: A Complete Guide for Filipino Immigrants — Mana" },
   "/blog/itin-bank-account-opening-guide": { html: blogPostItinBankAccount, title: "ITIN Bank Account Opening: A Complete US Banking Guide — Mana" },
-  "/blog/us-bank-account-for-filipinos-complete-guide": { html: blogPostUSBankAccountForFilipinos, title: "US Bank Account for Filipinos: A Complete Guide for OFWs — Mana", description: "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today." },
+  "/blog/us-bank-account-for-filipinos-complete-guide": { html: blogPostUSBankAccountForFilipinos, title: "US Bank Account for Filipinos: Complete How-To Guide — Mana", description: "Get a US bank account for Filipinos without an SSN or US address. Compare the best options for OFWs including ChexSystems-free accounts. Sign up for Mana today." },
   "/blog/mid-market-exchange-rate-explained": { html: blogPostMidMarketRate, title: "Mid-Market Exchange Rate Explained: A Guide for OFWs — Mana", description: "Get the mid-market exchange rate explained in simple terms. Learn how hidden FX markups cost OFW families $500M+ annually and how to send every dollar home." },
   "/blog/send-money-to-the-philippines-complete-ofw-guide": { html: blogPostSendMoneyPH, title: "Send Money to the Philippines: The Complete OFW Guide for 2026 — Mana", description: "Learn how to send money to the Philippines without overpaying. Compare remittance services, hidden FX costs, and find the cheapest way to send money home." },
   // Back-compat aliases for the old paths.
@@ -284,10 +284,10 @@ export function App() {
     // Inject Article/BlogPosting schema for blog posts
     const blogRoutes: Record<string, { headline: string; description: string; datePublished: string; image: string }> = {
       "/blog/us-bank-account-for-filipinos-complete-guide": {
-        headline: "US Bank Account for Filipinos: A Complete Guide for OFWs",
-        description: "Get a US bank account for Filipinos without an SSN or US address. Compare fees, FDIC insurance, and fintech options for OFWs. Join the Mana waitlist today.",
-        datePublished: "2026-07-13",
-        image: "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-a-complete-guide-for-ofws-345456.webp"
+        headline: "US Bank Account for Filipinos: Complete Eligibility Guide for OFWs",
+        description: "Get a US bank account for Filipinos without an SSN or US address. Compare the best options for OFWs including ChexSystems-free accounts. Sign up for Mana today.",
+        datePublished: "2026-07-20",
+        image: "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-complete-eligibility-guide-for-ofws-606206.webp"
       },
       "/blog/send-money-to-the-philippines-complete-ofw-guide": {
         headline: "Send Money to the Philippines: The Complete OFW Guide for 2026",
