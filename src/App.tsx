@@ -223,8 +223,17 @@ export function App() {
       // Update Twitter description
       const twDesc = document.querySelector('meta[name="twitter:description"]');
       if (twDesc) twDesc.setAttribute('content', route.description || "");
+
+      // Set canonical URL — self-referencing HTTPS non-WWW for every route
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', `https://mymana.xyz${path}`);
     }
-  }, [route]);
+  }, [route, path]);
 
   // Inject JSON-LD schema programmatically (script tags are stripped by
   // dangerouslySetInnerHTML). Each route change cleans up previous schema.
