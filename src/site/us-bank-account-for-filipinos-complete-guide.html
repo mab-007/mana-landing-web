@@ -51,6 +51,59 @@
   </div>
 </nav>
 
+<style>
+  .article { padding: 56px 0 40px; }
+  .article .wrap { max-width: 720px; }
+  .crumb { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--tanglaw-600); margin-bottom: 26px; }
+  .crumb svg { transition: transform .15s; }
+  .crumb:hover svg { transform: translateX(-3px); }
+  .art-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .art-meta .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tanglaw-600); }
+  .art-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--papel-400); }
+  .art-meta .read { font-size: 13px; color: var(--papel-400); }
+  .article h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 46px; line-height: 1.06; letter-spacing: -0.02em; color: var(--gabi-900); margin-bottom: 22px; }
+  .standfirst { font-size: 20px; line-height: 1.5; color: var(--papel-700); margin-bottom: 30px; }
+  .article h2 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.01em; color: var(--gabi-900); margin: 42px 0 14px; }
+  .article p { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin-bottom: 18px; }
+  .article p strong, .article li strong { color: var(--gabi-900); font-weight: 600; }
+  .article ul { list-style: none; margin: 0 0 18px; padding: 0; }
+  .article ul li { position: relative; padding-left: 26px; font-size: 17px; line-height: 1.6; color: var(--papel-700); margin-bottom: 11px; }
+  .article ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .callout { background: var(--papel-100); border-radius: 16px; padding: 24px 26px; margin: 30px 0; }
+  .callout .k { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tanglaw-600); margin-bottom: 10px; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .mana-cta { background: var(--gabi-900); border-radius: 22px; padding: 34px; margin: 44px 0 16px; position: relative; overflow: hidden; }
+  .mana-cta .glow { position: absolute; top: -80px; right: -60px; width: 240px; height: 240px; border-radius: 999px; background: radial-gradient(circle, rgba(232,93,44,0.32), transparent 70%); pointer-events: none; }
+  .mana-cta .eyebrow { color: var(--tanglaw-200); margin-bottom: 12px; display: block; position: relative; }
+  .mana-cta h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 70, 'opsz' 72; font-weight: 500; font-size: 27px; line-height: 1.15; letter-spacing: -0.01em; color: #fff; margin-bottom: 14px; position: relative; }
+  .mana-cta ul { margin: 0 0 24px; position: relative; list-style: none; padding: 0; }
+  .mana-cta ul li { position: relative; padding-left: 26px; margin-bottom: 11px; line-height: 1.6; color: rgba(255,255,255,0.78); font-size: 15.5px; }
+  .mana-cta ul li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 999px; background: var(--tanglaw-400); }
+  .mana-cta .go { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 26px; border-radius: 13px; background: var(--tanglaw-400); color: #fff; font-weight: 700; font-size: 16px; position: relative; transition: background .15s, transform .1s; }
+  .mana-cta .go:hover { background: var(--tanglaw-600); }
+  .mana-cta .go svg { transition: transform .18s; }
+  .mana-cta .go:hover svg { transform: translateX(4px); }
+  .endnote { font-size: 17px; line-height: 1.62; color: var(--papel-700); margin: 30px 0 0; }
+  .article .disclaim { margin-top: 36px; padding-top: 22px; border-top: 0.5px solid var(--papel-200); font-size: 12.5px; line-height: 1.6; color: var(--papel-400); }
+  @media (max-width: 680px){ .article h1 { font-size: 34px; } .article h2 { font-size: 24px; } .mana-cta { padding: 26px; } }
+</style>
+<nav>
+  <div class="wrap">
+    <a class='lockup' href='/'><svg height="38" viewBox="0 0 124 130" aria-label="Mana"><path d="M16 100 L46 24 L76 100 Z" fill="var(--gabi-900)"/><path d="M50 100 L80 38 L110 100 Z" fill="var(--tanglaw-400)"/><path d="M6 108 L118 108" fill="none" stroke="var(--gabi-900)" stroke-width="4" stroke-linecap="round"/><path d="M22 118 Q34 114 46 118 T70 118 T94 118" fill="none" stroke="var(--gabi-900)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/></svg><span class="name" style="font-size:30px;font-weight:600;">Mana</span></a>
+    <div class="nav-links"><a href='/'>Home</a><div class='nav-dd'><button type='button' class='nav-dd-toggle'>Products <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button><div class='menu'><a href='/freelancers'>For Freelancers</a><a href='/ofw'>For OFWs</a><a href='/card'>The Mana Card</a></div></div><a href='/about'>About</a><a href='/blog'>Blog</a><a href='/card' class='nav-card'>Card</a><a href="/ofw" class="btn btn-primary">Get early access</a></div>
+  
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu">
+    <a href='/'>Home</a>
+    <a href='/freelancers'>For Freelancers</a>
+    <a href='/ofw'>For OFWs</a>
+    <a href='/card'>The Mana Card</a>
+    <a href='/about'>About</a>
+    <a href='/blog'>Blog</a>
+  </div>
+</nav>
+
 <article class="article">
   <div class="wrap">
     <a href="/blog" class="crumb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg> The Mana blog</a>
@@ -62,220 +115,63 @@
     <h1>US Bank Account for Filipinos: A Complete Guide for OFWs</h1>
     <p class="standfirst">Most traditional US banks require a social security number and a local address just to open a basic account. This barrier leaves millions of Filipinos without a safe place to store dollars or build their financial future.</p>
 
-    <p><strong>Ready to get your US bank account from anywhere in the world? <a href="https://mymana.xyz/">Join the Mana waitlist today</a> to be first in line at launch.</strong></p>
+    
 
-    <div class="answer-capsule"><p>A US bank account for Filipinos provides a secure way to manage money and receive USD payments without needing a social security number. Modern fintech accounts also let you send near-zero fee remittances home while offering FDIC insurance through their partner banks, all using just a Philippine address and valid ID.</p></div>
-
-    <p>Having the right financial tools is the first step toward building a stable life for you and your family back home. This guide explains why OFWs need US banking access, what to look for in an account, and how modern fintech solutions remove the old barriers.</p>
-
-    <h2>US Bank Account For Filipinos: Why Overseas Filipino Workers Need a US Bank Account</h2>
-
-    <div class="callout">
-      <div class="k">Key Stat</div>
-      <p>More than 2 million OFWs send over $14 billion home annually. Without a US bank account, most lose $80-$130 per $1,000 sent through hidden fees and poor exchange rates. A US dollar account eliminates these costs.</p>
-    </div>
-
-    <p>More than 2 million Overseas Filipino Workers (OFWs) work around the world today to support their families. Based on market data, Filipinos in the US send home over $14 billion each year. This makes up nearly 40 percent of all money sent back to the Philippines. For most workers, this process is the main way they manage their pay and take care of their loved ones at home.</p>
-
-    <h3>The High Cost of Sending Money Home</h3>
-
-    <p>Sending money across borders often comes with high costs that are hard to see. According to data from <a href="https://remittanceprices.worldbank.org/" rel="nofollow" target="_blank">The World Bank Remittance Prices Worldwide</a>, Filipinos lose between $500 million and $1 billion every year to hidden rate markups hidden in exchange rate spreads. Many workers think they are getting a good deal because a service claims to have no fees. But these services often hide the real cost in the exchange rate they offer.</p>
-
-    <p><strong>Key takeaway:</strong> A study by the <a href="https://www.worldbank.org/en/topic/financialinclusion" rel="nofollow" target="_blank">World Bank</a> found that 72 percent of people sending money claim to understand these fees, but only 18 percent truly know how much they are paying. This lack of clear information means many families receive much less money than they should. A US bank account helps you avoid these traps by giving you more control over your funds.</p>
-
-    <h3>Barriers in Standard US Banking</h3>
-
-    <p>Opening an account at a big bank in the US is often very hard for Filipinos living abroad. Most traditional banks require:</p>
-
-    <ul>
-      <li>A Social Security Number (SSN) or Individual Taxpayer Identification Number (ITIN)</li>
-      <li>A physical US residential address for mailing</li>
-      <li>An in-person branch visit to verify identification documents</li>
-      <li>A US-based phone number for account verification</li>
-    </ul>
-
-    <p>Because of these hurdles, many OFWs rely on costly wire services instead of safe bank accounts. Using <a href="https://mymana.xyz/ofw">Mana's OFW financial tools</a> can help you bypass these restrictions. You can get a real US dollar account without needing a US address or an SSN. Making it easier to save, spend, and send money home on your own terms.</p>
-
-    <h3>Safety and Savings for Your Future</h3>
-
-    <p>Keeping your money in a US account also provides a level of safety that cash or mobile wallets may lack. Funds in a real US account are protected by <a href="https://www.fdic.gov/" rel="nofollow" target="_blank">FDIC insurance</a> for up to $250,000 per person through the partner bank. This safety makes sure that your savings stay safe even if the bank faces trouble.</p>
-
-    <p><strong>Key takeaway:</strong> Having a US account also lets you save money in dollars. This is a smart way to protect your wealth from fluctuations in the value of the peso. You can keep your money in a stable currency and choose the best time to send it home.</p>
-
-    <img alt="Overseas Filipino Worker using a mobile banking app to send money from the US to the Philippines" height="450" loading="lazy" src="https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/inline-1-779765.webp" width="800">
-
-    <h2>Traditional US Banks vs. Digital Solutions: Which Is Better for OFWs?</h2>
-
-    <div class="callout">
-      <div class="k">Quick Comparison</div>
-      <p>Traditional US banks charge $80-$130 per $1,000 sent through wire fees and hidden FX markups. Digital fintech solutions like Mana offer near-zero fee transfers, real mid-market exchange rates, and account access without an SSN or US address.</p>
-    </div>
-
-    <p>For a long time, opening a US bank account for Filipinos meant dealing with strict rules. Big US banks usually ask for a Social Security Number (SSN) and a US home address. And you often have to visit a branch in person to sign papers. These rules make it very hard for Overseas Filipino Workers (OFWs) or freelancers to get started.</p>
-
-    <h3>High Costs at Big Banks</h3>
-
-    <p>Traditional banks like Chase can be very expensive for sending money home. They often charge a wire fee between $25 and $45 for each transfer. On top of that, they add a hidden markup of 3% to 5% on the exchange rate. According to data from <a href="https://www.worldbank.org/en/topic/remittances" rel="nofollow" target="_blank">The World Bank</a>, these costs add up quickly. Sending $1,000 could cost you between $80 and $130 in total fees and markups.</p>
-
-    <h3>The Rise of Digital Fintech</h3>
-
-    <p>Digital solutions have changed how Filipinos manage money in the US. Apps like Wise and Remitly offer ways to send money without high bank fees. Wise uses the real mid-market rate and charges a small fee. Remitly is also popular, though they sometimes hide costs in the exchange rate. These tools help <a href="https://mymana.xyz/freelancers">Filipino freelancers</a> and OFWs keep more of their hard-earned pay.</p>
-
-    <p><strong>When choosing a remittance service, look for these features:</strong></p>
-
-    <ul>
-      <li>Real mid-market exchange rates with no hidden markup</li>
-      <li>Low flat transfer fees (not percentage-based)</li>
-      <li>Fast delivery times measured in minutes, not days</li>
-      <li>FDIC insurance through a US partner bank</li>
-      <li>No requirement for a US address or SSN</li>
-    </ul>
-
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Service</th>
-          <th scope="col">Cost per $1,000</th>
-          <th scope="col">Speed</th>
-          <th scope="col">Key Requirement</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Mana</td>
-          <td>Near-zero fee</td>
-          <td>Minutes (InstaPay)</td>
-          <td>Philippine ID</td>
-        </tr>
-        <tr>
-          <td>Wise</td>
-          <td>$5 - $13</td>
-          <td>Hours to Days</td>
-          <td>Government ID</td>
-        </tr>
-        <tr>
-          <td>Remitly</td>
-          <td>$14 - $24</td>
-          <td>Minutes to Days</td>
-          <td>Government ID</td>
-        </tr>
-        <tr>
-          <td>Western Union</td>
-          <td>$29 - $33</td>
-          <td>Minutes to Days</td>
-          <td>Government ID</td>
-        </tr>
-        <tr>
-          <td>Traditional Bank</td>
-          <td>$80 - $130</td>
-          <td>1 - 5 Days</td>
-          <td>SSN &amp; US Address</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>Understanding FDIC Insurance and How It Protects Your Savings</h2>
-
-    <div class="callout">
-      <div class="k">What You Need to Know</div>
-      <p>The FDIC is a US government agency that protects deposits up to $250,000 per person, per bank. Mana customers receive this protection through partner bank SSB, Member FDIC, giving fintech convenience with bank-grade security.</p>
-    </div>
-
-    <p>Trust is the most important part of any financial tool. When you keep your money in a US bank account, you want to know it is safe. In the United States, the Federal Deposit Insurance Corporation (FDIC) handles this protection. It is a US government agency that protects the cash people put into banks.</p>
-
-    <p><strong>Key takeaway:</strong> Mana is a financial technology company, not a bank. However, Mana provides real US dollar accounts through our partner bank, SSB, which is a member of the FDIC. This means your funds are insured up to $250,000 through the partner bank, combining the innovation of fintech with the safety of a US-regulated bank.</p>
-
-    <img alt="FDIC insurance badge with US dollar and Philippine peso coins representing secure cross-border banking" height="450" loading="lazy" src="https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/inline-2-463925.webp" width="800">
-
-    <h2>What to Look for in a US Bank Account as an OFW</h2>
-
-    <div class="callout">
-      <div class="k">Checklist</div>
-      <p>The best US bank account for OFWs combines low fees, fair exchange rates, no US address requirement, fast transfers, and FDIC insurance. Savings yield features like Mana's Save tool (3.5% APY, rate may change) also help your money grow in USD.</p>
-    </div>
-
-    <p>Choosing a bank account is a major step for any worker abroad. For the 200,000 Filipino nurses in the United States, a good account helps pay bills and send money home. But not all accounts are the same. You need a tool that understands the cross-border life of an Overseas Filipino Worker.</p>
-
-    <h3>Low Fees and Fair Exchange Rates</h3>
-
-    <p>Most people focus on the monthly fee, but the real cost is often hidden. Large banks might charge a small fee but take a big cut of the exchange rate. This hidden markup can cost you hundreds of dollars every year. <strong>You should look for a service that uses the real mid-market exchange rate.</strong> This ensures your family gets the most pesos for every dollar you send.</p>
-
-    <p>A good account should also have near-zero fee transfers. Many banks charge 3% to 5% just to move your money. When you add wire fees, the total cost can be very high. By choosing a fintech service like Mana, you avoid these large gaps. You can see the exact amount your family will get before you hit send.</p>
-
-    <h3>Easy Access Without a US Address</h3>
-
-    <p>One of the biggest tests for Filipinos is the proof of address. Most US banks require you to have a US home address and a Social Security Number (SSN). This is hard for new arrivals or those still living in the Philippines. <strong>Look for a <a href="https://mymana.xyz/ofw">US bank account for Filipinos</a> that lets you sign up with just a Philippine address and a valid ID.</strong></p>
-
-    <p>Speed also matters when you move money home. You do not want your family to wait for days to get their funds. Look for an account that offers fast transfers. Services that use InstaPay can deliver money in minutes, even on weekends. Having a US account that connects to Philippine banks in real time is a big help for the global Filipino community.</p>
-
-    <h3>High Yield on Your USD Savings</h3>
-
-    <p>Your hard-earned money should do more than just sit in an account. You should look for a yield feature that helps your savings grow. This is very helpful for the 1.5 million Filipino freelancers on sites like Upwork or Fiverr. <strong>By keeping your pay in a US dollar account, you can avoid 3-5% exchange losses and earn yield at the same time.</strong> You can learn how to <a href="https://mymana.xyz/freelancers">build wealth in dollars with Mana</a> to make the most of your income.</p>
-
-    <p>Safety is the most important part. Always check if the account is covered by <a href="https://www.fdic.gov/" rel="nofollow" target="_blank">FDIC insurance</a> through a partner bank. This safety covers your funds up to $250,000. When you find an account with high yield, low fees, and top safety, you have found the right tool for your journey.</p>
-
-    <div class="mana-cta">
-      <span class="glow"></span>
-      <span class="eyebrow">How Mana helps</span>
-      <h3>Open your US dollar account from anywhere — no SSN needed</h3>
-      <p style="color:rgba(255,255,255,0.78);font-size:16px;line-height:1.55;margin-bottom:18px;position:relative;">Mana is built for global Filipinos who need a real US bank account without the traditional barriers. Here's what you get:</p>
-      <ul>
-        <li><strong style="color:#fff;">A real US dollar account</strong> with routing and account numbers through partner bank SSB, Member FDIC.</li>
-        <li><strong style="color:#fff;">3.5% APY yield</strong> on your USD wallet balance (rate may change).</li>
-        <li><strong style="color:#fff;">Near-zero fee remittances</strong> delivered in minutes via InstaPay.</li>
-        <li><strong style="color:#fff;">A virtual Visa card</strong> that works with Apple Pay and Google Pay.</li>
-        <li><strong style="color:#fff;">No SSN or US address required</strong> — just a Philippine ID.</li>
-      </ul>
-      <a href="https://mymana.xyz/" class="go">Join the Mana waitlist <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-    </div>
-
-    <h2>How Mana Gives Filipinos a Better Banking Experience</h2>
-
-    <div class="callout">
-      <div class="k">Product Overview</div>
-      <p>Mana offers a real US dollar account with routing and account numbers via partner bank SSB, Member FDIC. Features include a virtual Visa card, 3.5% APY yield on the USD wallet (rate may change), and near-zero fee remittance transfers delivered in minutes via InstaPay.</p>
-    </div>
-
-    <p>Mana gives you a full set of tools built for the global Filipino. Most big US banks make you visit a branch in person, but Mana lets you open a real US dollar account from your phone. You only need a Philippine home address and a valid ID to start. This makes it easy for <a href="https://mymana.xyz/ofw">OFWs and non-resident Filipinos</a> to use the US bank system without an SSN or a US home address.</p>
-
-    <h3>A Real US Dollar Account with Full Features</h3>
-
-    <p>When you join Mana, you get a real US dollar account. It comes with your own routing and account numbers through our partner bank, SSB, which is a <a href="https://www.fdic.gov/" rel="nofollow" target="_blank">Member FDIC</a>. Your funds are safe up to $250,000. This gives you the same tools as a US resident. You can get paid in dollars and manage your cash with ease.</p>
-
-    <p><strong>With your Mana account, you get:</strong></p>
-
-    <ul>
-      <li>A real US routing and account number for direct deposits</li>
-      <li>A virtual Visa card that works with Apple Pay and Google Pay</li>
-      <li>FDIC insurance up to $250,000 through partner bank SSB</li>
-      <li>Access from anywhere with just a Philippine ID</li>
-    </ul>
-
-    <h3>Higher Yields and Lower Transfer Fees</h3>
-
-    <p>Mana helps you grow your wealth through the Save tool. This gives you a 3.5% APY yield feature on your USD wallet balance (rate may change). Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB, Member FDIC. The 3.5% APY is a yield tool for your wallet, giving you a strong way to build your savings in a stable currency.</p>
-
-    <p>Sending money home is also fast and cheap with Mana. We use the real mid-market rate with no hidden markups. Our near-zero fee transfer service can save you from $168 to $1,560 a year compared to traditional banks or money transfer services. Funds move in minutes via InstaPay, even on weekends and holidays. This means your family gets the cash right when they need it.</p>
-
-    <h2>Frequently Asked Questions</h2>
-
+<p>Most American banks quickly turn away global Filipinos who try to open an account from abroad. Without a US address or a Social Security number, you face a long list of banking rules. This problem leaves hardworking immigrants and freelancers without a safe place to keep their dollar earnings.</p><div class="answer-capsule"><p>A secure <strong>US bank account for Filipinos</strong> is now easy to get without a US address or a Social Security number. Global fintech platforms like <a href="https://mymana.xyz/">Mana</a> allow Overseas Filipino Workers and freelancers to open US dollar accounts using only a Philippine ID. This offers a simple way to save in dollars and make near-zero fee transfers home.</p></div><p><strong><a href="https://mymana.xyz/" style="color:inherit;text-decoration:underline;">Sign up for Mana today</a>.</strong></p><p>If you earn in dollars or plan to move abroad, you might wonder if opening a foreign account is worth the effort. Understanding how this financial tool protects your hard-earned money is the first step. Let us look closely at <strong>Why Do Filipinos Need a US Bank Account?</strong></p><h2>US Bank Account for Filipinos: Why Do Filipinos Need a US Bank Account?</h2><p>A US bank account for Filipinos is a vital tool to save stable US dollars. It helps you receive freelance pay and send money home. But strict rules lock most non-residents out of the system. This forces you to pay high fees and rate markups just to move your hard-earned cash.</p><h3>Hurdles of financial exclusion</h3><p>Standard US banks often shut out Filipinos who do not live in the United States. Under the USA PATRIOT Act, banks must use a <a href="https://www.federalreserve.gov/frrs/regulations/section-1020220-customer-identification-program-requirements-for-banks.htm" rel="nofollow" target="_blank">Customer Identification Program</a> to verify who you are. This rule means banks must get a physical US street address for any personal account.</p><p>Since most Filipinos do not have a US home address, standard banks turn them down. These banks also ask for other U.S. papers that are hard to get. For example, they may demand a Social Security number or a special US tax ID. This leaves many global workers with no way to open an account from home.</p><h3>The cost of missing US banking</h3><p>When you do not have a US account, moving your money is slow and costly. You must rely on wire transfers that charge $25 to $45 for each transfer. On top of that, you lose another 3% to 5% in hidden rate markup fees.</p><p>These high fees eat into your hard-earned pay when you send money home. You can find better ways to cut these costs in our <a href="https://mymana.xyz/blog/send-money-to-the-philippines-complete-ofw-guide">sending money to the Philippines guide</a>. High fees make saving and sending cash back home much harder for global workers.</p><h3>Wealth preservation and USD savings</h3><p>Holding your money in Philippine pesos leaves you open to sudden cash swings. The peso often loses value against the US dollar over time. This drop reduces how much your savings are actually worth. Over the years, currency drops can wipe out a big chunk of your hard-earned wealth.</p><p>By saving in US dollars, you protect your wealth from these drops. It allows you to plan your future with more peace of mind. A strong currency gives you a safe harbor for your hard-earned cash. You can set up <a href="https://mymana.xyz/">Mana's purpose-built US dollar account</a> to keep your money safe.</p><p>The table below shows how different banking options compare when sending or saving money. It highlights the costs, transfer speeds, and rules for each choice. This will help you find the best path for your money.</p><table><thead><tr><th scope="col">Bank or Service</th><th scope="col">Cost per $1,000</th><th scope="col">Transfer Speed</th><th scope="col">Key Requirements</th></tr></thead><tbody><tr><td>Mana</td><td>0.25% flat fee at cost</td><td>Instant</td><td>Philippine address &#x26; valid ID</td></tr><tr><td>Wise</td><td>$5 to $10 fee</td><td>1 to 2 days</td><td>US address or tax number</td></tr><tr><td>Remitly</td><td>$10 to $15 in rate markups</td><td>3 to 5 days</td><td>US address or legal status</td></tr><tr><td>Traditional Bank</td><td>$25 to $45 wire fee + FX markup</td><td>3 to 7 days</td><td>US SSN &#x26; physical US address</td></tr></tbody></table><h2>What Barriers Stop Filipinos from Opening US Bank Accounts?</h2><p>Opening a standard US bank account is hard for many Filipinos due to strict local rules. Common banks often turn you away if you lack a Social Security number, a physical US street address, or a local banking record. These strict hurdles block honest workers from managing their global money.</p><h3>The Social Security Number Obstacle</h3><p>Most classic US banks require a Social Security number (SSN) to open an account, which stops many Filipinos without US residency from getting access. But federal guidelines are simpler than standard bank policies. The official <a href="https://fdic.gov/news/financial-institution-letters/2024/fil24015a.pdf" rel="nofollow" target="_blank">FDIC non-U.S. person identity guidelines</a> state that banks can accept other types of ID. These papers can include a passport, a taxpayer identification number (TIN), or an alien card.</p><p>Filipino workers without an SSN can get an Individual Taxpayer Identification Number (ITIN) instead. Our <a href="https://mymana.xyz/blog/itin-bank-account-opening-guide">ITIN bank account opening guide for Filipino immigrants</a> explains this setup in detail. You can use an ITIN to meet banking rules and start building a local credit history. To see which tax number fits your needs best, you can read our clear <a href="https://mymana.xyz/blog/itin-vs-ssn-filipino-immigrants-guide">ITIN vs SSN guide</a>.</p><h3>The Proof of US Address Rule</h3><p>Another major hurdle is the need for a physical US street address. Under official <a href="https://www.federalreserve.gov/frrs/regulations/section-1020220-customer-identification-program-requirements-for-banks.htm" rel="nofollow" target="_blank">Federal Reserve address guidelines</a>, a bank must verify your home or business street address as part of a program to fight crime. Most banks will not let you use a standard post office box to open an account. If you do not live in the United States, getting a valid utility bill or lease in your name is very hard.</p><p>Some banks may accept the address of a contact person or next of kin in rare cases. But this option is hard to secure and often needs a lot of paperwork. This leaves most Overseas Filipino Workers and freelancers stuck without a clear way to receive USD payments. Classic banking systems were simply not built for cross-border lives.</p><h3>The ChexSystems Screening Block</h3><p>Even if you have an ID and an address, you may face the ChexSystems hurdle. US banks use this consumer reporting agency to assess risk before letting you open an account. The system tracks past banking problems, but if you have no US history, you lack a record entirely. Many banks will reject you simply because you are new to their system.</p><p>Finally, many classic banks require you to visit a local US branch in person. For Filipinos living in the Philippines, buying a plane ticket just to open an account is not a real option. Even if you are already in the US, finding time to visit a branch during work hours can be very tough. These old rules keep modern global workers from finding the safe money tools they need.</p><h2>What Should Filipinos Look for in a US Bank Account?</h2><p>Finding a US bank account for Filipinos involves looking at fees, access rules, and transfer times. A good account lets you save in US dollars and send money home with ease. You need to look for low costs, simple setup steps, and strong safety features to protect your funds.</p><h3>Easy sign-up and ID access</h3><p>Classic US banks have strict rules. Under US law, banks must check who you are. They often ask for a real US home address, as shown in the federal <a href="https://www.federalreserve.gov/frrs/regulations/section-1020220-customer-identification-program-requirements-for-banks.htm" rel="nofollow" target="_blank">Customer Identification Program rules</a>. This rule blocks most global Filipinos who live abroad. When choosing the <a href="https://mymana.xyz/blog/best-us-bank-for-ofw">best US banks for OFWs</a>, you must find a service that does not need a US home address. You should be able to open an account with only a Philippine address and a valid photo ID.</p><h3>Low costs and clear rates</h3><p>Many platforms charge high transfer fees and markup the exchange rates. This eats into your hard-earned cash. A proper <a href="https://mymana.xyz/blog/us-bank-account-for-filipino-freelancers">US bank account for Filipino freelancers</a> and workers should offer clear pricing. You need real mid-market exchange rates with no FX markup. Also, ensure the service has near-zero fees when you send money home. This ensures your family receives the exact amount you expect.</p><p>To see how these options compare in detail, you can check the table below. It shows how they differ in fees, speed, rules, and features.</p><table><thead><tr><th scope="col">Service</th><th scope="col">Cost per $1,000 Transfer</th><th scope="col">Transfer Speed</th><th scope="col">Sign-Up Requirements</th><th scope="col">Key Financial Features</th></tr></thead><tbody><tr><td>Mana</td><td>0.25% flat fee at cost</td><td>Minutes (via InstaPay)</td><td>Philippine address and valid ID</td><td>3.5% APY savings yield, routing number</td></tr><tr><td>Wise</td><td>Variable fee (about 0.5% to 0.8%)</td><td>Hours to days</td><td>Global address and valid ID</td><td>Multi-currency wallet, debit card</td></tr><tr><td>Remitly</td><td>Flat fee plus exchange rate markup</td><td>Minutes to days</td><td>Valid ID and phone number</td><td>Remittance only, no savings account</td></tr><tr><td>Traditional Bank</td><td>$35 to $50 wire fee plus FX markup</td><td>3 to 5 business days</td><td>US physical address and SSN or ITIN</td><td>Checking, savings, wire transfers</td></tr></tbody></table><h3>Safe deposits and high yield</h3><p>Your money must be safe. Look for services that secure your funds with FDIC insurance up to $250,000 through a partner bank. Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB, Member FDIC. Also, look for a USD savings yield to help grow your balance. For instance, <a href="https://mymana.xyz/freelancers">Mana for freelancers</a> and OFWs includes a Save feature. This feature offers a 3.5% APY yield on your USD wallet, though the rate may change over time.</p><h3>Speed and quick transfers</h3><p>Speed is also vital when choosing a service. Older banks can take up to a week to send funds across borders. A modern service should process transfers in minutes so your family can access the cash right away. Fast online systems like InstaPay help make these quick payments work.</p><h2>How Does Mana Give Filipinos Access to US Banking?</h2><p>Mana gives Filipinos access to US banking through real US dollar accounts with routing and account numbers. By partnering with SSB Bank, Member FDIC, we make this simple. You can open an account with just a Philippine address and a valid ID, with no US address needed.</p><h3>US accounts with no US address</h3><p>Traditional US banks make it hard for people living abroad to open accounts. Under the <a href="https://www.fdic.gov/news/financial-institution-letters/2024/fil24015a.pdf" rel="nofollow" target="_blank">FDIC rules for verifying non-U.S. individuals</a>, banks can use passports to check identity. Yet, most US banks still require a local street address.</p><p>Mana changes this. You can sign up using your home address in the Philippines and a valid government ID. This makes <a href="/">Mana's purpose-built US dollar account</a> easy to get for anyone working online or overseas.</p><h3>Virtual cards and Save features</h3><p>Once your account is ready, you can start using your funds. You can get a virtual Visa card that works with Apple Pay and Google Pay. This card is perfect for <a href="/blog/get-us-debit-card-philippines">getting a US debit card in the Philippines</a> to pay for online tools, ads, or services.</p><p>Your USD wallet also has a yield feature called Save. This feature offers a 3.5% APY yield on your dollar balance, though this rate may change over time. Please note that Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB, Member FDIC.</p><h3>Near-zero fee transfers with InstaPay</h3><p>Sending money back home is fast and simple. Mana lets you send USD to the Philippines and have it arrive in minutes as pesos. We use InstaPay to deliver funds directly to local bank accounts or e-wallets.</p><p>This transfer comes with near-zero fees and real mid-market exchange rates. You will always see the exact amount your family gets before you click send. This prevents any bad surprises or hidden costs when you send money home.</p><p>Here are the core features you get when you choose Mana:</p><ul><li>1. <strong>US dollar account:</strong> Get a real US account with standard routing and account numbers through SSB Bank, Member FDIC.</li><li>2. <strong>Simple signup rules:</strong> Open your account with just a Philippine address and a valid ID, with no US address needed.</li><li>3. <strong>High-yield savings:</strong> Earn a 3.5% APY yield on your USD wallet balance to grow your money over time.</li><li>4. <strong>Fast transfers:</strong> Send money back home in minutes via InstaPay directly to local accounts or e-wallets.</li><li>5. <strong>Virtual debit card:</strong> Link your virtual card to Apple Pay or Google Pay to shop online with ease.</li><li>6. <strong>Clear pricing:</strong> Enjoy near-zero fee transfers with real exchange rates and no markup.</li></ul><h2>Is Your Money Safe? Understanding FDIC Insurance for OFWs</h2><p>FDIC insurance is a U.S. government program that protects your bank deposits if your bank fails. For Overseas Filipino Workers, this protection covers up to $250,000 per depositor for each account. This safety net ensures that your hard-earned dollars remain fully secure in your US bank account.</p><h3>How Does Deposit Insurance Work with Mana?</h3><p>Mana is a financial technology company, not a bank. Banking services come from partner bank SSB Bank, Member FDIC. When you use <a href="https://mymana.xyz/">Mana's purpose-built US dollar account</a>, your deposits go straight to our partner bank. This setup ensures that your money is fully backed by the federal government. Your funds are held safely alongside millions of other protected accounts.</p><p>The Federal Deposit Insurance Corporation is a U.S. agency. The government sets strict rules through <a href="https://www.fdic.gov/news/financial-institution-letters/2024/fil24015a.pdf" rel="nofollow" target="_blank">FDIC deposit standards</a> to protect customer funds. If a bank fails, the FDIC steps in to return your deposits. This safety cover is automatic and free for you. You do not need to register or apply to get this protection.</p><h3>Why Is FDIC Coverage Vital for OFWs?</h3><p>Many Overseas Filipino Workers send their money home using informal networks. These channels offer no legal protection if something goes wrong. If the middleman runs off, your hard-earned money is gone forever. A US account backed by the FDIC removes this risk. It gives you a safe and simple way to manage your cash.</p><p>Having your cash in a secure place gives you peace of mind. Your family relies on your support every month. Knowing that your USD savings are safe up to $250,000 lets you plan for the future. You can build your wealth without worrying about bank runs or sudden losses. This safety lets you focus on your career and family goals.</p><h3>FDIC Insurance vs. Informal Money Transfers</h3><p>Informal money transfer systems may seem fast, but they carry heavy dangers. They do not have government licenses or regular audits. Your money floats in a grey zone until it reaches home. If the transfer agent goes bankrupt, you have no way to get back your cash. You risk losing everything you worked hard to earn.</p><p>By contrast, a US bank account runs under strict federal rules. Your deposits are tracked, logged, and secured by law. If any financial crisis occurs, the FDIC guarantees your funds. This makes a digital account the safest place to hold and grow your money. You can save, send, and spend with complete confidence.</p><h2>How to Open Your US Bank Account as a Filipino: Step by Step</h2><p>Opening a US bank account for Filipinos is now simple and does not require a trip to the United States. You can set up a real US dollar account from home. You only need a valid Philippine ID and address to bypass old address rules.</p><h3>Choosing the right platform</h3><p>Classic US banks often reject applicants from abroad because of strict rules and address checks. Modern fintech apps allow global users to open accounts without these hurdles. Choosing a partner that understands the needs of Overseas Filipino Workers makes the setup process much faster.</p><p>Many old-style platforms require in-person visits or a Social Security number. These rules shut out most overseas workers and freelancers. A digital option solves this issue by using modern identity checks instead.</p><h3>Required setup steps</h3><p>To get your account up and running, you will need to follow a few simple steps. Preparing your documents beforehand will help you complete the digital signup quickly. This ensures a smooth start without any delays.</p><ol><li>Choose the Right Account Type. Decide between old-style US banks and online fintech options. Online fintech apps are much easier for global people because they bypass strict physical address rules that often lead to rejections.</li><li>Gather Your Needed Documents. Prepare your valid Philippine passport or other government-issued ID. Under federal banking rules, foreign people can use passports to verify identity, as detailed in the <a href="https://www.fdic.gov/news/financial-institution-letters/2024/fil24015a.pdf" rel="nofollow" target="_blank">FDIC official guide</a>.</li><li>Download the App and Start Your Signup. Go to the website or app store to get the platform. With <a href="https://mymana.xyz/">Mana's purpose-built US dollar account</a>, you do not need a US address to apply.</li><li>Enter Your Philippine Address and Verify Your Identity. Fill out the form using your real home address in the Philippines. Upload your ID to complete the security check and wait to receive your routing and account numbers.</li><li>Activate Your Card and Set Up Direct Deposit. Once approved, you can turn on your virtual Visa card for fast online purchases. You can also give your routing details to your employer or freelance client to set up direct deposits in US dollars.</li><li>Fund the Wallet and Transfer Money Home. Move money into your new account from your clients or other accounts. From there, you can start saving or send near-zero fee remittance transfers back to your family in the Philippines.</li></ol><h3>Partner bank security</h3><p>Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB Bank, Member FDIC. This partnership gives you real US dollar accounts with routing and account numbers.</p><p>SSB Bank is a well-known bank that handles your deposits with care. Your funds are FDIC insured up to $250,000, giving you the same peace of mind as any old-style US banking customer.</p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "US Bank Account for Filipinos: Complete Eligibility Guide for OFWs",
+  "description": "Get a US bank account for Filipinos without an SSN or US address. Compare the best options for OFWs including ChexSystems-free accounts. Sign up for Mana today.",
+  "author": {
+    "@type": "Person",
+    "name": "Paco Litonjua"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mana",
+    "url": "https://mymana.xyz/"
+  },
+  "datePublished": "2026-07-20",
+  "dateModified": "2026-07-20",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mymana.xyz/blog/us-bank-account-for-filipinos-complete-guide"
+  },
+  "image": "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-complete-eligibility-guide-for-ofws-606206.webp"
+}
+</script>
+<h2>Frequently Asked Questions</h2>
     <div itemscope itemtype="https://schema.org/FAQPage">
-      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question"><h3 itemprop="name">How can I open a US bank account from the Philippines?</h3><div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text"><p>You can open a US bank account through a fintech like Mana. Most big US banks need you to visit in person and have a US address. Mana only asks for a Philippine address and a valid ID. You do not need a Social Security number. You can <a href="https://mymana.xyz/blog/open-us-bank-account">learn how to open a US bank account</a> from home using your phone.</p></div></div></div>
-      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question"><h3 itemprop="name">Which Philippine bank has a branch in the US?</h3><div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text"><p>Some Philippine banks have local offices in the US. For example, BDO has some staff there. RCBC lets users open a virtual US account through a partner called Meridian. But these are often just for saving. If you want a full US account with a debit card and real routing numbers, Mana is a better option.</p></div></div></div>
-      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question"><h3 itemprop="name">Is a US bank account for Filipinos FDIC insured?</h3><div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text"><p>Yes, your money is safe if the account is with a member bank. As stated by the <a href="https://www.fdic.gov/resources/deposit-insurance/faq/index.html" rel="nofollow" target="_blank">FDIC</a>, deposits are protected up to $250,000 per person. Mana is a financial technology company, not a bank. But Mana works with SSB, which is a member of the FDIC. This means your funds are insured through the partner bank.</p></div></div></div>
-      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question"><h3 itemprop="name">How long do money transfers to the Philippines take?</h3><div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div itemprop="text"><p>Most wire transfers from a US bank take three to five business days. They are also very costly. If you use a modern app like Mana, the process is much faster. Mana uses InstaPay to send money to the Philippines in just minutes. This works even on weekends and holidays. You can send funds to any major bank or e-wallet in the Philippines quickly.</p></div></div></div>
-    </div>
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Can a Filipino open a bank account in the US?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>Yes, Filipinos can open a US bank account. Traditional US banks often make this hard because they need proof of a US address. However, modern financial technology platforms let you get a US dollar account. For instance, <a href="https://mymana.xyz/">Mana</a> lets you open an account using only your Philippine address and a valid government ID.</p></div>
+        </div>
+      </div>
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Do I need an SSN or ITIN to open a US bank account as a Filipino?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>No, you do not always need a Social Security Number or an Individual Taxpayer Identification Number. Under the <a href="https://www.fdic.gov/news/financial-institution-letters/2024/fil24015a.pdf" rel="nofollow" target="_blank">FDIC</a> rules, banks can accept other government documents like a passport. Modern digital platforms use these rules to let global Filipinos open accounts without a US tax number. You only need to give a valid ID and your Philippine address to get started.</p></div>
+        </div>
+      </div>
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">Can I use a Philippine address to open a US bank account?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>Traditional US banks usually need a physical US residential street address. According to the <a href="https://www.federalreserve.gov/frrs/regulations/section-1020220-customer-identification-program-requirements-for-banks.htm" rel="nofollow" target="_blank">Federal Reserve</a>, this is due to federal identity checks. However, specialized financial technology platforms work with US partner banks to accept a Philippine address instead. This means you do not need to move to the US or use a fake address to open your account.</p></div>
+        </div>
+      </div>
+      <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <h3 itemprop="name">What is ChexSystems and how does it affect non-resident account opening?</h3>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <div itemprop="text"><p>ChexSystems is a consumer reporting agency that tracks your closed checking and savings accounts in the US. Traditional banks check this database when you apply for an account. Because non-residents have no history in the US, these checks often lead to automatic rejections. Platforms like <a href="https://mymana.xyz/">Mana</a> help you avoid this issue by using alternative checks to verify your identity.</p></div>
+        </div>
+      </div>
+    </div><h2>Ready to open your US bank account as a Filipino?</h2><p>Most big US banks will reject your application if you do not have a local US address or a Social Security number. If you do not take action today, you will keep dealing with these painful barriers and paying high fees just to send money home. By starting now, you can skip the long lines, avoid stressful branch visits, and start saving your money right away.</p><p>Ready to get started? <a href="https://mymana.xyz/">Contact Mana today</a> to sign up for Mana and open your US dollar account. Our team is always here to help global Filipinos and Overseas Filipino Workers build a strong, secure financial future from anywhere in the world.</p>
 
-    <div class="mana-cta">
-      <span class="glow"></span>
-      <span class="eyebrow">Ready to get started?</span>
-      <h3>Every month you wait is another month you lose money to high fees and bad rates</h3>
-      <p style="color:rgba(255,255,255,0.78);font-size:16px;line-height:1.55;margin-bottom:18px;position:relative;">You can stop this cycle and start building your US-based savings today by joining us. Joining our list now ensures you are first in line to use our tools at launch. This helps you save more of your hard-earned pay for your family back home.</p>
-      <a href="https://mymana.xyz/" class="go">Join the Mana waitlist <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-    </div>
 
-    <div class="disclaim">Mana is a financial technology company, not a bank. Banking services are provided by SSB, Member FDIC. Funds deposited at SSB are eligible for FDIC insurance up to $250,000 per depositor, per insured bank, subject to applicable limitations and FDIC rules. Save is a yield feature on your USD wallet, it is not a deposit account, and is not FDIC-insured; the rate is current, may change, and is not guaranteed. Sending and FX services are provided under applicable money-transmitter licenses.</div>
-  </div>
+
 </article>
 
 <footer>
