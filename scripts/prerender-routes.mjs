@@ -325,6 +325,14 @@ const ROUTES = [
     },
   },
   {
+    path: "/blog/high-yield-usd-savings-for-ofw",
+    title: "High Yield USD Savings for OFW: Earn 3.5% APY — Mana",
+    description:
+      "Start earning 3.5% APY on your high yield USD savings for OFW accounts. Keep your dollars safe from inflation with near-zero fee transfers and FDIC insurance.",
+    canonical: "https://mymana.xyz/blog/high-yield-usd-savings-for-ofw",
+    schema: null,
+  },
+  {
     path: "/privacy",
     title: "Privacy Notice — Mana",
     description: "Mana's privacy notice and data handling practices.",
