@@ -25,6 +25,7 @@ import card from "./site/card.html?raw";
 import blogPostUSBankAccountForFilipinos from "./site/us-bank-account-for-filipinos-complete-guide.html?raw";
 import blogPostMidMarketRate from "./site/mid-market-exchange-rate-explained.html?raw";
 import blogPostSendMoneyPH from "./site/send-money-to-the-philippines-complete-ofw-guide.html?raw";
+import blogPostHighYieldSavings from "./site/high-yield-usd-savings-for-ofw.html?raw";
 
 type Route = { html: string; title: string; description?: string };
 
@@ -57,6 +58,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/us-bank-account-for-filipinos-complete-guide": { html: blogPostUSBankAccountForFilipinos, title: "US Bank Account for Filipinos: Complete How-To Guide — Mana", description: "Get a US bank account for Filipinos without an SSN or US address. Compare the best options for OFWs including ChexSystems-free accounts. Sign up for Mana today." },
   "/blog/mid-market-exchange-rate-explained": { html: blogPostMidMarketRate, title: "Mid-Market Exchange Rate Explained: A Guide for OFWs — Mana", description: "Get the mid-market exchange rate explained in simple terms. Learn how hidden FX markups cost OFW families $500M+ annually and how to send every dollar home." },
   "/blog/send-money-to-the-philippines-complete-ofw-guide": { html: blogPostSendMoneyPH, title: "Send Money to the Philippines: The Complete OFW Guide for 2026 — Mana", description: "Learn how to send money to the Philippines without overpaying. Compare remittance services, hidden FX costs, and find the cheapest way to send money home." },
+  "/blog/high-yield-usd-savings-for-ofw": { html: blogPostHighYieldSavings, title: "High Yield USD Savings for OFW: Earn 3.5% APY — Mana", description: "Start earning 3.5% APY on your high yield USD savings for OFW accounts. Keep your dollars safe from inflation with near-zero fee transfers and FDIC insurance." },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
