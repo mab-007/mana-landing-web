@@ -410,8 +410,10 @@ function buildHtml(route) {
     ? withTw.replace(twDescRegex, `  <meta name="twitter:description" content="${route.description}" />`)
     : withTw;
 
-  // Insert canonical link before </head>
-  const withCanon = withTwDesc.replace(
+  // Remove any existing canonical tag first (build-injected homepage canonical)
+  const withoutOldCanon = withTwDesc.replace(/  <link rel="canonical"[^>]*>\n?/g, "");
+  // Insert the correct per-route canonical link before </head>
+  const withCanon = withoutOldCanon.replace(
     "</head>",
     `  ${canonicalTag(route.canonical)}\n${jsonLdTag(route.schema)}\n</head>`
   );
