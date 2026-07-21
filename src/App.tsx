@@ -225,13 +225,12 @@ export function App() {
       if (twDesc) twDesc.setAttribute('content', route.description || "");
 
       // Set canonical URL — self-referencing HTTPS non-WWW for every route
-      let canonical = document.querySelector('link[rel="canonical"]');
-      if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
-      }
+      // Remove ALL existing canonicals first (MEGA Optimizer injects one sitewide)
+      document.querySelectorAll('link[rel="canonical"]').forEach(el => el.remove());
+      const canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
       canonical.setAttribute('href', `https://mymana.xyz${path}`);
+      document.head.appendChild(canonical);
     }
   }, [route, path]);
 
