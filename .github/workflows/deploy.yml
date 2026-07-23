@@ -1,4 +1,7 @@
-name: Deploy to GitHub Pages
+name: Deploy to prod EC2
+
+# Push to main -> mymana.xyz. Replaces the old GitHub Pages workflow: DNS points
+# at the nginx box (52.202.236.96), never at Pages, so the Pages artifact was dead.
 
 on:
   push:
@@ -7,41 +10,143 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  id-token: write # required for AWS OIDC; no long-lived AWS keys anywhere
 
-# Allow one concurrent deployment; cancel in-progress runs for newer pushes.
+# Never let two deploys interleave a swap. Do NOT cancel in progress -- a
+# cancelled run mid-rsync would leave the live root half-written.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: landing-prod-deploy
+  cancel-in-progress: false
+
+env:
+  AWS_ROLE: arn:aws:iam::319246816311:role/mana-landing-gha-deploy
+  BUCKET: mana-migration-transfer-319246816311
+  BUCKET_REGION: ap-south-1 # the bucket's region, NOT the instance's
+  INSTANCE_ID: i-0b5e4eb8fbdede0eb
+  INSTANCE_REGION: us-east-1
+  WEB_ROOT: /usr/share/nginx/html
+  SITE_URL: https://mymana.xyz
 
 jobs:
-  build:
+  deploy:
+    name: Build and deploy landing
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
       - run: npm ci
+
       - name: Build
         env:
           # Public Google Apps Script endpoint (already exposed in the client bundle).
-          # Override by adding a repo Variable: Settings → Secrets and variables → Actions → Variables.
+          # Override via repo Variable: Settings -> Secrets and variables -> Actions -> Variables.
           VITE_WAITLIST_URL: ${{ vars.VITE_WAITLIST_URL || 'https://script.google.com/macros/s/AKfycbwtFVBoj4TV1AW30_k_pWjkXelpTpuP6YASksTpPaNwm3UYHBG7T4wm4dV15LfO34Hr/exec' }}
         run: npm run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Assert build output and pack
+        id: art
+        run: |
+          set -euo pipefail
+          test -d dist || { echo "::error::no dist/"; exit 1; }
+          for f in index.html 404.html CNAME sitemap.xml robots.txt; do
+            [ -f "dist/$f" ] || { echo "::error::dist/$f missing"; exit 1; }
+          done
+          COUNT=$(find dist -type f | wc -l)
+          [ "$COUNT" -ge 30 ] || { echo "::error::only $COUNT files in dist (expected 50+)"; exit 1; }
+          BUNDLE=$(grep -oE 'assets/index-[A-Za-z0-9_-]+\.js' dist/index.html | head -1)
+          [ -n "$BUNDLE" ] || { echo "::error::index.html references no main bundle"; exit 1; }
+          [ -f "dist/$BUNDLE" ] || { echo "::error::$BUNDLE referenced but not built"; exit 1; }
+          tar --owner=0 --group=0 -czf landing.tar.gz -C dist .
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "bundle=$BUNDLE" >> "$GITHUB_OUTPUT"
+          echo "Packed $COUNT files, main bundle $BUNDLE"
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE }}
+          aws-region: ${{ env.BUCKET_REGION }}
+          role-session-name: landing-deploy-${{ github.run_id }}
+
+      - name: Upload artifact to S3
+        run: |
+          set -euo pipefail
+          aws s3 cp landing.tar.gz "s3://${BUCKET}/landing-ci/${GITHUB_SHA}.tar.gz" \
+            --region "$BUCKET_REGION"
+
+      - name: Deploy on EC2 via SSM
+        id: ssm
+        run: |
+          set -euo pipefail
+
+          # One command, not a list: SSM executes array elements independently,
+          # so a list would let the swap run even after a failed fetch.
+          {
+            echo "set -euo pipefail"
+            echo "S3_URI='s3://${BUCKET}/landing-ci/${GITHUB_SHA}.tar.gz'"
+            echo "BUNDLE='${{ steps.art.outputs.bundle }}'"
+            echo "EXPECT_COUNT='${{ steps.art.outputs.count }}'"
+            echo "WEB_ROOT='${WEB_ROOT}'"
+            echo "SHA='${GITHUB_SHA}'"
+            cat scripts/deploy-remote.sh
+          } > payload.sh
+
+          jq -n --rawfile s payload.sh '{commands: [$s]}' > params.json
+
+          CID=$(aws ssm send-command \
+            --region "$INSTANCE_REGION" \
+            --instance-ids "$INSTANCE_ID" \
+            --document-name AWS-RunShellScript \
+            --comment "landing deploy ${GITHUB_SHA:0:7}" \
+            --timeout-seconds 600 \
+            --parameters file://params.json \
+            --query "Command.CommandId" --output text)
+          echo "command-id: $CID"
+
+          STATUS=Pending
+          for _ in $(seq 1 90); do
+            sleep 5
+            STATUS=$(aws ssm get-command-invocation \
+              --region "$INSTANCE_REGION" --command-id "$CID" --instance-id "$INSTANCE_ID" \
+              --query "Status" --output text 2>/dev/null || echo Pending)
+            case "$STATUS" in Success|Failed|Cancelled|TimedOut) break ;; esac
+          done
+
+          echo "--- remote stdout ---"
+          aws ssm get-command-invocation --region "$INSTANCE_REGION" \
+            --command-id "$CID" --instance-id "$INSTANCE_ID" \
+            --query "StandardOutputContent" --output text || true
+          echo "--- remote stderr ---"
+          aws ssm get-command-invocation --region "$INSTANCE_REGION" \
+            --command-id "$CID" --instance-id "$INSTANCE_ID" \
+            --query "StandardErrorContent" --output text || true
+
+          echo "remote status: $STATUS"
+          [ "$STATUS" = "Success" ] || { echo "::error::remote deploy $STATUS"; exit 1; }
+
+      - name: Verify live site externally
+        run: |
+          set -euo pipefail
+          BUNDLE='${{ steps.art.outputs.bundle }}'
+
+          # nginx serves an SPA fallback, so a 200 proves nothing on its own.
+          # Assert the homepage references the NEW bundle and that the asset is
+          # real JS -- compared against a known-bogus control path.
+          curl -fsS --max-time 20 "${SITE_URL}/" | grep -q "$BUNDLE" \
+            || { echo "::error::homepage does not reference $BUNDLE"; exit 1; }
+
+          SIZE=$(curl -fsS --max-time 30 -o /dev/null -w '%{size_download}' "${SITE_URL}/${BUNDLE}")
+          CTYPE=$(curl -fsS --max-time 30 -o /dev/null -w '%{content_type}' "${SITE_URL}/${BUNDLE}")
+          CONTROL=$(curl -fsS --max-time 20 -o /dev/null -w '%{size_download}' "${SITE_URL}/definitely-not-a-real-path-$$")
+          echo "bundle size=$SIZE type=$CTYPE | spa-fallback control size=$CONTROL"
+          [ "$SIZE" -gt 50000 ] || { echo "::error::bundle too small ($SIZE) - likely the SPA fallback, not the asset"; exit 1; }
+          [ "$SIZE" -ne "$CONTROL" ] || { echo "::error::bundle byte-identical to the SPA fallback"; exit 1; }
+          case "$CTYPE" in *javascript*) ;; *) echo "::error::unexpected content-type $CTYPE"; exit 1 ;; esac
+
+          echo "LIVE OK - ${SITE_URL} serving ${BUNDLE} (${GITHUB_SHA:0:7})"
