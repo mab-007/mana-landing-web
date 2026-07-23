@@ -26,6 +26,7 @@ import blogPostUSBankAccountForFilipinos from "./site/us-bank-account-for-filipi
 import blogPostMidMarketRate from "./site/mid-market-exchange-rate-explained.html?raw";
 import blogPostSendMoneyPH from "./site/send-money-to-the-philippines-complete-ofw-guide.html?raw";
 import blogPostHighYieldSavings from "./site/high-yield-usd-savings-for-ofw.html?raw";
+import freelancerBankingUsd from "./site/filipino-freelancer-banking-usd.html?raw";
 
 type Route = { html: string; title: string; description?: string };
 
@@ -59,6 +60,7 @@ const ROUTES: Record<string, Route> = {
   "/blog/mid-market-exchange-rate-explained": { html: blogPostMidMarketRate, title: "Mid-Market Exchange Rate Explained: A Guide for OFWs — Mana", description: "Get the mid-market exchange rate explained in simple terms. Learn how hidden FX markups cost OFW families $500M+ annually and how to send every dollar home." },
   "/blog/send-money-to-the-philippines-complete-ofw-guide": { html: blogPostSendMoneyPH, title: "Send Money to the Philippines: The Complete OFW Guide for 2026 — Mana", description: "Learn how to send money to the Philippines without overpaying. Compare remittance services, hidden FX costs, and find the cheapest way to send money home." },
   "/blog/high-yield-usd-savings-for-ofw": { html: blogPostHighYieldSavings, title: "High Yield USD Savings for OFW: Earn 3.5% APY — Mana", description: "Start earning 3.5% APY on your high yield USD savings for OFW accounts. Keep your dollars safe from inflation with near-zero fee transfers and FDIC insurance." },
+  "/blog/filipino-freelancer-banking-usd": { html: freelancerBankingUsd, title: "Filipino Freelancer Banking USD: Complete Money Guide — Mana", description: "Learn how Filipino freelancers can receive, hold, spend, and convert USD with clearer fees, faster transfers, and a global card." },
   // Back-compat aliases for the old paths.
   "/privacy-policy": { html: privacy, title: "Privacy Notice — Mana" },
   "/terms-of-service": { html: terms, title: "Terms of Service — Mana" },
@@ -241,6 +243,8 @@ export function App() {
   useEffect(() => {
     const existing = document.getElementById("seo-schema");
     if (existing) existing.remove();
+    const existingFaq = document.getElementById("seo-faq-schema");
+    if (existingFaq) existingFaq.remove();
     if (path === "/card") {
       const schema = {
         "@context": "https://schema.org",
@@ -290,6 +294,12 @@ export function App() {
         datePublished: "2026-07-20",
         image: "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/us-bank-account-for-filipinos-complete-eligibility-guide-for-ofws-606206.webp"
       },
+      "/blog/filipino-freelancer-banking-usd": {
+        headline: "Filipino Freelancer Banking USD: Complete Money Guide",
+        description: "Learn how Filipino freelancers can receive, hold, spend, and convert USD with clearer fees, faster transfers, and a global card.",
+        datePublished: "2026-07-23",
+        image: "https://zleague-public-prod.s3.us-east-2.amazonaws.com/article_images/fb65cf22-4753-4f91-965c-73d1107d7d30/filipino-freelancer-banking-usd-complete-money-guide-578396.webp"
+      },
       "/blog/send-money-to-the-philippines-complete-ofw-guide": {
         headline: "Send Money to the Philippines: The Complete OFW Guide for 2026",
         description: "Learn how to send money to the Philippines without overpaying. Compare remittance services, hidden FX costs, and find the cheapest way to send money home.",
@@ -326,6 +336,53 @@ export function App() {
       script.type = "application/ld+json";
       script.textContent = JSON.stringify(schema);
       document.head.appendChild(script);
+    }
+
+    // Inject FAQPage schema for articles with FAQ sections
+    if (path === "/blog/filipino-freelancer-banking-usd") {
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can Filipino freelancers open a US dollar account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Eligible Filipino freelancers can use providers that offer USD account details or USD wallets without requiring a US residential address. With Mana, account eligibility requires a Philippine address and valid ID. Review each provider's current verification requirements before applying."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I receive USD payments as a Filipino freelancer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose a provider that gives you a compatible USD receiving method, then add those details to your invoices or supported payment platforms. Compare the exchange rate, account fees, delivery timing, card access, and the ability to transfer to a Philippine bank or e-wallet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are USD balances for Filipinos FDIC insured?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on the provider's structure. Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB Bank, Member FDIC. Eligible funds are FDIC insured up to $250,000 through the partner bank, subject to applicable requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the best way to manage USD income in the Philippines?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use a setup that lets you receive USD, keep it in USD until you decide to convert, spend globally when needed, and move PHP for local expenses. Compare the full cost, including the exchange-rate spread, transfer fees, card fees, and minimum-balance rules."
+            }
+          }
+        ]
+      };
+      const faqScript = document.createElement("script");
+      faqScript.id = "seo-faq-schema";
+      faqScript.type = "application/ld+json";
+      faqScript.textContent = JSON.stringify(faqSchema);
+      document.head.appendChild(faqScript);
     }
   }, [path]);
 
