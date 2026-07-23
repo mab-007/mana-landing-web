@@ -333,6 +333,62 @@ const ROUTES = [
     schema: null,
   },
   {
+    path: "/blog/filipino-freelancer-banking-usd",
+    title: "Filipino Freelancer Banking USD: Complete Money Guide — Mana",
+    description:
+      "Learn how Filipino freelancers can receive, hold, spend, and convert USD with clearer fees, faster transfers, and a global card.",
+    canonical: "https://mymana.xyz/blog/filipino-freelancer-banking-usd",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Filipino Freelancer Banking USD: Complete Money Guide",
+      author: { "@type": "Person", name: "Paco Litonjua" },
+      publisher: { "@type": "Organization", name: "Mana", url: "https://mymana.xyz/" },
+      datePublished: "2026-07-23",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "https://mymana.xyz/blog/filipino-freelancer-banking-usd" },
+    },
+    extraSchemas: [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can Filipino freelancers open a US dollar account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Eligible Filipino freelancers can use providers that offer USD account details or USD wallets without requiring a US residential address. With Mana, account eligibility requires a Philippine address and valid ID. Review each provider's current verification requirements before applying."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I receive USD payments as a Filipino freelancer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose a provider that gives you a compatible USD receiving method, then add those details to your invoices or supported payment platforms. Compare the exchange rate, account fees, delivery timing, card access, and the ability to transfer to a Philippine bank or e-wallet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are USD balances for Filipinos FDIC insured?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on the provider's structure. Mana is a financial technology company, not a bank. Banking services are provided by partner bank SSB Bank, Member FDIC. Eligible funds are FDIC insured up to $250,000 through the partner bank, subject to applicable requirements."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the best way to manage USD income in the Philippines?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use a setup that lets you receive USD, keep it in USD until you decide to convert, spend globally when needed, and move PHP for local expenses. Compare the full cost, including the exchange-rate spread, transfer fees, card fees, and minimum-balance rules."
+            }
+          }
+        ]
+      }
+    ],
+  },
+  {
     path: "/privacy",
     title: "Privacy Notice — Mana",
     description: "Mana's privacy notice and data handling practices.",
@@ -420,10 +476,17 @@ function buildHtml(route) {
 
   // Remove any existing canonical tag first (build-injected homepage canonical)
   const withoutOldCanon = withTwDesc.replace(/  <link rel="canonical"[^>]*>\n?/g, "");
+  // Generate all schema tags (main + extra)
+  let allSchemaTags = jsonLdTag(route.schema);
+  if (route.extraSchemas) {
+    for (const extra of route.extraSchemas) {
+      allSchemaTags += jsonLdTag(extra);
+    }
+  }
   // Insert the correct per-route canonical link before </head>
   const withCanon = withoutOldCanon.replace(
     "</head>",
-    `  ${canonicalTag(route.canonical)}\n${jsonLdTag(route.schema)}\n</head>`
+    `  ${canonicalTag(route.canonical)}\n${allSchemaTags}\n</head>`
   );
 
   return withCanon;
